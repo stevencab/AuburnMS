@@ -45,6 +45,10 @@ basal_area <- basal_area %>%
   group_by(plot, species) %>%
   summarise(ba_sp_in = sum(ba_in))
 
+cleaned_trees <- trees
+
+write_csv(cleaned_trees, "data/processed_data/MOTtrees_clean.csv")
+
 
 test <- trees %>% 
   group_by(plot, functional_group) %>% 
