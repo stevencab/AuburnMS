@@ -1,0 +1,951 @@
+stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,functional_group,notes
+1,1,20210517,1,QUNI,32.8,C,Quercus nigra,water oak,mesophyte,NA
+2,1,20210517,1,JUVI,8.5,I,Juniperus virginiana,eastern red cedar,mesophyte,NA
+3,1,20210517,1,LIST,19.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+4,1,20210517,1,SW,14.5,I,Oxydendrum arboreum,sourwood,intermediate,CHECK THIS
+5,1,20210517,1,ACRU,14.5,I,Acer rubrum,red maple,mesophyte,NA
+6,1,20210517,1,QUNI,6.4,I,Quercus nigra,water oak,mesophyte,NA
+7,1,20210517,1,LIST,27.7,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+8,1,20210517,1,CARYA,4.2,S,Carya sp.,hickory,intermediate,NA
+9,1,20210517,FB,QUAL,34,C,Quercus alba,white oak,pyrophyte,NA
+10,1,20210517,FB,CARYA,6.5,I,Carya sp.,hickory,intermediate,NA
+11,1,20210517,1,FLAG,6.6,S,#N/A,#N/A,#N/A,10:15 unknown
+12,1,20210517,1,QUAL,7.3,I,Quercus alba,white oak,pyrophyte,NA
+13,1,20210517,1,PITA,39.8,C,Pinus taeda,loblolly pine,pyrophyte,NA
+14,1,20210517,1,PITA,23.7,C,Pinus taeda,loblolly pine,pyrophyte,NA
+15,1,20210517,1,LIST,20,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+16,1,20210517,1,ACRU,3.5,S,Acer rubrum,red maple,mesophyte,NA
+17,1,20210517,1,PITA,36.2,C,Pinus taeda,loblolly pine,pyrophyte,NA
+18,1,20210517,1,PITA,45.6,D,Pinus taeda,loblolly pine,pyrophyte,NA
+19,1,20210517,1,QUNI,24.8,C,Quercus nigra,water oak,mesophyte,NA
+20,1,20210517,1,ACRU,10.8,I,Acer rubrum,red maple,mesophyte,NA
+21,1,20210517,1,ACRU,3.8,S,Acer rubrum,red maple,mesophyte,NA
+22,1,20210517,1,ULAL,24.4,C,Ulmus alata,winged elm,mesophyte,CHECK THIS
+23,1,20210517,1,ACRU,4.2,S,Acer rubrum,red maple,mesophyte,NA
+24,1,20210517,1,LIST,19.1,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+25,1,20210517,1,JUVI,11.1,I,Juniperus virginiana,eastern red cedar,mesophyte,NA
+26,1,20210517,1,JUVI,6.7,I,Juniperus virginiana,eastern red cedar,mesophyte,NA
+27,1,20210517,1,LIST,11.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+28,1,20210517,1,QUNI,16.7,I,Quercus nigra,water oak,mesophyte,NA
+29,1,20210517,1,LIST,10.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+30,1,20210517,1,QUNI,11.9,I,Quercus nigra,water oak,mesophyte,NA
+31,1,20210517,FB,LIST,6.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+32,1,20210517,1,PRUNUS,9.5,I,Prunus sp.,cherry,intermediate,NA
+33,1,20210517,1,PITA,24.2,C,Pinus taeda,loblolly pine,pyrophyte,NA
+34,1,20210517,1,PRUNUS,9.3,I,Prunus sp.,cherry,intermediate,NA
+35,1,20210517,1,PRUNUS,6.2,S,Prunus sp.,cherry,intermediate,NA
+36,1,20210517,1,PITA,14.6,I,Pinus taeda,loblolly pine,pyrophyte,NA
+37,1,20210517,1,VACCI,1.2,S,Vaccinium sp.,blueberry,mesophyte,NA
+38,1,20210517,1,VACCI,1.6,S,Vaccinium sp.,blueberry,mesophyte,NA
+39,1,20210517,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+40,1,20210517,1,CARYA,2.2,S,Carya sp.,hickory,intermediate,NA
+41,1,20210517,FB,LIST,17.1,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+42,1,20210517,FB,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+43,1,20210517,FB,QUNI,36.5,C,Quercus nigra,water oak,mesophyte,NA
+44,1,20210517,E,LIST,18.7,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+45,1,20210517,E,LIST,18.9,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+46,1,20210517,2,LIST,5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+47,1,20210517,2,QUNI,26.8,C,Quercus nigra,water oak,mesophyte,NA
+48,1,20210517,2,ACRU,8.5,S,Acer rubrum,red maple,mesophyte,NA
+49,1,20210517,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+50,1,20210517,2,QUNI,26.3,I,Quercus nigra,water oak,mesophyte,NA
+51,1,20210517,2,LIST,4.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+52,1,20210517,FB,QUNI,16.4,I,Quercus nigra,water oak,mesophyte,NA
+53,1,20210517,2,JUVI,9,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+54,1,20210517,2,JUVI,18.4,I,Juniperus virginiana,eastern red cedar,mesophyte,NA
+55,1,20210517,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+56,1,20210517,2,SW,16,I,Oxydendrum arboreum,sourwood,intermediate,CHECK THIS
+57,1,20210517,2,PITA,16.8,C,Pinus taeda,loblolly pine,pyrophyte,NA
+58,1,20210517,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+59,1,20210517,2,LIST,1.6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+60,1,20210517,2,LIST,1.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+61,1,20210517,FB,CARYA,6.7,S,Carya sp.,hickory,intermediate,NA
+62,1,20210517,FB,LIST,23.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+63,1,20210517,FB,PITA,4.3,S,Pinus taeda,loblolly pine,pyrophyte,NA
+64,1,20210517,2,PRUNUS,5,S,Prunus sp.,cherry,intermediate,NA
+65,1,20210517,2,VACCI,1.3,S,Vaccinium sp.,blueberry,mesophyte,NA
+66,1,20210517,2,QUNI,15.6,I,Quercus nigra,water oak,mesophyte,NA
+67,1,20210517,2,VACCI,1.2,S,Vaccinium sp.,blueberry,mesophyte,NA
+68,1,20210517,2,PITA,14.8,I,Pinus taeda,loblolly pine,pyrophyte,NA
+69,1,20210517,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+70,1,20210517,2,LITU,5.2,S,Liquidambar styraciflua,tulip poplar,mesophyte,NA
+71,1,20210517,2,PRUNUS,13.1,I,Prunus sp.,cherry,intermediate,NA
+72,1,20210517,2,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+73,1,20210517,2,PRUNUS,11.9,S,Prunus sp.,cherry,intermediate,NA
+74,1,20210517,2,LIST,2.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+75,1,20210517,2,JUVI,1.7,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+76,1,20210517,2,LIST,8.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+77,1,20210517,2,LIST,11.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+78,1,20210517,2,QUNI,26.3,C,Quercus nigra,water oak,mesophyte,NA
+79,1,20210517,2,PITA,5,S,Pinus taeda,loblolly pine,pyrophyte,NA
+80,1,20210517,2,LIST,21.6,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+81,1,20210517,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+82,1,20210517,2,PIEC,31.4,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+83,1,20210517,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+84,1,20210517,2,LIST,11.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+85,1,20210517,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+86,1,20210517,2,LIST,13.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+87,1,20210517,2,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+88,1,20210517,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+89,1,20210517,2,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+90,1,20210517,2,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+91,1,20210517,2,LITU,10.5,I,Liquidambar styraciflua,tulip poplar,mesophyte,NA
+92,1,20210517,2,PITA,12.7,I,Pinus taeda,loblolly pine,pyrophyte,NA
+93,1,20210517,E,LIST,14.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+94,1,20210517,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+95,1,20210517,2,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+96,1,20210517,2,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,NA
+97,1,20210517,2,JUVI,2.7,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+98,1,20210517,E,PIEC,18.8,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+99,1,20210517,E,PITA,49.1,D,Pinus taeda,loblolly pine,pyrophyte,NA
+100,1,20210517,FB,LIST,4.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+101,1,20210517,FB,PITA,10,I,Pinus taeda,loblolly pine,pyrophyte,NA
+102,1,20210517,FB,LIST,16.1,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+103,1,20210517,FB,CARYA,2.8,S,Carya sp.,hickory,intermediate,NA
+104,1,20210517,FB,PRUNUS,13.7,I,Prunus sp.,cherry,intermediate,NA
+105,1,20210517,FB,ACRU,9.1,S,Acer rubrum,red maple,mesophyte,NA
+106,1,20210517,FB,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+107,1,20210517,3,JUVI,12.1,I,Juniperus virginiana,eastern red cedar,mesophyte,NA
+108,1,20210517,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+109,1,20210517,3,LIST,8.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+110,1,20210517,3,CARYA,12.2,I,Carya sp.,hickory,intermediate,NA
+111,1,20210517,3,VACCI,5,S,Vaccinium sp.,blueberry,mesophyte,NA
+112,1,20210517,3,JUVI,7.9,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+113,1,20210517,3,NYSY,4.1,S,Nyssa sylvatica,black gum,mesophyte,NA
+114,1,20210517,3,LIST,5.9,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+115,1,20210517,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+116,1,20210517,3,LIST,13.3,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+117,1,20210517,3,PITA,13.6,I,Pinus taeda,loblolly pine,pyrophyte,NA
+118,1,20210517,3,NYSY,6.6,I,Nyssa sylvatica,black gum,mesophyte,NA
+119,1,20210517,3,LIST,7.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+120,1,20210517,3,LIST,5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+121,1,20210517,3,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+122,1,20210517,3,QUAL,11.2,I,Quercus alba,white oak,pyrophyte,NA
+123,1,20210517,3,LIST,17.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+124,1,20210517,3,QUNI,39.7,C,Quercus nigra,water oak,mesophyte,NA
+125,1,20210517,3,LIST,10.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+126,1,20210517,FB,CARYA,7.7,S,Carya sp.,hickory,intermediate,NA
+127,1,20210517,FB,NYSY,8.7,S,Nyssa sylvatica,black gum,mesophyte,NA
+128,1,20210517,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+129,1,20210517,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,NA
+130,1,20210517,3,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+131,1,20210517,3,VACCI,4.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+132,1,20210517,3,PITA,18.1,I,Pinus taeda,loblolly pine,pyrophyte,NA
+133,1,20210517,3,VACCI,9,S,Vaccinium sp.,blueberry,mesophyte,NA
+134,1,20210517,3,VACCI,5.2,S,Vaccinium sp.,blueberry,mesophyte,NA
+135,1,20210517,3,PITA,7.2,I,Pinus taeda,loblolly pine,pyrophyte,NA
+136,1,20210517,3,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+137,1,20210517,3,QUNI,27.9,C,Quercus nigra,water oak,mesophyte,NA
+138,1,20210517,3,LIST,8.6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+139,1,20210517,3,LIST,3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+140,1,20210517,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+141,1,20210517,E,CARYA,4.5,S,Carya sp.,hickory,intermediate,NA
+142,1,20210517,E,FLAG,4.4,S,#N/A,#N/A,#N/A,11:40
+143,1,20210517,E,PIEC,28.8,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+144,1,20210517,3,LIST,6.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+145,1,20210517,3,PITA,11.5,I,Pinus taeda,loblolly pine,pyrophyte,NA
+146,1,20210517,3,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+147,1,20210517,3,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+148,1,20210517,3,QUNI,34.5,C,Quercus nigra,water oak,mesophyte,NA
+149,1,20210517,3,QUNI,12.1,S,Quercus nigra,water oak,mesophyte,NA
+150,1,20210517,3,FLAG,6.3,S,#N/A,#N/A,#N/A,11:40
+151,1,20210517,3,LIST,37,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+152,1,20210517,3,VACCI,4.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+153,1,20210517,3,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,NA
+154,1,20210517,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,NA
+155,1,20210517,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,NA
+156,1,20210517,E,QUNI,20,I,Quercus nigra,water oak,mesophyte,NA
+157,1,20210517,3,PITA,4,S,Pinus taeda,loblolly pine,pyrophyte,NA
+158,1,20210517,3,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+159,1,20210517,3,PITA,1,S,Pinus taeda,loblolly pine,pyrophyte,NA
+160,1,20210517,3,VACCI,5,S,Vaccinium sp.,blueberry,mesophyte,NA
+161,1,20210517,E,QUNI,35.8,C,Quercus nigra,water oak,mesophyte,NA
+162,1,20210517,FB,LIST,7.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+163,1,20210517,E,QUNI,14.5,I,Quercus nigra,water oak,mesophyte,NA
+164,1,20210517,4,LITU,9,I,Liquidambar styraciflua,tulip poplar,mesophyte,NA
+165,1,20210517,4,QUAL,8.5,S,Quercus alba,white oak,pyrophyte,NA
+166,1,20210517,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+167,1,20210517,4,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+168,1,20210517,4,PITA,17,S,Pinus taeda,loblolly pine,pyrophyte,NA
+169,1,20210517,4,QUNI,15.5,I,Quercus nigra,water oak,mesophyte,NA
+170,1,20210517,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+171,1,20210517,4,PITA,44.5,D,Pinus taeda,loblolly pine,pyrophyte,NA
+172,1,20210517,4,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+173,1,20210517,4,LIST,8.9,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+174,1,20210517,4,LIST,7.6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+175,1,20210517,4,LIST,14.9,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+176,1,20210517,4,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+177,1,20210517,4,NYSY,19.9,S,Nyssa sylvatica,black gum,mesophyte,NA
+178,1,20210517,E,QUNI,20.5,I,Quercus nigra,water oak,mesophyte,NA
+179,1,20210517,E,QUNI,20,I,Quercus nigra,water oak,mesophyte,NA
+180,1,20210517,4,NYSY,3.6,S,Nyssa sylvatica,black gum,mesophyte,NA
+181,1,20210517,4,LIST,10.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+182,1,20210517,4,QUNI,27.7,I,Quercus nigra,water oak,mesophyte,NA
+183,1,20210517,4,CARYA,3.2,S,Carya sp.,hickory,intermediate,NA
+184,1,20210517,4,CARYA,20.3,I,Carya sp.,hickory,intermediate,NA
+185,1,20210517,4,LIST,11,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+186,1,20210517,4,LIST,11.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+187,1,20210517,4,PITA,43.4,C,Pinus taeda,loblolly pine,pyrophyte,NA
+188,1,20210517,4,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,NA
+189,1,20210517,4,LIST,18.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+190,1,20210517,4,CARYA,4.5,S,Carya sp.,hickory,intermediate,NA
+191,1,20210517,4,PRUNUS,5.5,S,Prunus sp.,cherry,intermediate,NA
+192,1,20210517,4,LIST,19.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+193,1,20210517,4,CARYA,5,S,Carya sp.,hickory,intermediate,NA
+194,1,20210517,4,CARYA,6.5,S,Carya sp.,hickory,intermediate,NA
+195,1,20210517,4,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+196,1,20210517,4,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+197,1,20210517,E,QUNI,20.3,I,Quercus nigra,water oak,mesophyte,NA
+198,1,20210517,4,QUNI,22,I,Quercus nigra,water oak,mesophyte,NA
+199,1,20210517,4,PRUNUS,5.8,S,Prunus sp.,cherry,intermediate,NA
+200,1,20210517,E,FAGR,13,S,Fagus grandifolia,American beech,mesophyte,NA
+201,1,20210517,4,LIST,24.3,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+202,1,20210517,4,CARYA,11.7,I,Carya sp.,hickory,intermediate,NA
+203,1,20210517,4,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+204,1,20210517,4,CARYA,12.2,S,Carya sp.,hickory,intermediate,NA
+205,1,20210517,4,NYSY,5.3,S,Nyssa sylvatica,black gum,mesophyte,NA
+206,1,20210517,E,QUNI,24.9,I,Quercus nigra,water oak,mesophyte,NA
+207,1,20210517,E,QUNI,26.8,C,Quercus nigra,water oak,mesophyte,NA
+208,1,20210517,E,LIST,16.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+209,1,20210517,E,PITA,54.4,D,Pinus taeda,loblolly pine,pyrophyte,NA
+210,1,20210517,4,PRUNUS,3.9,S,Prunus sp.,cherry,intermediate,NA
+211,1,20210517,4,CARYA,10,S,Carya sp.,hickory,intermediate,NA
+212,1,20210517,4,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+213,1,20210517,4,QUAL,4.4,S,Quercus alba,white oak,pyrophyte,NA
+214,1,20210517,4,PRUNUS,5.7,S,Prunus sp.,cherry,intermediate,NA
+215,1,20210517,4,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+216,2,20210517,1,LIST,5.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+217,2,20210517,1,LIST,11.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+218,2,20210517,1,PITA,38,D,Pinus taeda,loblolly pine,pyrophyte,NA
+219,2,20210517,1,QUNI,26.2,C,Quercus nigra,water oak,mesophyte,NA
+220,2,20210517,1,LIST,1.9,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+221,2,20210517,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+222,2,20210517,1,CARYA,8.7,I,Carya sp.,hickory,intermediate,NA
+223,2,20210517,1,LIST,4.9,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+224,2,20210517,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+225,2,20210517,1,LIST,1.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+226,2,20210517,1,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,NA
+227,2,20210517,1,ACRU,7,S,Acer rubrum,red maple,mesophyte,NA
+228,2,20210517,1,QUNI,22.5,S,Quercus nigra,water oak,mesophyte,NA
+229,2,20210517,1,QUAL,4,S,Quercus alba,white oak,pyrophyte,NA
+230,2,20210517,1,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+231,2,20210517,1,VACCI,9,S,Vaccinium sp.,blueberry,mesophyte,NA
+232,2,20210517,1,PITA,8.5,I,Pinus taeda,loblolly pine,pyrophyte,NA
+233,2,20210517,1,PRUNUS,7.7,S,Prunus sp.,cherry,intermediate,NA
+234,2,20210517,1,PITA,29.7,D,Pinus taeda,loblolly pine,pyrophyte,NA
+235,2,20210517,1,FAGR,14.7,I,Fagus grandifolia,American beech,mesophyte,NA
+236,2,20210517,E,LIST,20.9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+237,2,20210517,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+238,2,20210517,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+239,2,20210517,1,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+240,2,20210517,1,PIEC,9.7,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+241,2,20210517,1,LIST,3.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+242,2,20210517,1,PRUNUS,14,I,Prunus sp.,cherry,intermediate,NA
+243,2,20210517,1,VACCI,5,S,Vaccinium sp.,blueberry,mesophyte,NA
+244,2,20210517,1,SW,18.8,I,Oxydendrum arboreum,sourwood,intermediate,NA
+245,2,20210517,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+246,2,20210517,1,LIST,25.5,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+247,2,20210517,1,NYSY,2.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+248,2,20210517,1,LIST,10,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+249,2,20210517,1,LIST,3.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+250,2,20210517,FB,QUNI,19.8,I,Quercus nigra,water oak,mesophyte,NA
+251,2,20210517,E,FAGR,21.8,I,Fagus grandifolia,American beech,mesophyte,NA
+252,2,20210517,E,PITA,20,C,Pinus taeda,loblolly pine,pyrophyte,NA
+253,2,20210517,E,QUNI,17.4,I,Quercus nigra,water oak,mesophyte,NA
+254,2,20210517,E,JUVI,1,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+255,2,20210517,1,QUNI,40.4,C,Quercus nigra,water oak,mesophyte,NA
+256,2,20210517,1,CARYA,5.1,S,Carya sp.,hickory,intermediate,NA
+257,2,20210517,E,PITA,19.9,I,Pinus taeda,loblolly pine,pyrophyte,NA
+258,2,20210517,E,PITA,15.8,I,Pinus taeda,loblolly pine,pyrophyte,NA
+259,2,20210517,E,QUAL,5.7,S,Quercus alba,white oak,pyrophyte,NA
+260,2,20210517,E,QUNI,6.9,S,Quercus nigra,water oak,mesophyte,NA
+261,2,20210517,E,PITA,28.3,D,Pinus taeda,loblolly pine,pyrophyte,NA
+262,2,20210517,2,FAGR,17.3,S,Fagus grandifolia,American beech,mesophyte,NA
+263,2,20210517,2,FAGR,15.2,S,Fagus grandifolia,American beech,mesophyte,NA
+264,2,20210517,2,CARYA,10.2,S,Carya sp.,hickory,intermediate,NA
+265,2,20210517,FB,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+266,2,20210517,FB,PITA,18.5,I,Pinus taeda,loblolly pine,pyrophyte,NA
+267,2,20210517,FB,LIST,1.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+268,2,20210517,2,QUNI,34.2,C,Quercus nigra,water oak,mesophyte,NA
+269,2,20210517,2,QUNI,27,C,Quercus nigra,water oak,mesophyte,NA
+270,2,20210517,2,LIST,1.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+271,2,20210517,2,QUAL,9.4,I,Quercus alba,white oak,pyrophyte,NA
+272,2,20210517,2,LIST,32,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+273,2,20210517,2,QUNI,8.4,I,Quercus nigra,water oak,mesophyte,NA
+274,2,20210517,2,QUFA,12,S,Quercus falcata,southern red oak,pyrophyte,NA
+275,2,20210517,2,QUAL,3.1,S,Quercus alba,white oak,pyrophyte,NA
+276,2,20210517,2,LIST,32.7,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+277,2,20210517,2,CARYA,14.8,I,Carya sp.,hickory,intermediate,NA
+278,2,20210517,2,PIEC,17.3,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+279,2,20210517,E,FAGR,19.7,S,Fagus grandifolia,American beech,mesophyte,NA
+280,2,20210517,E,FAGR,12,S,Fagus grandifolia,American beech,mesophyte,NA
+281,2,20210517,E,PITA,41.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+282,2,20210517,2,QUAL,47.8,C,Quercus alba,white oak,pyrophyte,NA
+283,2,20210517,2,PRUNUS,7.3,S,Prunus sp.,cherry,intermediate,NA
+284,2,20210517,2,NYSY,2,S,Nyssa sylvatica,black gum,mesophyte,NA
+285,2,20210517,2,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+286,2,20210517,2,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+287,2,20210517,2,LIST,6.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+288,2,20210517,2,QUAL,8.1,I,Quercus alba,white oak,pyrophyte,NA
+289,2,20210517,2,LIST,3.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+290,2,20210517,2,QUNI,22.8,I,Quercus nigra,water oak,mesophyte,NA
+291,2,20210517,2,QUAL,12.4,I,Quercus alba,white oak,pyrophyte,NA
+292,2,20210517,2,PITA,31.8,C,Pinus taeda,loblolly pine,pyrophyte,NA
+293,2,20210517,2,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+294,2,20210517,2,VACCI,8.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+295,2,20210517,2,NYSY,3.3,S,Nyssa sylvatica,black gum,mesophyte,NA
+296,2,20210517,2,PITA,8,S,Pinus taeda,loblolly pine,pyrophyte,NA
+297,2,20210517,2,QUAL,5,S,Quercus alba,white oak,pyrophyte,NA
+298,2,20210517,2,QUNI,3.7,S,Quercus nigra,water oak,mesophyte,NA
+299,2,20210517,2,QUNI,5,I,Quercus nigra,water oak,mesophyte,NA
+300,2,20210517,2,LIST,2.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+301,2,20210517,FB,PITA,11.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+302,2,20210517,3,LIST,20.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+303,2,20210517,3,QUNI,17,S,Quercus nigra,water oak,mesophyte,NA
+304,2,20210517,3,QUNI,17.5,S,Quercus nigra,water oak,mesophyte,NA
+305,2,20210517,3,ACRU,24.5,I,Acer rubrum,red maple,mesophyte,NA
+306,2,20210517,3,QUNI,8.5,S,Quercus nigra,water oak,mesophyte,NA
+307,2,20210517,3,PITA,9.4,S,Pinus taeda,loblolly pine,pyrophyte,NA
+308,2,20210517,3,PITA,14,I,Pinus taeda,loblolly pine,pyrophyte,NA
+309,2,20210517,3,PITA,13.4,I,Pinus taeda,loblolly pine,pyrophyte,NA
+310,2,20210517,3,SW,11,I,Oxydendrum arboreum,sourwood,intermediate,NA
+311,2,20210517,3,PIEC,15.2,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+312,2,20210517,FB,PITA,32.3,C,Pinus taeda,loblolly pine,pyrophyte,NA
+313,2,20210517,FB,LIST,2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+314,2,20210517,3,PRUNUS,16.7,I,Prunus sp.,cherry,intermediate,NA
+315,2,20210517,3,LIST,4.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+316,2,20210517,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+317,2,20210517,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+318,2,20210517,3,LIST,3.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+319,2,20210517,3,QUNI,10.5,I,Quercus nigra,water oak,mesophyte,NA
+320,2,20210517,3,PITA,37.2,C,Pinus taeda,loblolly pine,pyrophyte,NA
+321,2,20210517,3,PITA,20.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+322,2,20210517,3,QUAL,6.2,S,Quercus alba,white oak,pyrophyte,NA
+323,2,20210517,3,QUAL,5.4,S,Quercus alba,white oak,pyrophyte,NA
+324,2,20210517,3,JUVI,6.5,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+325,2,20210517,3,QUNI,8.5,S,Quercus nigra,water oak,mesophyte,NA
+326,2,20210517,E,ACRU,18.7,I,Acer rubrum,red maple,mesophyte,NA
+327,2,20210517,E,LIST,13,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+328,2,20210517,E,FAGR,18,I,Fagus grandifolia,American beech,mesophyte,NA
+329,2,20210517,3,LIST,17.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+330,2,20210517,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+331,2,20210517,3,QUNI,4,S,Quercus nigra,water oak,mesophyte,NA
+332,2,20210517,3,NYSY,7,S,Nyssa sylvatica,black gum,mesophyte,NA
+333,2,20210517,3,LIST,12.1,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+334,2,20210517,3,ACRU,4.2,S,Acer rubrum,red maple,mesophyte,NA
+335,2,20210517,3,PITA,11.9,I,Pinus taeda,loblolly pine,pyrophyte,NA
+336,2,20210517,3,PITA,43.9,D,Pinus taeda,loblolly pine,pyrophyte,NA
+337,2,20210517,3,PITA,27.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+338,2,20210517,3,NYSY,13.5,I,Nyssa sylvatica,black gum,mesophyte,NA
+339,2,20210517,3,PITA,15.7,I,Pinus taeda,loblolly pine,pyrophyte,NA
+340,2,20210517,3,VACCI,5,S,Vaccinium sp.,blueberry,mesophyte,NA
+341,2,20210517,3,VACCI,6,S,Vaccinium sp.,blueberry,mesophyte,NA
+342,2,20210517,3,PITA,43,C,Pinus taeda,loblolly pine,pyrophyte,NA
+343,2,20210517,3,LIST,9.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+344,2,20210517,E,PRUNUS,5.5,S,Prunus sp.,cherry,intermediate,NA
+345,2,20210517,3,QUNI,15.8,I,Quercus nigra,water oak,mesophyte,NA
+346,2,20210517,3,LIST,1.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+347,2,20210517,FB,VACCI,8.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+348,2,20210517,3,QUNI,27.5,I,Quercus nigra,water oak,mesophyte,NA
+349,2,20210517,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+350,2,20210517,3,PITA,35.2,C,Pinus taeda,loblolly pine,pyrophyte,NA
+351,2,20210517,3,PITA,11.5,S,Pinus taeda,loblolly pine,pyrophyte,NA
+352,2,20210517,E,QUNI,10,I,Quercus nigra,water oak,mesophyte,NA
+353,2,20210517,E,ACRU,27.7,I,Acer rubrum,red maple,mesophyte,NA
+354,2,20210517,E,LIST,26.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+355,2,20210517,4,PITA,29.2,C,Pinus taeda,loblolly pine,pyrophyte,NA
+356,2,20210517,4,LIST,20.3,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+357,2,20210517,4,PITA,11.9,I,Pinus taeda,loblolly pine,pyrophyte,NA
+358,2,20210517,4,QUAL,8,I,Quercus alba,white oak,pyrophyte,NA
+359,2,20210517,4,PITA,10,I,Pinus taeda,loblolly pine,pyrophyte,NA
+360,2,20210517,4,FAGR,13.1,I,Fagus grandifolia,American beech,mesophyte,NA
+361,2,20210517,4,PITA,39,D,Pinus taeda,loblolly pine,pyrophyte,NA
+362,2,20210517,FB,QUAL,24.2,C,Quercus alba,white oak,pyrophyte,NA
+363,2,20210517,4,LIST,2.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+364,2,20210517,4,PITA,36.2,C,Pinus taeda,loblolly pine,pyrophyte,NA
+365,2,20210517,4,PIEC,29.3,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+366,2,20210517,4,PRUNUS,12,I,Prunus sp.,cherry,intermediate,NA
+367,2,20210517,4,QUNI,8.5,I,Quercus nigra,water oak,mesophyte,NA
+368,2,20210517,4,LIST,4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+369,2,20210517,4,PITA,9.1,I,Pinus taeda,loblolly pine,pyrophyte,NA
+370,2,20210517,4,PITA,38.1,C,Pinus taeda,loblolly pine,pyrophyte,NA
+371,2,20210517,4,DIVI,8.4,I,Diospyros virginiana,persimmon,intermediate,NA
+372,2,20210517,4,PITA,5.4,S,Pinus taeda,loblolly pine,pyrophyte,NA
+373,2,20210517,4,COFL,13.7,S,Cornus florida,flowering dogwood,intermediate,NA
+374,2,20210517,4,COFL,5.5,S,Cornus florida,flowering dogwood,intermediate,NA
+375,2,20210517,4,COFL,3.4,S,Cornus florida,flowering dogwood,intermediate,NA
+376,2,20210517,4,QUNI,19.9,I,Quercus nigra,water oak,mesophyte,NA
+377,2,20210517,4,QUNI,4.7,S,Quercus nigra,water oak,mesophyte,NA
+378,2,20210517,4,NYSY,3.1,S,Nyssa sylvatica,black gum,mesophyte,NA
+379,2,20210517,FB,QUNI,20,I,Quercus nigra,water oak,mesophyte,NA
+380,2,20210517,4,LIST,4.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+381,2,20210517,4,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+382,2,20210517,4,LIST,9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+383,2,20210517,4,CARYA,38,C,Carya sp.,hickory,intermediate,NA
+384,2,20210517,E,PITA,39.1,C,Pinus taeda,loblolly pine,pyrophyte,NA
+385,2,20210517,4,LIST,18.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+386,2,20210517,4,LIST,7.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+387,2,20210517,4,QUNI,5.2,S,Quercus nigra,water oak,mesophyte,NA
+388,2,20210517,4,PITA,19.7,I,Pinus taeda,loblolly pine,pyrophyte,NA
+389,2,20210517,4,FAGR,19.2,I,Fagus grandifolia,American beech,mesophyte,NA
+390,2,20210517,4,QUNI,9.8,I,Quercus nigra,water oak,mesophyte,NA
+391,2,20210517,4,COFL,5.3,S,Cornus florida,flowering dogwood,intermediate,NA
+392,2,20210517,E,LIST,21,C,Liquidambar styraciflua,sweetgum,mesophyte,NA
+393,2,20210517,E,LIST,15,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+394,2,20210517,E,LIST,18,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+395,3,20210518,1,PITA,49.3,C,Pinus taeda,loblolly pine,pyrophyte,NA
+396,3,20210518,1,QUNI,10.8,I,Quercus nigra,water oak,mesophyte,NA
+397,3,20210518,1,LIST,2.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+398,3,20210518,1,LIST,1.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+399,3,20210518,1,QUNI,37.6,C,Quercus nigra,water oak,mesophyte,NA
+400,3,20210518,1,LIST,2.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+401,3,20210518,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+402,3,20210518,1,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+403,3,20210518,1,LIST,8.1,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+404,3,20210518,1,NYSY,7.3,I,Nyssa sylvatica,black gum,mesophyte,NA
+405,3,20210518,1,PITA,45.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+406,3,20210518,1,QUAL,3.8,S,Quercus alba,white oak,pyrophyte,NA
+407,3,20210518,1,LIST,8.9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+408,3,20210518,1,PITA,15.1,I,Pinus taeda,loblolly pine,pyrophyte,NA
+409,3,20210518,1,LIST,5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+410,3,20210518,1,PIEC,18.5,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+411,3,20210518,1,LIST,8.1,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+412,3,20210518,1,QUNI,10.6,I,Quercus nigra,water oak,mesophyte,NA
+413,3,20210518,1,QUNI,12.9,I,Quercus nigra,water oak,mesophyte,NA
+414,3,20210518,1,QUNI,23.5,I,Quercus nigra,water oak,mesophyte,NA
+415,3,20210518,1,LIST,11.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+416,3,20210518,1,SW,12.2,I,Oxydendrum arboreum,sourwood,intermediate,NA
+417,3,20210518,1,LIST,5.9,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+418,3,20210518,1,QUNI,26.8,I,Quercus nigra,water oak,mesophyte,NA
+419,3,20210518,1,NYSY,9.6,S,Nyssa sylvatica,black gum,mesophyte,NA
+420,3,20210518,1,LIST,24.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+421,3,20210518,1,LIST,5.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+422,3,20210518,1,LIST,2.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+423,3,20210518,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+424,3,20210518,1,LIST,5.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+425,3,20210518,1,NYSY,4.1,S,Nyssa sylvatica,black gum,mesophyte,NA
+426,3,20210518,1,LIST,11.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+427,3,20210518,1,QUNI,40.3,C,Quercus nigra,water oak,mesophyte,NA
+428,3,20210518,1,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+429,3,20210518,1,LIST,1.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+430,3,20210518,E,QUAL,5.5,S,Quercus alba,white oak,pyrophyte,NA
+431,3,20210518,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+432,3,20210518,1,PIEC,14,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+433,3,20210518,1,LIST,4.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+434,3,20210518,1,LIST,7.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+435,3,20210518,1,QUNI,22.9,C,Quercus nigra,water oak,mesophyte,NA
+436,3,20210518,1,LIST,8.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+437,3,20210518,1,QUNI,15.7,I,Quercus nigra,water oak,mesophyte,NA
+438,3,20210518,1,LIST,2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+439,3,20210518,FB,LIST,2.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+440,3,20210518,FB,PITA,39.9,C,Pinus taeda,loblolly pine,pyrophyte,NA
+441,3,20210518,FB,QUNI,19.2,I,Quercus nigra,water oak,mesophyte,NA
+442,3,20210518,FB,PITA,22.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+443,3,20210518,FB,QUNI,14.1,I,Quercus nigra,water oak,mesophyte,NA
+444,3,20210518,FB,QUFA,18.7,I,Quercus falcata,southern red oak,pyrophyte,NA
+445,3,20210518,FB,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+446,3,20210518,2,PITA,40.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+447,3,20210518,2,LIST,6.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+448,3,20210518,E,QUNI,35.5,C,Quercus nigra,water oak,mesophyte,NA
+449,3,20210518,2,LIST,12.9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+450,3,20210518,2,PITA,35.6,C,Pinus taeda,loblolly pine,pyrophyte,NA
+451,3,20210518,2,LIST,15,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+452,3,20210518,2,PRUNUS,15.8,S,Prunus sp.,cherry,intermediate,NA
+453,3,20210518,2,LIST,6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+454,3,20210518,2,ACRU,11,I,Acer rubrum,red maple,mesophyte,NA
+455,3,20210518,2,LIST,6.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+456,3,20210518,2,NYSY,5.2,S,Nyssa sylvatica,black gum,mesophyte,NA
+457,3,20210518,2,QUAL,8.6,I,Quercus alba,white oak,pyrophyte,NA
+458,3,20210518,2,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+459,3,20210518,2,ACRU,8.1,S,Acer rubrum,red maple,mesophyte,NA
+460,3,20210518,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+461,3,20210518,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+462,3,20210518,2,ACRU,6,S,Acer rubrum,red maple,mesophyte,NA
+463,3,20210518,2,QUNI,26.9,C,Quercus nigra,water oak,mesophyte,NA
+464,3,20210518,2,ACRU,4.6,S,Acer rubrum,red maple,mesophyte,NA
+465,3,20210518,2,QUFA,13.3,I,Quercus falcata,southern red oak,pyrophyte,NA
+466,3,20210518,E,LIST,18.6,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+467,3,20210518,2,QUNI,37.9,C,Quercus nigra,water oak,mesophyte,NA
+468,3,20210518,2,LIST,7.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+469,3,20210518,2,NYSY,6.4,S,Nyssa sylvatica,black gum,mesophyte,NA
+470,3,20210518,2,LIST,9.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+471,3,20210518,2,QUNI,12.1,I,Quercus nigra,water oak,mesophyte,NA
+472,3,20210518,2,LIST,4.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+473,3,20210518,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+474,3,20210518,2,LIST,1.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+475,3,20210518,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+476,3,20210518,2,NYSY,7.3,S,Nyssa sylvatica,black gum,mesophyte,NA
+477,3,20210518,2,LIST,6.3,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+478,3,20210518,2,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+479,3,20210518,2,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+480,3,20210518,2,ACRU,2,S,Acer rubrum,red maple,mesophyte,NA
+481,3,20210518,2,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+482,3,20210518,2,LIST,4.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+483,3,20210518,E,ACRU,9.3,I,Acer rubrum,red maple,mesophyte,NA
+484,3,20210518,E,ACRU,9.7,I,Acer rubrum,red maple,mesophyte,NA
+485,3,20210518,E,LITU,26.7,C,Liquidambar styraciflua,tulip poplar,mesophyte,NA
+486,3,20210518,2,SW,14.7,I,Oxydendrum arboreum,sourwood,intermediate,NA
+487,3,20210518,E,ACRU,3.7,S,Acer rubrum,red maple,mesophyte,NA
+488,3,20210518,E,LIST,7.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+489,3,20210518,E,LIST,10.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+490,3,20210518,E,QUNI,37.6,C,Quercus nigra,water oak,mesophyte,NA
+491,3,20210518,FB,NYSY,19,I,Nyssa sylvatica,black gum,mesophyte,NA
+492,3,20210518,FB,NYSY,6.3,S,Nyssa sylvatica,black gum,mesophyte,NA
+493,3,20210518,FB,LIST,2.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+494,3,20210518,FB,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+495,3,20210518,FB,VACCI,4.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+496,3,20210518,FB,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+497,3,20210518,3,LIST,24.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+498,3,20210518,3,PITA,25.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+499,3,20210518,3,FAGR,2,S,Fagus grandifolia,American beech,mesophyte,NA
+500,3,20210518,3,LIST,10,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+501,3,20210518,3,LIST,9.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+502,3,20210518,3,QUNI,43.3,C,Quercus nigra,water oak,mesophyte,NA
+503,3,20210518,3,SW,11.4,I,Oxydendrum arboreum,sourwood,intermediate,NA
+504,3,20210518,3,NYSY,7.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+505,3,20210518,3,QUNI,14.4,I,Quercus nigra,water oak,mesophyte,NA
+506,3,20210518,3,LIST,11.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+507,3,20210518,3,QUNI,21.5,I,Quercus nigra,water oak,mesophyte,NA
+508,3,20210518,3,LIST,7.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+509,3,20210518,3,LIST,12.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+510,3,20210518,3,LIST,4.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+511,3,20210518,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+512,3,20210518,3,QUNI,36.8,C,Quercus nigra,water oak,mesophyte,NA
+513,3,20210518,3,FAGR,9.5,S,Fagus grandifolia,American beech,mesophyte,NA
+514,3,20210518,3,LIST,10.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+515,3,20210518,3,PITA,26.4,C,Pinus taeda,loblolly pine,pyrophyte,NA
+516,3,20210518,3,SW,9,S,Oxydendrum arboreum,sourwood,intermediate,NA
+517,3,20210518,3,LIST,6.6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+518,3,20210518,3,LIST,5.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+519,3,20210518,3,QUNI,28.7,C,Quercus nigra,water oak,mesophyte,NA
+520,3,20210518,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+521,3,20210518,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+522,3,20210518,3,PITA,39.8,C,Pinus taeda,loblolly pine,pyrophyte,NA
+523,3,20210518,3,LIST,4.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+524,3,20210518,3,NYSY,6.5,I,Nyssa sylvatica,black gum,mesophyte,NA
+525,3,20210518,3,LIST,3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+526,3,20210518,3,SW,6.1,S,Oxydendrum arboreum,sourwood,intermediate,NA
+527,3,20210518,3,SW,14.4,I,Oxydendrum arboreum,sourwood,intermediate,NA
+528,3,20210518,3,PITA,21.6,C,Pinus taeda,loblolly pine,pyrophyte,NA
+529,3,20210518,3,SW,18.3,I,Oxydendrum arboreum,sourwood,intermediate,NA
+530,3,20210518,3,VACCI,9,S,Vaccinium sp.,blueberry,mesophyte,NA
+531,3,20210518,3,NYSY,15.2,I,Nyssa sylvatica,black gum,mesophyte,NA
+532,3,20210518,3,LIST,13.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+533,3,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+534,3,20210518,3,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,NA
+535,3,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+536,3,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+537,3,20210518,3,QUNI,23.2,I,Quercus nigra,water oak,mesophyte,NA
+538,3,20210518,3,LIST,3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+539,3,20210518,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,NA
+540,3,20210518,3,QUNI,14.1,I,Quercus nigra,water oak,mesophyte,NA
+541,3,20210518,3,LIST,4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+542,3,20210518,3,QUNI,31,C,Quercus nigra,water oak,mesophyte,NA
+543,3,20210518,FB,VACCI,6.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+544,3,20210518,FB,VACCI,5,S,Vaccinium sp.,blueberry,mesophyte,NA
+545,3,20210518,FB,SW,5,S,Oxydendrum arboreum,sourwood,intermediate,NA
+546,3,20210518,FB,SW,12.2,I,Oxydendrum arboreum,sourwood,intermediate,NA
+547,3,20210518,FB,PITA,35.1,C,Pinus taeda,loblolly pine,pyrophyte,NA
+548,3,20210518,4,SW,22,I,Oxydendrum arboreum,sourwood,intermediate,NA
+549,3,20210518,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+550,3,20210518,4,QUNI,13.8,I,Quercus nigra,water oak,mesophyte,NA
+551,3,20210518,4,PITA,14,I,Pinus taeda,loblolly pine,pyrophyte,NA
+552,3,20210518,E,QUNI,36.1,C,Quercus nigra,water oak,mesophyte,NA
+553,3,20210518,E,LIST,13.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+554,3,20210518,4,LIST,10,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+555,3,20210518,4,LIST,4.6,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+556,3,20210518,4,LIST,3.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+557,3,20210518,4,LIST,7.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+558,3,20210518,4,QUAL,4,S,Quercus alba,white oak,pyrophyte,NA
+559,3,20210518,4,LIST,15.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+560,3,20210518,4,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+561,3,20210518,4,LIST,19.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+562,3,20210518,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+563,3,20210518,4,JUVI,1,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+564,3,20210518,4,PIEC,20.2,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+565,3,20210518,4,PITA,23.9,C,Pinus taeda,loblolly pine,pyrophyte,NA
+566,3,20210518,4,LIST,3.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+567,3,20210518,4,QUAL,7.1,I,Quercus alba,white oak,pyrophyte,NA
+568,3,20210518,4,PITA,25,I,Pinus taeda,loblolly pine,pyrophyte,NA
+569,3,20210518,4,PITA,31.1,C,Pinus taeda,loblolly pine,pyrophyte,NA
+570,3,20210518,4,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+571,3,20210518,4,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+572,3,20210518,4,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+573,3,20210518,4,PITA,5.3,I,Pinus taeda,loblolly pine,pyrophyte,NA
+574,3,20210518,4,PITA,8.8,I,Pinus taeda,loblolly pine,pyrophyte,NA
+575,3,20210518,4,PIEC,19.4,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+576,3,20210518,4,LIST,14.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+577,3,20210518,4,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+578,3,20210518,4,PITA,29.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+579,3,20210518,4,LIST,2.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+580,3,20210518,4,QUNI,16.4,I,Quercus nigra,water oak,mesophyte,NA
+581,3,20210518,4,PITA,32,C,Pinus taeda,loblolly pine,pyrophyte,NA
+582,3,20210518,4,PITA,32,C,Pinus taeda,loblolly pine,pyrophyte,NA
+583,3,20210518,E,SW,36.2,I,Oxydendrum arboreum,sourwood,intermediate,NA
+584,3,20210518,E,PIEC,21.4,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+585,3,20210518,E,PITA,35.3,C,Pinus taeda,loblolly pine,pyrophyte,NA
+586,3,20210518,FB,LIST,15.3,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+587,3,20210518,FB,ACRU,6.5,S,Acer rubrum,red maple,mesophyte,NA
+588,3,20210518,FB,ACRU,4.9,S,Acer rubrum,red maple,mesophyte,NA
+589,3,20210518,FB,PIEC,11.5,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+590,3,20210518,FB,LIST,12.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+591,3,20210518,FB,ACRU,10.5,I,Acer rubrum,red maple,mesophyte,NA
+592,3,20210518,FB,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+593,4,20210518,1,PITA,32.9,C,Pinus taeda,loblolly pine,pyrophyte,NA
+594,4,20210518,1,LIST,5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+595,4,20210518,1,LIST,9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+596,4,20210518,1,PITA,36.6,C,Pinus taeda,loblolly pine,pyrophyte,NA
+597,4,20210518,1,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+598,4,20210518,1,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+599,4,20210518,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+600,4,20210518,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+601,4,20210518,1,CARYA,3.8,S,Carya sp.,hickory,intermediate,NA
+602,4,20210518,1,QUFA,19.4,I,Quercus falcata,southern red oak,pyrophyte,NA
+603,4,20210518,1,PITA,46,C,Pinus taeda,loblolly pine,pyrophyte,NA
+604,4,20210518,E,QUAL,23.2,I,Quercus alba,white oak,pyrophyte,NA
+605,4,20210518,1,PITA,4.3,S,Pinus taeda,loblolly pine,pyrophyte,NA
+606,4,20210518,1,LIST,10.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+607,4,20210518,1,QUNI,17.8,I,Quercus nigra,water oak,mesophyte,NA
+608,4,20210518,1,CARYA,3,S,Carya sp.,hickory,intermediate,NA
+609,4,20210518,1,CARYA,6.4,I,Carya sp.,hickory,intermediate,NA
+610,4,20210518,1,PITA,45.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+611,4,20210518,1,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+612,4,20210518,1,QUNI,15.8,I,Quercus nigra,water oak,mesophyte,NA
+613,4,20210518,1,NYSY,13.1,I,Nyssa sylvatica,black gum,mesophyte,NA
+614,4,20210518,1,LIST,13.2,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+615,4,20210518,1,LIST,3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+616,4,20210518,1,LIST,3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+617,4,20210518,1,QUNI,26.8,I,Quercus nigra,water oak,mesophyte,NA
+618,4,20210518,E,QUNI,26.4,I,Quercus nigra,water oak,mesophyte,NA
+619,4,20210518,1,PITA,1,S,Pinus taeda,loblolly pine,pyrophyte,NA
+620,4,20210518,1,PIEC,25.6,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+621,4,20210518,1,LIST,3.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+622,4,20210518,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+623,4,20210518,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+624,4,20210518,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+625,4,20210518,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+626,4,20210518,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+627,4,20210518,1,QUAL,25.6,C,Quercus alba,white oak,pyrophyte,NA
+628,4,20210518,1,QUAL,31.8,C,Quercus alba,white oak,pyrophyte,NA
+629,4,20210518,E,PIEC,33,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+630,4,20210518,1,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+631,4,20210518,FB,LIST,6.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+632,4,20210518,FB,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+633,4,20210518,FB,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+634,4,20210518,FB,PIEC,29.5,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+635,4,20210518,2,PITA,42,C,Pinus taeda,loblolly pine,pyrophyte,NA
+636,4,20210518,FB,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+637,4,20210518,FB,ACRU,4.4,S,Acer rubrum,red maple,mesophyte,NA
+638,4,20210518,2,LIST,2.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+639,4,20210518,2,LIST,16.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+640,4,20210518,2,LIST,6.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+641,4,20210518,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+642,4,20210518,2,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+643,4,20210518,2,ACRU,6.5,I,Acer rubrum,red maple,mesophyte,NA
+644,4,20210518,2,PIEC,14.1,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+645,4,20210518,2,LIST,2.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+646,4,20210518,E,FAGR,26,I,Fagus grandifolia,American beech,mesophyte,NA
+647,4,20210518,E,LIST,21.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+648,4,20210518,2,LIST,13.9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+649,4,20210518,2,ILOP,10.9,I,Ilex opaca,American holly,intermediate,NA
+650,4,20210518,2,FAGR,8.8,I,Fagus grandifolia,American beech,mesophyte,NA
+651,4,20210518,2,CARYA,22,I,Carya sp.,hickory,intermediate,NA
+652,4,20210518,2,QUAL,16.6,I,Quercus alba,white oak,pyrophyte,NA
+653,4,20210518,2,NYSY,9.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+654,4,20210518,2,QUNI,21,I,Quercus nigra,water oak,mesophyte,NA
+655,4,20210518,2,LIST,13.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+656,4,20210518,2,QUFA,20.2,C,Quercus falcata,southern red oak,pyrophyte,NA
+657,4,20210518,2,QUAL,26.2,C,Quercus alba,white oak,pyrophyte,NA
+658,4,20210518,2,LIST,19.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+659,4,20210518,2,ACRU,8,S,Acer rubrum,red maple,mesophyte,NA
+660,4,20210518,2,LIST,11,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+661,4,20210518,2,PIEC,26.5,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+662,4,20210518,2,PIEC,15.5,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+663,4,20210518,2,FAGR,14.7,I,Fagus grandifolia,American beech,mesophyte,NA
+664,4,20210518,2,DIVI,10.7,I,Diospyros virginiana,persimmon,intermediate,NA
+665,4,20210518,2,LIST,6.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+666,4,20210518,2,FAGR,26,I,Fagus grandifolia,American beech,mesophyte,NA
+667,4,20210518,2,LIST,12.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+668,4,20210518,2,QUNI,20.8,C,Quercus nigra,water oak,mesophyte,NA
+669,4,20210518,E,LIST,8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+670,4,20210518,E,QUAL,30,C,Quercus alba,white oak,pyrophyte,NA
+671,4,20210518,E,QUAL,64.4,C,Quercus alba,white oak,pyrophyte,NA
+672,4,20210518,E,QUAL,56.5,D,Quercus alba,white oak,pyrophyte,NA
+673,4,20210518,FB,FAGR,21.7,I,Fagus grandifolia,American beech,mesophyte,NA
+674,4,20210518,FB,ACRU,7.5,S,Acer rubrum,red maple,mesophyte,NA
+675,4,20210518,FB,LIST,20.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+676,4,20210518,FB,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+677,4,20210518,FB,PITA,49.4,C,Pinus taeda,loblolly pine,pyrophyte,NA
+678,4,20210518,3,LIST,10,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+679,4,20210518,3,ACRU,7.3,S,Acer rubrum,red maple,mesophyte,NA
+680,4,20210518,3,LIST,10.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+681,4,20210518,3,JUVI,8,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+682,4,20210518,3,ACRU,15.5,I,Acer rubrum,red maple,mesophyte,NA
+683,4,20210518,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+684,4,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+685,4,20210518,3,LIST,2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+686,4,20210518,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+687,4,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+688,4,20210518,3,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,NA
+689,4,20210518,3,LITU,22.1,I,Liquidambar styraciflua,tulip poplar,mesophyte,NA
+690,4,20210518,3,CARYA,6.2,S,Carya sp.,hickory,intermediate,NA
+691,4,20210518,3,LIST,11.6,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+692,4,20210518,3,PRUNUS,23.2,I,Prunus sp.,cherry,intermediate,NA
+693,4,20210518,3,ACRU,7.8,I,Acer rubrum,red maple,mesophyte,NA
+694,4,20210518,3,NYSY,7.6,I,Nyssa sylvatica,black gum,mesophyte,NA
+695,4,20210518,3,LIST,3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+696,4,20210518,3,JUVI,40.5,C,Juniperus virginiana,eastern red cedar,mesophyte,NA
+697,4,20210518,3,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+698,4,20210518,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,NA
+699,4,20210518,3,LIST,14.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+700,4,20210518,3,CARYA,6.7,S,Carya sp.,hickory,intermediate,NA
+701,4,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+702,4,20210518,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+703,4,20210518,3,LIST,18.9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+704,4,20210518,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+705,4,20210518,E,QUAL,36.3,C,Quercus alba,white oak,pyrophyte,NA
+706,4,20210518,E,QUAL,33.2,C,Quercus alba,white oak,pyrophyte,NA
+707,4,20210518,3,PRUNUS,12.1,I,Prunus sp.,cherry,intermediate,NA
+708,4,20210518,3,JUVI,5,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+709,4,20210518,3,LIST,2.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+710,4,20210518,3,JUVI,8.8,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+711,4,20210518,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+712,4,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+713,4,20210518,3,QUAL,5.5,S,Quercus alba,white oak,pyrophyte,NA
+714,4,20210518,3,QUNI,10,I,Quercus nigra,water oak,mesophyte,NA
+715,4,20210518,3,ACRU,25.5,I,Acer rubrum,red maple,mesophyte,NA
+716,4,20210518,3,VACCI,6,S,Vaccinium sp.,blueberry,mesophyte,NA
+717,4,20210518,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+718,4,20210518,3,ACRU,3.5,S,Acer rubrum,red maple,mesophyte,NA
+719,4,20210518,3,QUNI,10.9,C,Quercus nigra,water oak,mesophyte,NA
+720,4,20210518,3,QUNI,3,S,Quercus nigra,water oak,mesophyte,NA
+721,4,20210518,3,QUNI,10.8,I,Quercus nigra,water oak,mesophyte,NA
+722,4,20210518,3,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+723,4,20210518,E,LIST,24.4,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+724,4,20210518,FB,PIEC,22.2,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+725,4,20210518,FB,LIST,1.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+726,4,20210518,FB,LIST,13,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+727,4,20210518,FB,NYSY,4.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+728,4,20210518,FB,VACCI,8,S,Vaccinium sp.,blueberry,mesophyte,NA
+729,4,20210518,4,LIST,10.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+730,4,20210518,4,CARYA,14.6,I,Carya sp.,hickory,intermediate,NA
+731,4,20210518,4,QUNI,15,I,Quercus nigra,water oak,mesophyte,NA
+732,4,20210518,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+733,4,20210518,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+734,4,20210518,4,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+735,4,20210518,4,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+736,4,20210518,4,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+737,4,20210518,E,QUAL,27.7,I,Quercus alba,white oak,pyrophyte,NA
+738,4,20210518,E,PITA,36.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+739,4,20210518,4,ACRU,6,S,Acer rubrum,red maple,mesophyte,NA
+740,4,20210518,4,LIST,16.3,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+741,4,20210518,4,ACRU,4.4,S,Acer rubrum,red maple,mesophyte,NA
+742,4,20210518,4,NYSY,20.7,I,Nyssa sylvatica,black gum,mesophyte,NA
+743,4,20210518,4,LIST,11.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+744,4,20210518,4,PRUNUS,9.4,I,Prunus sp.,cherry,intermediate,NA
+745,4,20210518,4,SW,21,I,Oxydendrum arboreum,sourwood,intermediate,NA
+746,4,20210518,E,PITA,37.2,C,Pinus taeda,loblolly pine,pyrophyte,NA
+747,4,20210518,E,SW,23.9,I,Oxydendrum arboreum,sourwood,intermediate,NA
+748,4,20210518,4,LIST,8.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+749,4,20210518,4,PIEC,10.8,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+750,4,20210518,4,QUNI,13.2,I,Quercus nigra,water oak,mesophyte,NA
+751,4,20210518,4,QUAL,20,I,Quercus alba,white oak,pyrophyte,NA
+752,4,20210518,4,SW,4,S,Oxydendrum arboreum,sourwood,intermediate,NA
+753,4,20210518,4,SW,14,I,Oxydendrum arboreum,sourwood,intermediate,NA
+754,4,20210518,4,LIST,2.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+755,4,20210518,4,QUNI,7.1,S,Quercus nigra,water oak,mesophyte,NA
+756,4,20210518,4,PITA,39,C,Pinus taeda,loblolly pine,pyrophyte,NA
+757,4,20210518,4,PIEC,24,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+758,4,20210518,4,FAGR,9.5,S,Fagus grandifolia,American beech,mesophyte,NA
+759,4,20210518,4,PITA,38,C,Pinus taeda,loblolly pine,pyrophyte,NA
+760,4,20210518,4,QUNI,2.7,S,Quercus nigra,water oak,mesophyte,NA
+761,4,20210518,4,NYSY,4.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+762,4,20210518,E,LITU,18.9,I,Liquidambar styraciflua,tulip poplar,mesophyte,NA
+763,4,20210518,E,LIST,23,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+764,5,20210519,1,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+765,5,20210519,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+766,5,20210519,1,LIST,2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+767,5,20210519,1,QUNI,10.2,I,Quercus nigra,water oak,mesophyte,NA
+768,5,20210519,1,PITA,44.7,C,Pinus taeda,loblolly pine,pyrophyte,NA
+769,5,20210519,1,LIST,2.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+770,5,20210519,1,QUNI,5.5,S,Quercus nigra,water oak,mesophyte,NA
+771,5,20210519,1,PRUNUS,5.3,S,Prunus sp.,cherry,intermediate,NA
+772,5,20210519,1,LIST,18.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+773,5,20210519,E,FAGR,10.5,I,Fagus grandifolia,American beech,mesophyte,NA
+774,5,20210519,E,PITA,30.6,C,Pinus taeda,loblolly pine,pyrophyte,NA
+775,5,20210519,1,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+776,5,20210519,1,ULAL,4.8,S,Ulmus alata,winged elm,mesophyte,NA
+777,5,20210519,1,QUNI,10.9,I,Quercus nigra,water oak,mesophyte,NA
+778,5,20210519,1,LIST,13.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+779,5,20210519,1,QUNI,11.2,I,Quercus nigra,water oak,mesophyte,NA
+780,5,20210519,1,QUNI,7.2,S,Quercus nigra,water oak,mesophyte,NA
+781,5,20210519,1,QUNI,11.3,I,Quercus nigra,water oak,mesophyte,NA
+782,5,20210519,1,LITU,28.2,C,Liquidambar styraciflua,tulip poplar,mesophyte,NA
+783,5,20210519,1,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+784,5,20210519,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+785,5,20210519,1,QUNI,8.2,S,Quercus nigra,water oak,mesophyte,NA
+786,5,20210519,1,QUNI,33.6,C,Quercus nigra,water oak,mesophyte,NA
+787,5,20210519,1,LIST,29.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+788,5,20210519,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+789,5,20210519,E,PITA,47.8,C,Pinus taeda,loblolly pine,pyrophyte,NA
+790,5,20210519,1,LIST,6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+791,5,20210519,1,LIST,2.9,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+792,5,20210519,1,LIST,4.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+793,5,20210519,1,FAGR,5.3,S,Fagus grandifolia,American beech,mesophyte,NA
+794,5,20210519,1,FAGR,19.5,I,Fagus grandifolia,American beech,mesophyte,NA
+795,5,20210519,E,NYSY,16.5,I,Nyssa sylvatica,black gum,mesophyte,NA
+796,5,20210519,FB,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+797,5,20210519,FB,PITA,18,C,Pinus taeda,loblolly pine,pyrophyte,NA
+798,5,20210519,FB,LIST,2.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+799,5,20210519,FB,QUNI,1.1,C,Quercus nigra,water oak,mesophyte,NA
+800,5,20210519,2,PITA,3.6,S,Pinus taeda,loblolly pine,pyrophyte,NA
+801,5,20210519,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+802,5,20210519,2,QUNI,13.8,I,Quercus nigra,water oak,mesophyte,NA
+803,5,20210519,2,LIST,5.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+804,5,20210519,2,NYSY,5,S,Nyssa sylvatica,black gum,mesophyte,NA
+805,5,20210519,E,LIST,7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+806,5,20210519,E,ACRU,19.5,I,Acer rubrum,red maple,mesophyte,NA
+807,5,20210519,E,PIEC,31.3,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+808,5,20210519,E,QUAL,24.2,C,Quercus alba,white oak,pyrophyte,NA
+809,5,20210519,E,QUNI,28.2,C,Quercus nigra,water oak,mesophyte,NA
+810,5,20210519,E,QUAL,32,C,Quercus alba,white oak,pyrophyte,NA
+811,5,20210519,2,LIST,9.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+812,5,20210519,2,LIST,2.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+813,5,20210519,2,ACRU,5,S,Acer rubrum,red maple,mesophyte,NA
+814,5,20210519,2,QUAL,16.8,I,Quercus alba,white oak,pyrophyte,NA
+815,5,20210519,2,LIST,3.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+816,5,20210519,2,LIST,4.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+817,5,20210519,2,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+818,5,20210519,2,NYSY,24,I,Nyssa sylvatica,black gum,mesophyte,NA
+819,5,20210519,2,LIST,10.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+820,5,20210519,2,PRUNUS,11.9,I,Prunus sp.,cherry,intermediate,NA
+821,5,20210519,2,LIST,3.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+822,5,20210519,2,PITA,45.7,D,Pinus taeda,loblolly pine,pyrophyte,NA
+823,5,20210519,2,NYSY,3.2,S,Nyssa sylvatica,black gum,mesophyte,NA
+824,5,20210519,2,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+825,5,20210519,2,LIST,11,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+826,5,20210519,2,PITA,34.9,C,Pinus taeda,loblolly pine,pyrophyte,NA
+827,5,20210519,2,LIST,1.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+828,5,20210519,2,LIST,2.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+829,5,20210519,2,PITA,20.3,I,Pinus taeda,loblolly pine,pyrophyte,NA
+830,5,20210519,2,QUNI,14.9,I,Quercus nigra,water oak,mesophyte,NA
+831,5,20210519,2,LIST,4.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+832,5,20210519,2,ACRU,10.5,I,Acer rubrum,red maple,mesophyte,NA
+833,5,20210519,2,LIST,18.3,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+834,5,20210519,2,PIEC,24.2,C,Pinus echinata,shortleaf pine,pyrophyte,NA
+835,5,20210519,2,NYSY,5.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+836,5,20210519,2,ACRU,5.5,S,Acer rubrum,red maple,mesophyte,NA
+837,5,20210519,2,QUAL,20.7,I,Quercus alba,white oak,pyrophyte,NA
+838,5,20210519,E,LIST,7.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+839,5,20210519,E,ACRU,19,I,Acer rubrum,red maple,mesophyte,NA
+840,5,20210519,FB,QUAL,16,I,Quercus alba,white oak,pyrophyte,NA
+841,5,20210519,FB,LIST,4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+842,5,20210519,FB,QUAL,6,S,Quercus alba,white oak,pyrophyte,NA
+843,5,20210519,FB,QUNI,24.1,C,Quercus nigra,water oak,mesophyte,NA
+844,5,20210519,FB,NYSY,7.9,S,Nyssa sylvatica,black gum,mesophyte,NA
+845,5,20210519,FB,LIST,15.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+846,5,20210519,FB,LIST,10,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+847,5,20210519,3,ACRU,4.3,S,Acer rubrum,red maple,mesophyte,NA
+848,5,20210519,3,NYSY,7,S,Nyssa sylvatica,black gum,mesophyte,NA
+849,5,20210519,3,LIST,12.6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+850,5,20210519,3,JUVI,40.5,I,Juniperus virginiana,eastern red cedar,mesophyte,NA
+851,5,20210519,3,LIST,14.7,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+852,5,20210519,3,PITA,35.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+853,5,20210519,3,QUAL,31.2,C,Quercus alba,white oak,pyrophyte,NA
+854,5,20210519,3,LIST,16.5,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+855,5,20210519,3,LIST,5.2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+856,5,20210519,3,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+857,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+858,5,20210519,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+859,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+860,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+861,5,20210519,3,LIST,10.7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+862,5,20210519,3,NYSY,2.6,S,Nyssa sylvatica,black gum,mesophyte,NA
+863,5,20210519,3,FAGR,12,I,Fagus grandifolia,American beech,mesophyte,NA
+864,5,20210519,3,FAGR,10.1,I,Fagus grandifolia,American beech,mesophyte,NA
+865,5,20210519,3,NYSY,5.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+866,5,20210519,3,PRUNUS,13,I,Prunus sp.,cherry,intermediate,NA
+867,5,20210519,3,LIST,3.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+868,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+869,5,20210519,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+870,5,20210519,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,NA
+871,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+872,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+873,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+874,5,20210519,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+875,5,20210519,E,QUAL,32.4,C,Quercus alba,white oak,pyrophyte,NA
+876,5,20210519,E,QUNI,31.6,C,Quercus nigra,water oak,mesophyte,NA
+877,5,20210519,3,QUAL,39.5,C,Quercus alba,white oak,pyrophyte,NA
+878,5,20210519,3,ACRU,7.1,I,Acer rubrum,red maple,mesophyte,NA
+879,5,20210519,3,ULAL,3.3,S,Ulmus alata,winged elm,mesophyte,NA
+880,5,20210519,3,QUNI,7,S,Quercus nigra,water oak,mesophyte,NA
+881,5,20210519,3,LIST,4.6,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+882,5,20210519,3,PIEC,25.2,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+883,5,20210519,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+884,5,20210519,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,NA
+885,5,20210519,3,CARYA,2.4,S,Carya sp.,hickory,intermediate,NA
+886,5,20210519,3,LIST,4.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+887,5,20210519,3,PRUNUS,11.1,S,Prunus sp.,cherry,intermediate,NA
+888,5,20210519,FB,QUAL,51.1,C,Quercus alba,white oak,pyrophyte,NA
+889,5,20210519,FB,LIST,7.1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+890,5,20210519,FB,QUAL,24.2,C,Quercus alba,white oak,pyrophyte,NA
+891,5,20210519,FB,LIST,10.8,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+892,5,20210519,4,LIST,7.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+893,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+894,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+895,5,20210519,4,CARYA,3.4,S,Carya sp.,hickory,intermediate,NA
+896,5,20210519,4,LIST,9.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+897,5,20210519,4,LIST,1.8,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+898,5,20210519,E,QUNI,24.5,C,Quercus nigra,water oak,mesophyte,NA
+899,5,20210519,4,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+900,5,20210519,4,QUAL,25.8,C,Quercus alba,white oak,pyrophyte,NA
+901,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+902,5,20210519,4,LIST,7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+903,5,20210519,4,QUNI,29.3,C,Quercus nigra,water oak,mesophyte,NA
+904,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+905,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+906,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+907,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+908,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+909,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+910,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+911,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+912,5,20210519,4,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+913,5,20210519,4,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+914,5,20210519,4,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+915,5,20210519,4,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,NA
+916,5,20210519,4,PITA,11.9,I,Pinus taeda,loblolly pine,pyrophyte,NA
+917,5,20210519,4,LIST,16,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+918,5,20210519,4,LIST,12,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+919,5,20210519,4,LIST,16,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+920,5,20210519,4,QUNI,15.5,I,Quercus nigra,water oak,mesophyte,NA
+921,5,20210519,4,LIST,3.3,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+922,5,20210519,4,PITA,24.5,C,Pinus taeda,loblolly pine,pyrophyte,NA
+923,5,20210519,4,LIST,12,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+924,5,20210519,4,LIST,2,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+925,5,20210519,4,PITA,4,S,Pinus taeda,loblolly pine,pyrophyte,NA
+926,5,20210519,4,NYSY,4.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+927,5,20210519,4,PITA,19,I,Pinus taeda,loblolly pine,pyrophyte,NA
+928,5,20210519,4,NYSY,6.5,I,Nyssa sylvatica,black gum,mesophyte,NA
+929,5,20210519,4,FAGR,4.3,S,Fagus grandifolia,American beech,mesophyte,NA
+930,5,20210519,4,LIST,8.4,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+931,5,20210519,4,NYSY,16,I,Nyssa sylvatica,black gum,mesophyte,NA
+932,5,20210519,4,ACRU,9,I,Acer rubrum,red maple,mesophyte,NA
+933,5,20210519,4,ACRU,4,S,Acer rubrum,red maple,mesophyte,NA
+934,5,20210519,4,NYSY,3.1,S,Nyssa sylvatica,black gum,mesophyte,NA
+935,5,20210519,4,NYSY,5.3,I,Nyssa sylvatica,black gum,mesophyte,NA
+936,5,20210519,4,SW,6.4,I,Oxydendrum arboreum,sourwood,intermediate,NA
+937,5,20210519,4,LIST,10.9,I,Liquidambar styraciflua,sweetgum,mesophyte,NA
+938,5,20210519,4,QUFA,40.3,C,Quercus falcata,southern red oak,pyrophyte,NA
+939,5,20210519,4,LIST,2.5,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+940,5,20210519,4,JUVI,7,S,Juniperus virginiana,eastern red cedar,mesophyte,NA
+941,5,20210519,E,QUAL,41.1,C,Quercus alba,white oak,pyrophyte,NA
+942,5,20210519,4,NYSY,6.5,S,Nyssa sylvatica,black gum,mesophyte,NA
+943,5,20210519,4,QUAL,4.1,S,Quercus alba,white oak,pyrophyte,NA
+944,5,20210519,4,NYSY,6.1,S,Nyssa sylvatica,black gum,mesophyte,NA
+945,5,20210519,4,NYSY,4.7,S,Nyssa sylvatica,black gum,mesophyte,NA
+946,5,20210519,4,LIST,7,S,Liquidambar styraciflua,sweetgum,mesophyte,NA
+947,5,20210519,E,PIEC,18,I,Pinus echinata,shortleaf pine,pyrophyte,NA
+948,5,20210519,FB,NYSY,4,S,Nyssa sylvatica,black gum,mesophyte,NA
+949,5,20210519,FB,PITA,30.8,C,Pinus taeda,loblolly pine,pyrophyte,NA
+950,5,20210519,FB,QUAL,29.5,C,Quercus alba,white oak,pyrophyte,NA

@@ -34,10 +34,20 @@ basal_area_plot_2 <- basal_area_plot %>%
   group_by(plot) %>% 
   summarise(ba_all = sum(ba_tot))
 
+combined_sd_ba <- merge(stem_dbh, basal_area_plot)
+
+ba_dm <- combined_sd_ba %>% 
+  group_by(plot, functional_group) %>% 
+  summarise(fg_sd = sum(avg_stand_diam),
+            fg_ba = sum(ba_tot))
 
 basal_area <- basal_area %>% 
   group_by(plot, species) %>%
   summarise(ba_sp_in = sum(ba_in))
+
+cleaned_trees <- trees
+
+write_csv(cleaned_trees, "data/processed_data/MOTtrees_clean.csv")
 
 
 test <- trees %>% 
