@@ -3,6 +3,7 @@
 library(readr)
 library(dplyr)
 library(ggplot2)
+library(stringi, stringr)
 
 trees <- read_csv("data/raw_data/MOTtrees2021csv.csv")
 
@@ -15,6 +16,71 @@ sort(unique(trees$dbh))
 n_distinct(trees$species)
 trees$functional_group[trees$species=="PRUNUS"] <- "mesophyte"
 trees$functional_group[trees$species=="SW"] <- "mesophyte"
+
+#assigning burn seasons (burn_szn) to all plots and quadrants randomly (did in excel)
+
+trees$burn_szn[trees$plot==1 & trees$location==1] <- "late"
+trees$burn_szn[trees$plot==1 & trees$location==2] <- "early"
+trees$burn_szn[trees$plot==1 & trees$location==3] <- "growing"
+trees$burn_szn[trees$plot==1 & trees$location==4] <- "control"
+
+trees$burn_szn[trees$plot==2 & trees$location==1] <- "growing"
+trees$burn_szn[trees$plot==2 & trees$location==2] <- "late"
+trees$burn_szn[trees$plot==2 & trees$location==3] <- "early"
+trees$burn_szn[trees$plot==2 & trees$location==4] <- "control"
+
+trees$burn_szn[trees$plot==3 & trees$location==1] <- "early"
+trees$burn_szn[trees$plot==3 & trees$location==2] <- "late"
+trees$burn_szn[trees$plot==3 & trees$location==3] <- "control"
+trees$burn_szn[trees$plot==3 & trees$location==4] <- "growing"
+
+trees$burn_szn[trees$plot==4 & trees$location==1] <- "control"
+trees$burn_szn[trees$plot==4 & trees$location==2] <- "late"
+trees$burn_szn[trees$plot==4 & trees$location==3] <- "growing"
+trees$burn_szn[trees$plot==4 & trees$location==4] <- "early"
+
+trees$burn_szn[trees$plot==5 & trees$location==1] <- "early"
+trees$burn_szn[trees$plot==5 & trees$location==2] <- "control"
+trees$burn_szn[trees$plot==5 & trees$location==3] <- "growing"
+trees$burn_szn[trees$plot==5 & trees$location==4] <- "late"
+
+trees$burn_szn[trees$plot==6 & trees$location==1] <- "growing"
+trees$burn_szn[trees$plot==6 & trees$location==2] <- "early"
+trees$burn_szn[trees$plot==6 & trees$location==3] <- "control"
+trees$burn_szn[trees$plot==6 & trees$location==4] <- "late"
+
+trees$burn_szn[trees$plot==7 & trees$location==1] <- "late"
+trees$burn_szn[trees$plot==7 & trees$location==2] <- "growing"
+trees$burn_szn[trees$plot==7 & trees$location==3] <- "control"
+trees$burn_szn[trees$plot==7 & trees$location==4] <- "early"
+
+trees$burn_szn[trees$plot==8 & trees$location==1] <- "growing"
+trees$burn_szn[trees$plot==8 & trees$location==2] <- "control"
+trees$burn_szn[trees$plot==8 & trees$location==3] <- "early"
+trees$burn_szn[trees$plot==8 & trees$location==4] <- "late"
+
+trees$burn_szn[trees$plot==9 & trees$location==1] <- "early"
+trees$burn_szn[trees$plot==9 & trees$location==2] <- "late"
+trees$burn_szn[trees$plot==9 & trees$location==3] <- "control"
+trees$burn_szn[trees$plot==9 & trees$location==4] <- "growing"
+
+trees$burn_szn[trees$plot==10 & trees$location==1] <- "growing"
+trees$burn_szn[trees$plot==10 & trees$location==2] <- "control"
+trees$burn_szn[trees$plot==10 & trees$location==3] <- "early"
+trees$burn_szn[trees$plot==10 & trees$location==4] <- "late"
+
+trees$burn_szn[trees$plot==11 & trees$location==1] <- "control"
+trees$burn_szn[trees$plot==11 & trees$location==2] <- "late"
+trees$burn_szn[trees$plot==11 & trees$location==3] <- "early"
+trees$burn_szn[trees$plot==11 & trees$location==4] <- "growing"
+
+#write_csv(trees, "data/processed_data/MOTtrees_clean.csv")
+# clean trees removing errors, adding treatments, etc
+
+##### make separate DF for treatments
+
+treatments <- read_csv("data/raw_data/treatments.csv")
+
 
 # ^correct any errors in species name/location/canopy/dbh
 #changed black cherry and sourwood temp to mesophytes
@@ -46,27 +112,68 @@ plot_basal_area <- basal_area_m2_ft2 %>%
 pine_sp <- trees %>% 
   filter(species %in% c("PITA","PIEC"))
 
-pine_dbh_cm_in <- pine_sp %>% 
+pine_ba <- pine_sp %>% 
   group_by(stem_id, plot, species, functional_group) %>% 
   summarise(dbh_cm = dbh,
-            dbh_in = (dbh)*0.393701)
-
-pine_basal_area_m2_ft2 <- pine_dbh_cm_in %>% 
-  group_by(stem_id, plot, species, functional_group) %>% 
+          dbh_in = (dbh)*0.393701) %>% 
   summarise(ba_m2 = ((pi)*(dbh_cm/2)^2)/(10000),
-            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144))
-
-pine_basal_area_m2_ft2_plot <- pine_basal_area_m2_ft2 %>% 
+            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
+  ungroup(.) %>% 
   group_by(plot) %>% 
   summarise(pine_ba_m2ha = sum(ba_m2)/0.1011714,
             pine_ba_ft2a = sum(ba_ft2)/0.25)
 
-ba_x_pine <- merge(plot_basal_area, pine_basal_area_m2_ft2_plot)
+ba_x_pine <- merge(plot_basal_area, pine_ba)
 
 ba_x_pine_plot <- ba_x_pine %>%
   group_by(plot) %>% 
-  summarise(pct_pine_bam2ha = (pine_ba_m2ha/ba_m2ha)*100,
-            pct_pine_baft2a = (pine_ba_ft2a/ba_ft2a)*100)
+  summarise(pct_pine = (pine_ba_m2ha/ba_m2ha)*100)
+
+####### do the same for % pyrophye and mesophyte
+
+pyro <- trees %>% 
+  filter(functional_group=="pyrophyte")
+
+pyro_ba <- pyro %>% 
+  group_by(stem_id, plot, species, functional_group) %>% 
+  summarise(dbh_cm = dbh,
+            dbh_in = (dbh)*0.393701) %>% 
+  summarise(ba_m2 = ((pi)*(dbh_cm/2)^2)/(10000),
+            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
+  ungroup(.) %>% 
+  group_by(plot) %>% 
+  summarise(pyro_ba_m2ha = sum(ba_m2)/0.1011714,
+            pyro_ba_ft2a = sum(ba_ft2)/0.25)
+
+ba_x_pyro <- merge(plot_basal_area, pyro_ba)
+
+ba_x_pyro_plot <- ba_x_pyro %>%
+  group_by(plot) %>% 
+  summarise(pct_pyro_ba = (pyro_ba_m2ha/ba_m2ha)*100)
+
+meso <- trees %>% 
+  filter(functional_group=="mesophyte")
+
+meso_ba <- meso %>% 
+  group_by(stem_id, plot, species, functional_group) %>% 
+  summarise(dbh_cm = dbh,
+            dbh_in = (dbh)*0.393701) %>% 
+  summarise(ba_m2 = ((pi)*(dbh_cm/2)^2)/(10000),
+            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
+  ungroup(.) %>% 
+  group_by(plot) %>% 
+  summarise(meso_ba_m2ha = sum(ba_m2)/0.1011714,
+            meso_ba_ft2a = sum(ba_ft2)/0.25)
+
+ba_x_meso <- merge(plot_basal_area, meso_ba)
+
+ba_x_meso_plot <- ba_x_meso %>%
+  group_by(plot) %>% 
+  summarise(pct_meso_ba = (meso_ba_m2ha/ba_m2ha)*100)
+
+pct_pyro_meso_ba <- merge(ba_x_pyro_plot, ba_x_meso_plot)
+
+
 
 ##### making random plots for heather meeting
 
