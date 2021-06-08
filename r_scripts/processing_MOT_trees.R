@@ -76,10 +76,15 @@ trees$burn_szn[trees$plot==11 & trees$location==4] <- "growing"
 
 #write_csv(trees, "data/processed_data/MOTtrees_clean.csv")
 # clean trees removing errors, adding treatments, etc
-
-##### make separate DF for treatments
+☺
+##### #make separate DF for treatments ##########
 
 treatments <- read_csv("data/raw_data/treatments.csv")
+
+treatments_no_location <- treatments[-c(2)] %>% 
+  group_by(plot) %>% 
+  summarise(thin_lvl = thin_lvl) %>% 
+  distinct(.keep_all = T)
 
 
 # ^correct any errors in species name/location/canopy/dbh
@@ -129,7 +134,8 @@ ba_x_pine_plot <- ba_x_pine %>%
   group_by(plot) %>% 
   summarise(pct_pine = (pine_ba_m2ha/ba_m2ha)*100)
 
-####### do the same for % pyrophye and mesophyte
+
+####### do the same for % pyrophye and mesophyte #########
 
 pyro <- trees %>% 
   filter(functional_group=="pyrophyte")
@@ -171,9 +177,9 @@ ba_x_meso_plot <- ba_x_meso %>%
   group_by(plot) %>% 
   summarise(pct_meso_ba = (meso_ba_m2ha/ba_m2ha)*100)
 
-pct_pyro_meso_ba <- merge(ba_x_pyro_plot, ba_x_meso_plot)
+pyromeso <- merge(ba_x_pyro_plot, ba_x_meso_plot)
 
-
+pyro_x_meso <- merge(treatments_no_location, pyromeso) #good
 
 ##### making random plots for heather meeting
 
@@ -199,19 +205,7 @@ ggplot(plot_1, aes(dbh, color = functional_group, fill = functional_group)) +
 
 
 
-cleaned_trees <- trees
-
-write_csv(cleaned_trees, "data/processed_data/MOTtrees_clean.csv")
-
-
-test <- trees %>% 
-  group_by(plot, functional_group) %>% 
-    summarise(avg_dbh = mean(dbh),
-              sum_dbh = sum(dbh))
-f1 <- filter(trees, plot==1)
-filter(f1, species=="PITA")
-
-#start plot by plot analysis for thinning treatments
+######## start plot by plot analysis for thinning treatments #####
 # treatment codes for reference
   # 1 = control
   # 2 = high thin
@@ -262,13 +256,13 @@ ba_plot1_after <- plot1_thinned %>%
   summarise(ba_m2ha = sum(ba_m2)/0.1011714,
             ba_ft2a = sum(ba_ft2)/0.25)
 
-ggplot(plot2, aes(dbh, color = functional_group, fill = functional_group)) +
+ggplot(plot1, aes(dbh, color = functional_group, fill = functional_group)) +
   geom_histogram() +
   scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80)) +
   ggtitle("All Individuals DBH by Functional Group") +
   theme(plot.title = element_text(hjust = 0.5))
 
-ggplot(plot2_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+ggplot(plot1_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
   geom_histogram() +
   scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80)) +
   ggtitle("All Individuals DBH by Functional Group") +
@@ -370,4 +364,9 @@ ba_plot3_after <- plot3_thinned %>%
 ##### Plot 11 (med)
 
 
+#plan. complete all 11 plot thinning simulations (randomly removing 33%, 66%, or 100% of mesophytes 
+      # that are 0-12cm dbh. combine all ex. "plot1_thinned+plot2_thinned+plot3_etc" to make a new
+      # df that is trees_thinned.   compare pyro/meso/total BA between "trees" x "trees_thinned"
+      # potential figures = low/med/high thinning vs. % change in pyrophyte/mesophyte BA,
+      # % change in total BA, % change stem density, total BA, 
 
