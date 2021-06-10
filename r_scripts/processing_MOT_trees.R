@@ -176,6 +176,10 @@ meso_ba <- meso %>%
 
 ba_x_meso <- merge(plot_basal_area, meso_ba)
 
+density <- trees %>% 
+  group_by(plot) %>% 
+  summarise(stems_acre = n_distinct(stem_id)*4)
+
 ba_x_meso_plot <- ba_x_meso %>%
   group_by(plot) %>% 
   summarise(pct_meso_ba = (meso_ba_m2ha/before_ba_m2ha)*100)
@@ -194,10 +198,64 @@ ggplot(trees, aes(dbh, color = functional_group, fill = functional_group)) +
   theme(plot.title = element_text(hjust = 0.5))
 
 
-ggplot(trees, aes(plot, color = functional_group, fill = functional_group)), +
+colors_test <- ggplot2::scale_colour_manual(values = c("LIST" = "#blueviolet", 
+                               "PITA" = "#red4",
+                               "VACCI" = "#blue4",
+                               "QUNI" = "#blue3",
+                               "PIEC" = "#red3",
+                               "QUAL" = "#red2",
+                               "NYSY" = "#blue2",
+                               "ACRU" = "#blue1",
+                               "PRUNUS" = "#dodgerblue4",
+                               "SW" = "#dodgerblue3",
+                               "CARYA" = "#E08214",
+                               "FAGR" = "#dodgerblue2",
+                               "JUVI" = "#dodgerblue1",
+                               "QUFA" = "#red1",
+                               "LITU" = "#deepskyblue4",
+                               "COFL" = "#deepskyblue3",
+                               "ULAL" = "#deepskyblue2",
+                               "DIVI" = "#E08214",
+                               "FLAG" = "#E08214",
+                               "ILOP" = "#deepskyblue1")) 
+
+ggplot(trees_thinned, aes(plot, color = functional_group, fill = functional_group)) +
   geom_histogram(binwidth = 1, center = 1) +
   scale_x_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10,11))
 
++
+  colours((values = c("LIST" = "#blueviolet", 
+                      "PITA" = "#red4",
+                      "VACCI" = "#blue4",
+                      "QUNI" = "#blue3",
+                      "PIEC" = "#red3",
+                      "QUAL" = "#red2",
+                      "NYSY" = "#blue2",
+                      "ACRU" = "#blue1",
+                      "PRUNUS" = "#dodgerblue4",
+                      "SW" = "#dodgerblue3",
+                      "CARYA" = "#E08214",
+                      "FAGR" = "#dodgerblue2",
+                      "JUVI" = "#dodgerblue1",
+                      "QUFA" = "#red1",
+                      "LITU" = "#deepskyblue4",
+                      "COFL" = "#deepskyblue3",
+                      "ULAL" = "#deepskyblue2",
+                      "DIVI" = "#E08214",
+                      "FLAG" = "#E08214",
+                      "ILOP" = "#deepskyblue1")))
+
+test_john <- ggplot(plot2, aes(x = dbh, y = dbh, color = functional_group, fill = functional_group,
+                  )) +
+  geom_point(size = 2, position = position_jitter(width = 8)) +
+  ggtitle("Sample Plot 1 diameter-functional group ") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_colour_manual(values = c("intermediate" = "#blueviolet", 
+                                 "mesophyte" = "#blue1",
+                                 "pyrophye" = "#red1"))
+  
+ggsave(filename = "figures/testing_fg_x_dbh.png", plot = test_john)
+  
 
 ggplot(plot_1, aes(dbh, color = functional_group, fill = functional_group)) +
   geom_histogram() +
@@ -807,8 +865,12 @@ change_meso_ba_plots_12 <- ggplot(meso_trt_change, aes(x = factor(thin_lvl, leve
   ggtitle("Change in Mesophyte BA 0-12 cm thin") +
   ylab("% Change BA") +
   xlab("Thin treatment level") +
+  scale_y_continuous(limits = c(0,37)) +
   theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(legend.position = "none",
+        axis.title.y=element_blank()) 
+
   
     
 

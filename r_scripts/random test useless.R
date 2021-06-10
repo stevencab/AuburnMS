@@ -1,4 +1,4 @@
-#testing with 0-15cm
+#testing with 0-10cm
 
 ######## start plot by plot analysis for thinning treatments #####
 # treatment codes for reference
@@ -16,10 +16,10 @@ plot1 <- trees %>%
 
 plot1_meso <- plot1 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,0,3.33))
 
 #randomly removes 33% of all stems in 0-15cm dbh
-plot1_removestems <- plot1_meso[sample(NROW(plot1_meso), NROW(plot1_meso)*(1-0.33)),]
+plot1_removestems <- plot1_meso[sample(NROW(plot1_meso), NROW(plot1_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot1 <- anti_join(plot1_meso, plot1_removestems, by = "stem_id")
@@ -71,10 +71,10 @@ plot2 <- trees %>%
 
 plot2_meso <- plot2 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,3.33,6.66))
 
 #randomly removes 66% of all stems in 0-15cm dbh
-plot2_removestems <- plot2_meso[sample(NROW(plot2_meso), NROW(plot2_meso)*(1-0.66)),]
+plot2_removestems <- plot2_meso[sample(NROW(plot2_meso), NROW(plot2_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot2 <- anti_join(plot2_meso, plot2_removestems, by = "stem_id")
@@ -114,7 +114,7 @@ plot3 <- trees %>%
 
 plot3_meso <- plot3 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,6.66,10))
 
 #randomly removes 100% of all stems in 0-15cm dbh
 plot3_removestems <- plot3_meso[sample(NROW(plot3_meso), NROW(plot3_meso)*(1-1)),]
@@ -157,10 +157,10 @@ plot4 <- trees %>%
 
 plot4_meso <- plot4 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,0,3.33))
 
 #randomly removes 33% of all stems in 0-15cm dbh
-plot4_removestems <- plot4_meso[sample(NROW(plot4_meso), NROW(plot4_meso)*(1-0.33)),]
+plot4_removestems <- plot4_meso[sample(NROW(plot4_meso), NROW(plot4_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot4 <- anti_join(plot4_meso, plot4_removestems, by = "stem_id")
@@ -200,10 +200,10 @@ plot5 <- trees %>%
 
 plot5_meso <- plot5 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,3.33,6.66))
 
 #randomly removes 66% of all stems in 0-15cm dbh
-plot5_removestems <- plot5_meso[sample(NROW(plot5_meso), NROW(plot5_meso)*(1-0.66)),]
+plot5_removestems <- plot5_meso[sample(NROW(plot5_meso), NROW(plot5_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot5 <- anti_join(plot5_meso, plot5_removestems, by = "stem_id")
@@ -243,7 +243,7 @@ plot6<- trees %>%
 
 plot6_meso <- plot6 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,6.66,10))
 
 #randomly removes 100% of all stems in 0-15cm dbh
 plot6_removestems <- plot6_meso[sample(NROW(plot6_meso), NROW(plot6_meso)*(1-1)),]
@@ -286,10 +286,10 @@ plot7 <- trees %>%
 
 plot7_meso <- plot7 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,0,3.33))
 
 #randomly removes 33% of all stems in 0-15cm dbh
-plot7_removestems <- plot7_meso[sample(NROW(plot7_meso), NROW(plot7_meso)*(1-0.33)),]
+plot7_removestems <- plot7_meso[sample(NROW(plot7_meso), NROW(plot7_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot7 <- anti_join(plot7_meso, plot7_removestems, by = "stem_id")
@@ -329,7 +329,7 @@ plot8 <- trees %>%
 
 plot8_meso <- plot8 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,0,10))
 
 #randomly removes 0% of all stems in 0-15cm dbh
 plot8_removestems <- plot8_meso[sample(NROW(plot8_meso), NROW(plot8_meso)*(1-0)),]
@@ -372,7 +372,7 @@ plot9 <- trees %>%
 
 plot9_meso <- plot9 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,6.66,10))
 
 #randomly removes 100% of all stems in 0-15cm dbh
 plot9_removestems <- plot9_meso[sample(NROW(plot9_meso), NROW(plot9_meso)*(1-1)),]
@@ -415,7 +415,7 @@ plot10 <- trees %>%
 
 plot10_meso <- plot10 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,0,10))
 
 #randomly removes 0% of all stems in 0-15cm dbh
 plot10_removestems <- plot10_meso[sample(NROW(plot10_meso), NROW(plot10_meso)*(1-0)),]
@@ -458,10 +458,10 @@ plot11 <- trees %>%
 
 plot11_meso <- plot11 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,15))
+  filter(between(dbh,3.33,6.66))
 
 #randomly removes 66% of all stems in 0-15cm dbh
-plot11_removestems <- plot11_meso[sample(NROW(plot11_meso), NROW(plot11_meso)*(1-0.66)),]
+plot11_removestems <- plot11_meso[sample(NROW(plot11_meso), NROW(plot11_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot11 <- anti_join(plot11_meso, plot11_removestems, by = "stem_id")
@@ -501,22 +501,22 @@ ba_plot11_after <- plot11_thinned %>%
 
 ###### combine all "plotX_thinned to make "trees_thinned"
 
-trees_thinned_15 <- list(plot1_thinned,
-                      plot2_thinned,
-                      plot3_thinned,
-                      plot4_thinned,
-                      plot5_thinned,
-                      plot6_thinned,
-                      plot7_thinned,
-                      plot8_thinned,
-                      plot9_thinned,
-                      plot10_thinned,
-                      plot11_thinned) %>%  
+trees_thinned_rando <- list(plot1_thinned,
+                         plot2_thinned,
+                         plot3_thinned,
+                         plot4_thinned,
+                         plot5_thinned,
+                         plot6_thinned,
+                         plot7_thinned,
+                         plot8_thinned,
+                         plot9_thinned,
+                         plot10_thinned,
+                         plot11_thinned) %>%  
   reduce(full_join)
 
 # calculate BA for trees_thinned
 
-thinned_ba_15 <- trees_thinned_15 %>% 
+thinned_ba_rando <- trees_thinned_rando %>% 
   group_by(stem_id, plot, species, functional_group) %>% 
   summarise(dbh_cm = dbh,
             dbh_in = (dbh)*0.393701) %>% 
@@ -527,13 +527,13 @@ thinned_ba_15 <- trees_thinned_15 %>%
   summarise(after_ba_m2ha = sum(ba_m2)/0.1011714,
             after_ba_ft2a = sum(ba_ft2)/0.25)
 
-before_x_after_ba <- merge(plot_basal_area, thinned_ba_15)
+before_x_after_ba <- merge(plot_basal_area, thinned_ba_rando)
 
 percent_ba_change <- before_x_after_ba %>% 
   group_by(plot) %>% 
   summarise(change_ba = ((1-(after_ba_ft2a/before_ba_ft2a))*100))
 
-trt_change_15 <- merge(percent_ba_change, treatments_no_location)
+trt_change_rando <- merge(percent_ba_change, treatments_no_location)
 treatments
 treatments_no_location
 trees_thinned
@@ -541,7 +541,7 @@ trees
 
 #test compared to meso BA
 
-meso_thinned <- trees_thinned_15 %>% 
+meso_thinned <- trees_thinned_rando %>% 
   filter(functional_group=="mesophyte")
 
 meso_ba
@@ -561,18 +561,19 @@ meso_before_x_after_ba <- merge(meso_ba_thinned, meso_ba)
 meso_percent_ba_change <- meso_before_x_after_ba %>% 
   group_by(plot) %>% 
   summarise(change_ba = ((1-(after_ba_ft2a/meso_ba_ft2a))*100))
-meso_trt_change_15 <- merge(meso_percent_ba_change, treatments_no_location)
+
+meso_trt_change_rando <- merge(meso_percent_ba_change, treatments_no_location)
 
 
 
 
-original_plots_15 <- ggplot(trees, aes(dbh, color = functional_group, fill = functional_group)) +
+original_plots_rando <- ggplot(trees, aes(dbh, color = functional_group, fill = functional_group)) +
   geom_histogram() +
   scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80)) +
   ggtitle("Trees DBH by Functional Group") +
   theme(plot.title = element_text(hjust = 0.5))
 
-thinned_plots_15 <- ggplot(trees_thinned_15, aes(dbh, color = functional_group, fill = functional_group)) +
+thinned_plots_rando <- ggplot(trees_thinned_rando, aes(dbh, color = functional_group, fill = functional_group)) +
   geom_histogram() +
   scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80)) +
   scale_y_continuous(limits = c(0,300)) +
@@ -583,28 +584,34 @@ thinned_plots_15 <- ggplot(trees_thinned_15, aes(dbh, color = functional_group, 
 #ggplot change in total BA across treatments line graph
 level_order <- c("control","low","med","high")
 
-change_total_ba_plots_15 <- ggplot(trt_change_15, aes(x = factor(thin_lvl, level = level_order), y = change_ba, color = thin_lvl)) +
+change_total_ba_plots_rando <- ggplot(trt_change_rando, aes(x = factor(thin_lvl, level = level_order), y = change_ba, color = thin_lvl)) +
   geom_boxplot() +
-  ggtitle("Change in total BA 0-15 cm thin") +
+  ggtitle("Change in total BA 0-10 cm thin") +
   ylab("% Change BA") +
   xlab("Thin treatment level") +
   theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5))
-  
+  theme(plot.title = element_text(hjust = 0.5)) 
+
 
 #ggplot change in MESOPHYTE BA across treatments line graph
 meso_trt_change
 
-change_meso_ba_plots_15 <- ggplot(meso_trt_change_15, aes(x = factor(thin_lvl, level = level_order), y = change_ba, color = thin_lvl)) +
+change_meso_ba_plots_rando <- ggplot(meso_trt_change_rando, aes(x = factor(thin_lvl, level = level_order), y = change_ba, color = thin_lvl)) +
   geom_boxplot() +
-  ggtitle("Change in Mesophyte BA 0-15 cm thin") +
+  ggtitle("Change in Mesophyte BA 0-10 cm thin ALTERNATE") +
   ylab("% Change BA") +
   xlab("Thin treatment level") +
   scale_y_continuous(limits = c(0,37)) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5)) +
-  theme(legend.position = "none",
-        axis.title.y=element_blank()) 
+  theme(legend.position = "none") 
 
+GEOM_
 
+library(cowplot)
 
+ggsave(filename = "figures/test_alternate_thirds.png", plot = change_meso_ba_plots_rando)
+
+test_rando <- plot_grid(change_meso_ba_plots_rando, change_meso_ba_plots_rando, change_meso_ba_plots_rando, nrow = 1)
+
+ggsave(filename = "figures/test_10_12_15.png", plot = test_10_12_15, width = 11, height = 7)
