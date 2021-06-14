@@ -11,7 +11,7 @@ summary(trees)
 
 unique(trees$species)
 unique(trees$canopy)
-unique(trees$location)
+unique(trees$functional_group)
 sort(unique(trees$dbh))
 n_distinct(trees$species)
 trees$functional_group[trees$species=="PRUNUS"] <- "mesophyte"
@@ -80,6 +80,10 @@ trees$burn_szn[trees$plot==11 & trees$location==4] <- "growing"
 # read in new, cleaned treees
 
 trees <- read_csv("data/processed_data/MOTtrees_clean.csv")
+
+trees$functional_group[trees$species=="QUAL" | trees$species=="QUFA"] <- "hardwood pyro"
+trees$functional_group[trees$functional_group=="pyrophyte"] <- "pine"
+
 ##### #make separate DF for treatments ##########
 
 treatments <- read_csv("data/raw_data/treatments.csv")
@@ -176,18 +180,41 @@ meso_ba <- meso %>%
 
 ba_x_meso <- merge(plot_basal_area, meso_ba)
 
-density <- trees %>% 
-  group_by(plot) %>% 
-  summarise(stems_acre = n_distinct(stem_id)*4)
+#testing diff #s
 
-ba_x_meso_plot <- ba_x_meso %>%
+meso_10 <- trees %>% 
+  filter(functional_group=="mesophyte") %>% 
+  filter(between(dbh,0,10))
+
+meso_ba_10 <- meso_10 %>% 
+  group_by(stem_id, plot, species, functional_group) %>% 
+  summarise(dbh_cm = dbh,
+            dbh_in = (dbh)*0.393701) %>% 
+  summarise(ba_m2 = ((pi)*(dbh_cm/2)^2)/(10000),
+            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
+  ungroup(.) %>% 
   group_by(plot) %>% 
-  summarise(pct_meso_ba = (meso_ba_m2ha/before_ba_m2ha)*100)
+  summarise(meso_ba_m2ha_10 = sum(ba_m2)/0.1011714,
+            meso_ba_ft2a_10 = sum(ba_ft2)/0.25)
+
+ba_x_meso_10 <- merge(ba_x_meso, meso_ba_10)
+
+
+ba_x_meso_plot_10 <- ba_x_meso_10 %>%
+  group_by(plot) %>% 
+  summarise(pct_meso_ba = (meso_ba_m2ha_10/before_ba_m2ha)*100)
 
 pyromeso <- merge(ba_x_pyro_plot, ba_x_meso_plot)
 
 pyro_x_meso <- merge(treatments_no_location, pyromeso) #good
 
+density <- trees %>% 
+  group_by(plot) %>% 
+  summarise(stems_acre = n_distinct(stem_id)*4)
+meso_density <- trees %>%
+  filter(functional_group=="mesophyte") %>% 
+  group_by(plot) %>% 
+  summarise(stems_acre = n_distinct(stem_id)*4)
 ##### making random plots for heather meeting
 
 ggplot(trees, aes(dbh, color = functional_group, fill = functional_group)) +
@@ -317,15 +344,19 @@ ba_plot1_after <- plot1_thinned %>%
   summarise(ba_m2ha = sum(ba_m2)/0.1011714,
             ba_ft2a = sum(ba_ft2)/0.25)
 
-ggplot(plot3, aes(dbh, color = functional_group, fill = functional_group)) +
+
+
+ggplot(plot3_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
   geom_histogram() +
   scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80)) +
   ggtitle("All Individuals DBH by Functional Group") +
   theme(plot.title = element_text(hjust = 0.5))
 
-ggplot(plot3_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+
+ggplot(trees, aes(dbh, color = functional_group, fill = functional_group)) +
   geom_histogram() +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80),
+                     limits = c(0,55)) +
   ggtitle("All Individuals DBH by Functional Group") +
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -874,4 +905,78 @@ change_meso_ba_plots_12 <- ggplot(meso_trt_change, aes(x = factor(thin_lvl, leve
   
     
 
+### testing who knows what
+
+ggplot(plot1, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 1 (low)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(plot2, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 2 (medium)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(plot3, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 3 (high)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(plot4, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 4 (low)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(plot5, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 5 (medium)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(plot6, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 6 (high)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(plot7, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 7 (low)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(plot8, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 8 (control)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(plot9, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 9 (high)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(plot10, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 10 (control)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(plot11, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
+  ggtitle("Plot 11 (medium)") +
+  theme(plot.title = element_text(hjust = 0.5))
 
