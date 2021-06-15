@@ -74,6 +74,9 @@ trees$burn_szn[trees$plot==11 & trees$location==2] <- "late"
 trees$burn_szn[trees$plot==11 & trees$location==3] <- "early"
 trees$burn_szn[trees$plot==11 & trees$location==4] <- "growing"
 
+trees$functional_group[trees$species=="QUAL" | trees$species=="QUFA"] <- "hardwood pyro"
+trees$functional_group[trees$functional_group=="pyrophyte"] <- "pine"
+
 #write_csv(trees, "data/processed_data/MOTtrees_clean.csv")
 # clean trees removing errors, adding treatments, etc
 
@@ -81,8 +84,7 @@ trees$burn_szn[trees$plot==11 & trees$location==4] <- "growing"
 
 trees <- read_csv("data/processed_data/MOTtrees_clean.csv")
 
-trees$functional_group[trees$species=="QUAL" | trees$species=="QUFA"] <- "hardwood pyro"
-trees$functional_group[trees$functional_group=="pyrophyte"] <- "pine"
+
 
 ##### #make separate DF for treatments ##########
 
