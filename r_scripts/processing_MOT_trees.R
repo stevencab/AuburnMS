@@ -77,6 +77,12 @@ trees$burn_szn[trees$plot==11 & trees$location==4] <- "growing"
 trees$functional_group[trees$species=="QUAL" | trees$species=="QUFA"] <- "hardwood pyro"
 trees$functional_group[trees$functional_group=="pyrophyte"] <- "pine"
 
+trees$functional_group[trees$species=="CARYA"] <- "mesophyte"
+
+trees <- trees %>% 
+  filter(species!="DIVI") %>% 
+  filter(species!="FLAG") 
+
 #write_csv(trees, "data/processed_data/MOTtrees_clean.csv")
 # clean trees removing errors, adding treatments, etc
 
@@ -147,7 +153,7 @@ ba_x_pine_plot <- ba_x_pine %>%
 ####### do the same for % pyrophye and mesophyte #########
 
 pyro <- trees %>% 
-  filter(functional_group=="pyrophyte")
+  filter(functional_group=="pine" | functional_group=="hardwood pyro")
 
 pyro_ba <- pyro %>% 
   group_by(stem_id, plot, species, functional_group) %>% 
@@ -186,7 +192,7 @@ ba_x_meso <- merge(plot_basal_area, meso_ba)
 
 meso_10 <- trees %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,10))
+  filter(dbh>=25)
 
 meso_ba_10 <- meso_10 %>% 
   group_by(stem_id, plot, species, functional_group) %>% 
@@ -314,7 +320,7 @@ plot1_meso <- plot1 %>%
   filter(between(dbh,0,12))
 
 #randomly removes 33% of all stems in 0-12cm dbh
-plot1_removestems <- plot1_meso[sample(NROW(plot1_meso), NROW(plot1_meso)*(1-0.33)),]
+plot1_removestems <- plot1_meso[sample(NROW(plot1_meso), NROW(plot1_meso)*(1-0)),]
 
 #these are the stems that were removed
 removed_plot1 <- anti_join(plot1_meso, plot1_removestems, by = "stem_id")
@@ -370,10 +376,10 @@ plot2 <- trees %>%
 
 plot2_meso <- plot2 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,12))
+  filter(between(dbh,0,15))
 
 #randomly removes 66% of all stems in 0-12cm dbh
-plot2_removestems <- plot2_meso[sample(NROW(plot2_meso), NROW(plot2_meso)*(1-0.66)),]
+plot2_removestems <- plot2_meso[sample(NROW(plot2_meso), NROW(plot2_meso)*(1-0)),]
 
 #these are the stems that were removed
 removed_plot2 <- anti_join(plot2_meso, plot2_removestems, by = "stem_id")
@@ -416,7 +422,7 @@ plot3_meso <- plot3 %>%
   filter(between(dbh,0,12))
 
 #randomly removes 100% of all stems in 0-12cm dbh
-plot3_removestems <- plot3_meso[sample(NROW(plot3_meso), NROW(plot3_meso)*(1-1)),]
+plot3_removestems <- plot3_meso[sample(NROW(plot3_meso), NROW(plot3_meso)*(1-0)),]
 
 #these are the stems that were removed
 removed_plot3 <- anti_join(plot3_meso, plot3_removestems, by = "stem_id")
@@ -456,10 +462,10 @@ plot4 <- trees %>%
 
 plot4_meso <- plot4 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,12))
+  filter(between(dbh,0,15))
 
 #randomly removes 33% of all stems in 0-12cm dbh
-plot4_removestems <- plot4_meso[sample(NROW(plot4_meso), NROW(plot4_meso)*(1-0.33)),]
+plot4_removestems <- plot4_meso[sample(NROW(plot4_meso), NROW(plot4_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot4 <- anti_join(plot4_meso, plot4_removestems, by = "stem_id")
@@ -499,10 +505,10 @@ plot5 <- trees %>%
 
 plot5_meso <- plot5 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,12))
+  filter(between(dbh,0,15))
 
 #randomly removes 66% of all stems in 0-12cm dbh
-plot5_removestems <- plot5_meso[sample(NROW(plot5_meso), NROW(plot5_meso)*(1-0.66)),]
+plot5_removestems <- plot5_meso[sample(NROW(plot5_meso), NROW(plot5_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot5 <- anti_join(plot5_meso, plot5_removestems, by = "stem_id")
@@ -542,7 +548,7 @@ plot6<- trees %>%
 
 plot6_meso <- plot6 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,12))
+  filter(between(dbh,0,15))
 
 #randomly removes 100% of all stems in 0-12cm dbh
 plot6_removestems <- plot6_meso[sample(NROW(plot6_meso), NROW(plot6_meso)*(1-1)),]
@@ -585,10 +591,10 @@ plot7 <- trees %>%
 
 plot7_meso <- plot7 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,12))
+  filter(between(dbh,0,15))
 
 #randomly removes 33% of all stems in 0-12cm dbh
-plot7_removestems <- plot7_meso[sample(NROW(plot7_meso), NROW(plot7_meso)*(1-0.33)),]
+plot7_removestems <- plot7_meso[sample(NROW(plot7_meso), NROW(plot7_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot7 <- anti_join(plot7_meso, plot7_removestems, by = "stem_id")
@@ -628,10 +634,10 @@ plot8 <- trees %>%
 
 plot8_meso <- plot8 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,12))
+  filter(between(dbh,0,15))
 
 #randomly removes 0% of all stems in 0-12cm dbh
-plot8_removestems <- plot8_meso[sample(NROW(plot8_meso), NROW(plot8_meso)*(1-0)),]
+plot8_removestems <- plot8_meso[sample(NROW(plot8_meso), NROW(plot8_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot8 <- anti_join(plot8_meso, plot8_removestems, by = "stem_id")
@@ -674,7 +680,7 @@ plot9_meso <- plot9 %>%
   filter(between(dbh,0,12))
 
 #randomly removes 100% of all stems in 0-12cm dbh
-plot9_removestems <- plot9_meso[sample(NROW(plot9_meso), NROW(plot9_meso)*(1-1)),]
+plot9_removestems <- plot9_meso[sample(NROW(plot9_meso), NROW(plot9_meso)*(1-0)),]
 
 #these are the stems that were removed
 removed_plot9 <- anti_join(plot9_meso, plot9_removestems, by = "stem_id")
@@ -757,10 +763,10 @@ plot11 <- trees %>%
 
 plot11_meso <- plot11 %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(between(dbh,0,12))
+  filter(between(dbh,0,15))
 
 #randomly removes 66% of all stems in 0-12cm dbh
-plot11_removestems <- plot11_meso[sample(NROW(plot11_meso), NROW(plot11_meso)*(1-0.66)),]
+plot11_removestems <- plot11_meso[sample(NROW(plot11_meso), NROW(plot11_meso)*(1-1)),]
 
 #these are the stems that were removed
 removed_plot11 <- anti_join(plot11_meso, plot11_removestems, by = "stem_id")
@@ -782,6 +788,49 @@ ba_plot11_before <- plot11 %>%
 
 #basal area after thinning
 ba_plot11_after <- plot11_thinned %>% 
+  group_by(stem_id, plot, species, functional_group) %>% 
+  summarise(dbh_cm = dbh,
+            dbh_in = (dbh)*0.393701) %>% 
+  summarise(ba_m2 = ((pi)*(dbh_cm/2)^2)/(10000),
+            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
+  ungroup(.) %>% 
+  group_by(plot) %>% 
+  summarise(ba_m2ha = sum(ba_m2)/0.1011714,
+            ba_ft2a = sum(ba_ft2)/0.25)
+
+##### Plot 12 (med) #####
+
+plot12 <- trees %>% 
+  filter(plot==12) %>% 
+  filter(location!="E")
+
+plot12_meso <- plot11 %>% 
+  filter(functional_group=="mesophyte") %>% 
+  filter(between(dbh,0,15))
+
+#randomly removes 66% of all stems in 0-12cm dbh
+plot12_removestems <- plot12_meso[sample(NROW(plot12_meso), NROW(plot12_meso)*(1-0)),]
+
+#these are the stems that were removed
+removed_plot12 <- anti_join(plot12_meso, plot12_removestems, by = "stem_id")
+
+#match with those original plot 1 stems, antijoin removes the thinned stems
+plot12_thinned <- anti_join(plot12, removed_plot12, by = "stem_id")
+
+#basal area before thinning
+ba_plot12_before <- plot12 %>% 
+  group_by(stem_id, plot, species, functional_group) %>% 
+  summarise(dbh_cm = dbh,
+            dbh_in = (dbh)*0.393701) %>% 
+  summarise(ba_m2 = ((pi)*(dbh_cm/2)^2)/(10000),
+            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
+  ungroup(.) %>% 
+  group_by(plot) %>% 
+  summarise(ba_m2ha = sum(ba_m2)/0.1011714,
+            ba_ft2a = sum(ba_ft2)/0.25)
+
+#basal area after thinning
+ba_plot12_after <- plot12_thinned %>% 
   group_by(stem_id, plot, species, functional_group) %>% 
   summarise(dbh_cm = dbh,
             dbh_in = (dbh)*0.393701) %>% 
@@ -909,76 +958,118 @@ change_meso_ba_plots_12 <- ggplot(meso_trt_change, aes(x = factor(thin_lvl, leve
 
 ### testing who knows what
 
-ggplot(plot1, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 1 (low)") +
-  theme(plot.title = element_text(hjust = 0.5))
+#assign colors
 
-ggplot(plot2, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 2 (medium)") +
-  theme(plot.title = element_text(hjust = 0.5))
+fg_colors <- scale_fill_manual(values = c("hardwood pyro" = "orange",
+                              "pine" = "red",
+                              "mesophyte" = "blue"))
 
-ggplot(plot3, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 3 (high)") +
-  theme(plot.title = element_text(hjust = 0.5))
+trees$functional_group <- factor(trees$functional_group, levels = c("mesophyte", "hardwood pyro", "pine"))
+                              
+####### low low complete thin ##### 6, 11, 5, 4, 2, 7 ####
+
+proto4 <- ggplot(plot4_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(aes(color = functional_group), breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 4") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto5 <- ggplot(plot5_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 5") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto6 <- ggplot(plot6_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 6") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto7 <- ggplot(plot7_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 7") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto8 <- ggplot(plot8_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 8") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto11 <- ggplot(plot11_thinned, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 11") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+###### high high no thin #### 8, 10 , 3, 12, 1, 9 #####
+
+proto1 <- ggplot(plot1, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 1") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto2 <- ggplot(plot2, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 2") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto3 <- ggplot(plot3, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 3") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto9 <- ggplot(plot9, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 9") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto10 <- ggplot(plot10, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 10") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+proto12 <- ggplot(plot12, aes(dbh, color = functional_group, fill = functional_group)) +
+  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85)) +
+  ggtitle("Plot 12") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  fg_colors
+
+ggsave(filename = "figures/proto1.png", plot = proto1)
+ggsave(filename = "figures/proto2.png", plot = proto2)
+ggsave(filename = "figures/proto3.png", plot = proto3)
+ggsave(filename = "figures/proto4.png", plot = proto4)
+ggsave(filename = "figures/proto5.png", plot = proto5)
+ggsave(filename = "figures/proto6.png", plot = proto6)
+ggsave(filename = "figures/proto7.png", plot = proto7)
+ggsave(filename = "figures/proto8.png", plot = proto8)
+ggsave(filename = "figures/proto9.png", plot = proto9)
+ggsave(filename = "figures/proto10.png", plot = proto10)
+ggsave(filename = "figures/proto11.png", plot = proto11)
+ggsave(filename = "figures/proto12.png", plot = proto12)
 
 
-ggplot(plot4, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 4 (low)") +
-  theme(plot.title = element_text(hjust = 0.5))
+inter <- trees %>% 
+  filter(functional_group=="intermediate") %>% 
+  filter(species=="DIVI")
 
-ggplot(plot5, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 5 (medium)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-
-ggplot(plot6, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 6 (high)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-
-ggplot(plot7, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 7 (low)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-
-ggplot(plot8, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 8 (control)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-
-ggplot(plot9, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 9 (high)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-
-ggplot(plot10, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 10 (control)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
-
-ggplot(plot11, aes(dbh, color = functional_group, fill = functional_group)) +
-  geom_histogram(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  scale_x_continuous(breaks = c(0,5,10,15,20,25,30,35,40,45,50)) +
-  ggtitle("Plot 11 (medium)") +
-  theme(plot.title = element_text(hjust = 0.5))
-
+unique(inter$species)

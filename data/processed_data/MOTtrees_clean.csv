@@ -6,10 +6,9 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 5,1,20210517,1,ACRU,14.5,I,Acer rubrum,red maple,mesophyte,3,low,late,NA
 6,1,20210517,1,QUNI,6.4,I,Quercus nigra,water oak,mesophyte,3,low,late,NA
 7,1,20210517,1,LIST,27.7,C,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
-8,1,20210517,1,CARYA,4.2,S,Carya sp.,hickory,intermediate,3,low,late,NA
+8,1,20210517,1,CARYA,4.2,S,Carya sp.,hickory,mesophyte,3,low,late,NA
 9,1,20210517,FB,QUAL,34,C,Quercus alba,white oak,hardwood pyro,3,low,NA,NA
-10,1,20210517,FB,CARYA,6.5,I,Carya sp.,hickory,intermediate,3,low,NA,NA
-11,1,20210517,1,FLAG,6.6,S,#N/A,#N/A,#N/A,3,low,late,10:15 unknown
+10,1,20210517,FB,CARYA,6.5,I,Carya sp.,hickory,mesophyte,3,low,NA,NA
 12,1,20210517,1,QUAL,7.3,I,Quercus alba,white oak,hardwood pyro,3,low,late,NA
 13,1,20210517,1,PITA,39.8,C,Pinus taeda,loblolly pine,pine,3,low,late,NA
 14,1,20210517,1,PITA,23.7,C,Pinus taeda,loblolly pine,pine,3,low,late,NA
@@ -38,7 +37,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 37,1,20210517,1,VACCI,1.2,S,Vaccinium sp.,blueberry,mesophyte,3,low,late,NA
 38,1,20210517,1,VACCI,1.6,S,Vaccinium sp.,blueberry,mesophyte,3,low,late,NA
 39,1,20210517,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,3,low,late,NA
-40,1,20210517,1,CARYA,2.2,S,Carya sp.,hickory,intermediate,3,low,late,NA
+40,1,20210517,1,CARYA,2.2,S,Carya sp.,hickory,mesophyte,3,low,late,NA
 41,1,20210517,FB,LIST,17.1,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,NA,NA
 42,1,20210517,FB,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
 43,1,20210517,FB,QUNI,36.5,C,Quercus nigra,water oak,mesophyte,3,low,NA,NA
@@ -59,7 +58,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 58,1,20210517,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
 59,1,20210517,2,LIST,1.6,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
 60,1,20210517,2,LIST,1.2,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
-61,1,20210517,FB,CARYA,6.7,S,Carya sp.,hickory,intermediate,3,low,NA,NA
+61,1,20210517,FB,CARYA,6.7,S,Carya sp.,hickory,mesophyte,3,low,NA,NA
 62,1,20210517,FB,LIST,23.5,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,NA,NA
 63,1,20210517,FB,PITA,4.3,S,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 64,1,20210517,2,PRUNUS,5,S,Prunus sp.,cherry,mesophyte,3,low,early,NA
@@ -101,14 +100,14 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 100,1,20210517,FB,LIST,4.3,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,NA,NA
 101,1,20210517,FB,PITA,10,I,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 102,1,20210517,FB,LIST,16.1,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,NA,NA
-103,1,20210517,FB,CARYA,2.8,S,Carya sp.,hickory,intermediate,3,low,NA,NA
+103,1,20210517,FB,CARYA,2.8,S,Carya sp.,hickory,mesophyte,3,low,NA,NA
 104,1,20210517,FB,PRUNUS,13.7,I,Prunus sp.,cherry,mesophyte,3,low,NA,NA
 105,1,20210517,FB,ACRU,9.1,S,Acer rubrum,red maple,mesophyte,3,low,NA,NA
 106,1,20210517,FB,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
 107,1,20210517,3,JUVI,12.1,I,Juniperus virginiana,eastern red cedar,mesophyte,3,low,growing,NA
 108,1,20210517,3,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 109,1,20210517,3,LIST,8.4,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
-110,1,20210517,3,CARYA,12.2,I,Carya sp.,hickory,intermediate,3,low,growing,NA
+110,1,20210517,3,CARYA,12.2,I,Carya sp.,hickory,mesophyte,3,low,growing,NA
 111,1,20210517,3,VACCI,5,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 112,1,20210517,3,JUVI,7.9,S,Juniperus virginiana,eastern red cedar,mesophyte,3,low,growing,NA
 113,1,20210517,3,NYSY,4.1,S,Nyssa sylvatica,black gum,mesophyte,3,low,growing,NA
@@ -124,7 +123,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 123,1,20210517,3,LIST,17.8,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 124,1,20210517,3,QUNI,39.7,C,Quercus nigra,water oak,mesophyte,3,low,growing,NA
 125,1,20210517,3,LIST,10.3,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
-126,1,20210517,FB,CARYA,7.7,S,Carya sp.,hickory,intermediate,3,low,NA,NA
+126,1,20210517,FB,CARYA,7.7,S,Carya sp.,hickory,mesophyte,3,low,NA,NA
 127,1,20210517,FB,NYSY,8.7,S,Nyssa sylvatica,black gum,mesophyte,3,low,NA,NA
 128,1,20210517,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 129,1,20210517,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
@@ -139,8 +138,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 138,1,20210517,3,LIST,8.6,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 139,1,20210517,3,LIST,3,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 140,1,20210517,3,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
-141,1,20210517,E,CARYA,4.5,S,Carya sp.,hickory,intermediate,3,low,NA,NA
-142,1,20210517,E,FLAG,4.4,S,#N/A,#N/A,#N/A,3,low,NA,11:40
+141,1,20210517,E,CARYA,4.5,S,Carya sp.,hickory,mesophyte,3,low,NA,NA
 143,1,20210517,E,PIEC,28.8,C,Pinus echinata,shortleaf pine,pine,3,low,NA,NA
 144,1,20210517,3,LIST,6.1,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 145,1,20210517,3,PITA,11.5,I,Pinus taeda,loblolly pine,pine,3,low,growing,NA
@@ -148,7 +146,6 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 147,1,20210517,3,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 148,1,20210517,3,QUNI,34.5,C,Quercus nigra,water oak,mesophyte,3,low,growing,NA
 149,1,20210517,3,QUNI,12.1,S,Quercus nigra,water oak,mesophyte,3,low,growing,NA
-150,1,20210517,3,FLAG,6.3,S,#N/A,#N/A,#N/A,3,low,growing,11:40
 151,1,20210517,3,LIST,37,C,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 152,1,20210517,3,VACCI,4.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 153,1,20210517,3,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
@@ -181,18 +178,18 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 180,1,20210517,4,NYSY,3.6,S,Nyssa sylvatica,black gum,mesophyte,3,low,control,NA
 181,1,20210517,4,LIST,10.3,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
 182,1,20210517,4,QUNI,27.7,I,Quercus nigra,water oak,mesophyte,3,low,control,NA
-183,1,20210517,4,CARYA,3.2,S,Carya sp.,hickory,intermediate,3,low,control,NA
-184,1,20210517,4,CARYA,20.3,I,Carya sp.,hickory,intermediate,3,low,control,NA
+183,1,20210517,4,CARYA,3.2,S,Carya sp.,hickory,mesophyte,3,low,control,NA
+184,1,20210517,4,CARYA,20.3,I,Carya sp.,hickory,mesophyte,3,low,control,NA
 185,1,20210517,4,LIST,11,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
 186,1,20210517,4,LIST,11.3,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
 187,1,20210517,4,PITA,43.4,C,Pinus taeda,loblolly pine,pine,3,low,control,NA
 188,1,20210517,4,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
 189,1,20210517,4,LIST,18.5,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
-190,1,20210517,4,CARYA,4.5,S,Carya sp.,hickory,intermediate,3,low,control,NA
+190,1,20210517,4,CARYA,4.5,S,Carya sp.,hickory,mesophyte,3,low,control,NA
 191,1,20210517,4,PRUNUS,5.5,S,Prunus sp.,cherry,mesophyte,3,low,control,NA
 192,1,20210517,4,LIST,19.7,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
-193,1,20210517,4,CARYA,5,S,Carya sp.,hickory,intermediate,3,low,control,NA
-194,1,20210517,4,CARYA,6.5,S,Carya sp.,hickory,intermediate,3,low,control,NA
+193,1,20210517,4,CARYA,5,S,Carya sp.,hickory,mesophyte,3,low,control,NA
+194,1,20210517,4,CARYA,6.5,S,Carya sp.,hickory,mesophyte,3,low,control,NA
 195,1,20210517,4,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
 196,1,20210517,4,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
 197,1,20210517,E,QUNI,20.3,I,Quercus nigra,water oak,mesophyte,3,low,NA,NA
@@ -200,16 +197,16 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 199,1,20210517,4,PRUNUS,5.8,S,Prunus sp.,cherry,mesophyte,3,low,control,NA
 200,1,20210517,E,FAGR,13,S,Fagus grandifolia,American beech,mesophyte,3,low,NA,NA
 201,1,20210517,4,LIST,24.3,C,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
-202,1,20210517,4,CARYA,11.7,I,Carya sp.,hickory,intermediate,3,low,control,NA
+202,1,20210517,4,CARYA,11.7,I,Carya sp.,hickory,mesophyte,3,low,control,NA
 203,1,20210517,4,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
-204,1,20210517,4,CARYA,12.2,S,Carya sp.,hickory,intermediate,3,low,control,NA
+204,1,20210517,4,CARYA,12.2,S,Carya sp.,hickory,mesophyte,3,low,control,NA
 205,1,20210517,4,NYSY,5.3,S,Nyssa sylvatica,black gum,mesophyte,3,low,control,NA
 206,1,20210517,E,QUNI,24.9,I,Quercus nigra,water oak,mesophyte,3,low,NA,NA
 207,1,20210517,E,QUNI,26.8,C,Quercus nigra,water oak,mesophyte,3,low,NA,NA
 208,1,20210517,E,LIST,16.3,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,NA,NA
 209,1,20210517,E,PITA,54.4,D,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 210,1,20210517,4,PRUNUS,3.9,S,Prunus sp.,cherry,mesophyte,3,low,control,NA
-211,1,20210517,4,CARYA,10,S,Carya sp.,hickory,intermediate,3,low,control,NA
+211,1,20210517,4,CARYA,10,S,Carya sp.,hickory,mesophyte,3,low,control,NA
 212,1,20210517,4,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
 213,1,20210517,4,QUAL,4.4,S,Quercus alba,white oak,hardwood pyro,3,low,control,NA
 214,1,20210517,4,PRUNUS,5.7,S,Prunus sp.,cherry,mesophyte,3,low,control,NA
@@ -220,7 +217,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 219,2,20210517,1,QUNI,26.2,C,Quercus nigra,water oak,mesophyte,4,medium,growing,NA
 220,2,20210517,1,LIST,1.9,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,growing,NA
 221,2,20210517,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,growing,NA
-222,2,20210517,1,CARYA,8.7,I,Carya sp.,hickory,intermediate,4,medium,growing,NA
+222,2,20210517,1,CARYA,8.7,I,Carya sp.,hickory,mesophyte,4,medium,growing,NA
 223,2,20210517,1,LIST,4.9,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,growing,NA
 224,2,20210517,1,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,growing,NA
 225,2,20210517,1,LIST,1.7,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,growing,NA
@@ -254,7 +251,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 253,2,20210517,E,QUNI,17.4,I,Quercus nigra,water oak,mesophyte,4,medium,NA,NA
 254,2,20210517,E,JUVI,1,S,Juniperus virginiana,eastern red cedar,mesophyte,4,medium,NA,NA
 255,2,20210517,1,QUNI,40.4,C,Quercus nigra,water oak,mesophyte,4,medium,growing,NA
-256,2,20210517,1,CARYA,5.1,S,Carya sp.,hickory,intermediate,4,medium,growing,NA
+256,2,20210517,1,CARYA,5.1,S,Carya sp.,hickory,mesophyte,4,medium,growing,NA
 257,2,20210517,E,PITA,19.9,I,Pinus taeda,loblolly pine,pine,4,medium,NA,NA
 258,2,20210517,E,PITA,15.8,I,Pinus taeda,loblolly pine,pine,4,medium,NA,NA
 259,2,20210517,E,QUAL,5.7,S,Quercus alba,white oak,hardwood pyro,4,medium,NA,NA
@@ -262,7 +259,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 261,2,20210517,E,PITA,28.3,D,Pinus taeda,loblolly pine,pine,4,medium,NA,NA
 262,2,20210517,2,FAGR,17.3,S,Fagus grandifolia,American beech,mesophyte,4,medium,late,NA
 263,2,20210517,2,FAGR,15.2,S,Fagus grandifolia,American beech,mesophyte,4,medium,late,NA
-264,2,20210517,2,CARYA,10.2,S,Carya sp.,hickory,intermediate,4,medium,late,NA
+264,2,20210517,2,CARYA,10.2,S,Carya sp.,hickory,mesophyte,4,medium,late,NA
 265,2,20210517,FB,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,NA,NA
 266,2,20210517,FB,PITA,18.5,I,Pinus taeda,loblolly pine,pine,4,medium,NA,NA
 267,2,20210517,FB,LIST,1.8,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,NA,NA
@@ -275,7 +272,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 274,2,20210517,2,QUFA,12,S,Quercus falcata,southern red oak,hardwood pyro,4,medium,late,NA
 275,2,20210517,2,QUAL,3.1,S,Quercus alba,white oak,hardwood pyro,4,medium,late,NA
 276,2,20210517,2,LIST,32.7,C,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,late,NA
-277,2,20210517,2,CARYA,14.8,I,Carya sp.,hickory,intermediate,4,medium,late,NA
+277,2,20210517,2,CARYA,14.8,I,Carya sp.,hickory,mesophyte,4,medium,late,NA
 278,2,20210517,2,PIEC,17.3,I,Pinus echinata,shortleaf pine,pine,4,medium,late,NA
 279,2,20210517,E,FAGR,19.7,S,Fagus grandifolia,American beech,mesophyte,4,medium,NA,NA
 280,2,20210517,E,FAGR,12,S,Fagus grandifolia,American beech,mesophyte,4,medium,NA,NA
@@ -369,7 +366,6 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 368,2,20210517,4,LIST,4,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,control,NA
 369,2,20210517,4,PITA,9.1,I,Pinus taeda,loblolly pine,pine,4,medium,control,NA
 370,2,20210517,4,PITA,38.1,C,Pinus taeda,loblolly pine,pine,4,medium,control,NA
-371,2,20210517,4,DIVI,8.4,I,Diospyros virginiana,persimmon,intermediate,4,medium,control,NA
 372,2,20210517,4,PITA,5.4,S,Pinus taeda,loblolly pine,pine,4,medium,control,NA
 373,2,20210517,4,COFL,13.7,S,Cornus florida,dogwood,mesophyte,4,medium,control,NA
 374,2,20210517,4,COFL,5.5,S,Cornus florida,dogwood,mesophyte,4,medium,control,NA
@@ -381,7 +377,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 380,2,20210517,4,LIST,4.5,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,control,NA
 381,2,20210517,4,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,4,medium,control,NA
 382,2,20210517,4,LIST,9,I,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,control,NA
-383,2,20210517,4,CARYA,38,C,Carya sp.,hickory,intermediate,4,medium,control,NA
+383,2,20210517,4,CARYA,38,C,Carya sp.,hickory,mesophyte,4,medium,control,NA
 384,2,20210517,E,PITA,39.1,C,Pinus taeda,loblolly pine,pine,4,medium,NA,NA
 385,2,20210517,4,LIST,18.5,I,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,control,NA
 386,2,20210517,4,LIST,7.8,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,control,NA
@@ -599,15 +595,15 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 598,4,20210518,1,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
 599,4,20210518,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
 600,4,20210518,1,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
-601,4,20210518,1,CARYA,3.8,S,Carya sp.,hickory,intermediate,3,low,control,NA
+601,4,20210518,1,CARYA,3.8,S,Carya sp.,hickory,mesophyte,3,low,control,NA
 602,4,20210518,1,QUFA,19.4,I,Quercus falcata,southern red oak,hardwood pyro,3,low,control,NA
 603,4,20210518,1,PITA,46,C,Pinus taeda,loblolly pine,pine,3,low,control,NA
 604,4,20210518,E,QUAL,23.2,I,Quercus alba,white oak,hardwood pyro,3,low,NA,NA
 605,4,20210518,1,PITA,4.3,S,Pinus taeda,loblolly pine,pine,3,low,control,NA
 606,4,20210518,1,LIST,10.8,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
 607,4,20210518,1,QUNI,17.8,I,Quercus nigra,water oak,mesophyte,3,low,control,NA
-608,4,20210518,1,CARYA,3,S,Carya sp.,hickory,intermediate,3,low,control,NA
-609,4,20210518,1,CARYA,6.4,I,Carya sp.,hickory,intermediate,3,low,control,NA
+608,4,20210518,1,CARYA,3,S,Carya sp.,hickory,mesophyte,3,low,control,NA
+609,4,20210518,1,CARYA,6.4,I,Carya sp.,hickory,mesophyte,3,low,control,NA
 610,4,20210518,1,PITA,45.5,C,Pinus taeda,loblolly pine,pine,3,low,control,NA
 611,4,20210518,1,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,control,NA
 612,4,20210518,1,QUNI,15.8,I,Quercus nigra,water oak,mesophyte,3,low,control,NA
@@ -649,7 +645,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 648,4,20210518,2,LIST,13.9,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
 649,4,20210518,2,ILOP,10.9,I,Ilex opaca,American holly,mesophyte,3,low,late,NA
 650,4,20210518,2,FAGR,8.8,I,Fagus grandifolia,American beech,mesophyte,3,low,late,NA
-651,4,20210518,2,CARYA,22,I,Carya sp.,hickory,intermediate,3,low,late,NA
+651,4,20210518,2,CARYA,22,I,Carya sp.,hickory,mesophyte,3,low,late,NA
 652,4,20210518,2,QUAL,16.6,I,Quercus alba,white oak,hardwood pyro,3,low,late,NA
 653,4,20210518,2,NYSY,9.5,S,Nyssa sylvatica,black gum,mesophyte,3,low,late,NA
 654,4,20210518,2,QUNI,21,I,Quercus nigra,water oak,mesophyte,3,low,late,NA
@@ -662,7 +658,6 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 661,4,20210518,2,PIEC,26.5,C,Pinus echinata,shortleaf pine,pine,3,low,late,NA
 662,4,20210518,2,PIEC,15.5,C,Pinus echinata,shortleaf pine,pine,3,low,late,NA
 663,4,20210518,2,FAGR,14.7,I,Fagus grandifolia,American beech,mesophyte,3,low,late,NA
-664,4,20210518,2,DIVI,10.7,I,Diospyros virginiana,persimmon,intermediate,3,low,late,NA
 665,4,20210518,2,LIST,6.7,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
 666,4,20210518,2,FAGR,26,I,Fagus grandifolia,American beech,mesophyte,3,low,late,NA
 667,4,20210518,2,LIST,12.8,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
@@ -688,7 +683,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 687,4,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 688,4,20210518,3,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 689,4,20210518,3,LITU,22.1,I,Liquidambar styraciflua,tulip poplar,mesophyte,3,low,growing,NA
-690,4,20210518,3,CARYA,6.2,S,Carya sp.,hickory,intermediate,3,low,growing,NA
+690,4,20210518,3,CARYA,6.2,S,Carya sp.,hickory,mesophyte,3,low,growing,NA
 691,4,20210518,3,LIST,11.6,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 692,4,20210518,3,PRUNUS,23.2,I,Prunus sp.,cherry,mesophyte,3,low,growing,NA
 693,4,20210518,3,ACRU,7.8,I,Acer rubrum,red maple,mesophyte,3,low,growing,NA
@@ -698,7 +693,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 697,4,20210518,3,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 698,4,20210518,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 699,4,20210518,3,LIST,14.5,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
-700,4,20210518,3,CARYA,6.7,S,Carya sp.,hickory,intermediate,3,low,growing,NA
+700,4,20210518,3,CARYA,6.7,S,Carya sp.,hickory,mesophyte,3,low,growing,NA
 701,4,20210518,3,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 702,4,20210518,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
 703,4,20210518,3,LIST,18.9,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
@@ -728,7 +723,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 727,4,20210518,FB,NYSY,4.5,S,Nyssa sylvatica,black gum,mesophyte,3,low,NA,NA
 728,4,20210518,FB,VACCI,8,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
 729,4,20210518,4,LIST,10.4,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
-730,4,20210518,4,CARYA,14.6,I,Carya sp.,hickory,intermediate,3,low,early,NA
+730,4,20210518,4,CARYA,14.6,I,Carya sp.,hickory,mesophyte,3,low,early,NA
 731,4,20210518,4,QUNI,15,I,Quercus nigra,water oak,mesophyte,3,low,early,NA
 732,4,20210518,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
 733,4,20210518,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
@@ -883,7 +878,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 882,5,20210519,3,PIEC,25.2,I,Pinus echinata,shortleaf pine,pine,4,medium,growing,NA
 883,5,20210519,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,4,medium,growing,NA
 884,5,20210519,3,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,4,medium,growing,NA
-885,5,20210519,3,CARYA,2.4,S,Carya sp.,hickory,intermediate,4,medium,growing,NA
+885,5,20210519,3,CARYA,2.4,S,Carya sp.,hickory,mesophyte,4,medium,growing,NA
 886,5,20210519,3,LIST,4.3,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,growing,NA
 887,5,20210519,3,PRUNUS,11.1,S,Prunus sp.,cherry,mesophyte,4,medium,growing,NA
 888,5,20210519,FB,QUAL,51.1,C,Quercus alba,white oak,hardwood pyro,4,medium,NA,NA
@@ -893,7 +888,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 892,5,20210519,4,LIST,7.3,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,late,NA
 893,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,late,NA
 894,5,20210519,4,LIST,1,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,late,NA
-895,5,20210519,4,CARYA,3.4,S,Carya sp.,hickory,intermediate,4,medium,late,NA
+895,5,20210519,4,CARYA,3.4,S,Carya sp.,hickory,mesophyte,4,medium,late,NA
 896,5,20210519,4,LIST,9.8,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,late,NA
 897,5,20210519,4,LIST,1.8,S,Liquidambar styraciflua,sweetgum,mesophyte,4,medium,late,NA
 898,5,20210519,E,QUNI,24.5,C,Quercus nigra,water oak,mesophyte,4,medium,NA,NA
@@ -973,7 +968,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 972,6,5/19/2021,1,PITA,45.3,C,Pinus taeda,loblolly pine,pine,2,high,growing,NA
 973,6,5/19/2021,1,LIST,3.7,S,Liquidambar styraciflua,sweetgum,mesophyte,2,high,growing,NA
 974,6,5/19/2021,1,QUNI,23.6,I,Quercus nigra,water oak,mesophyte,2,high,growing,NA
-975,6,5/19/2021,1,CARYA,16.1,I,Carya sp.,hickory,intermediate,2,high,growing,NA
+975,6,5/19/2021,1,CARYA,16.1,I,Carya sp.,hickory,mesophyte,2,high,growing,NA
 976,6,5/19/2021,1,PITA,2.9,S,Pinus taeda,loblolly pine,pine,2,high,growing,NA
 977,6,5/19/2021,1,PITA,6,S,Pinus taeda,loblolly pine,pine,2,high,growing,NA
 978,6,5/19/2021,1,QUFA,23.3,C,Quercus falcata,southern red oak,hardwood pyro,2,high,growing,NA
@@ -1020,7 +1015,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1019,6,5/19/2021,2,QUFA,29,C,Quercus falcata,southern red oak,hardwood pyro,2,high,early,NA
 1020,6,5/19/2021,2,QUNI,10,S,Quercus nigra,water oak,mesophyte,2,high,early,NA
 1021,6,5/19/2021,2,LIST,5.8,S,Liquidambar styraciflua,sweetgum,mesophyte,2,high,early,NA
-1022,6,5/19/2021,2,CARYA,3.5,S,Carya sp.,hickory,intermediate,2,high,early,NA
+1022,6,5/19/2021,2,CARYA,3.5,S,Carya sp.,hickory,mesophyte,2,high,early,NA
 1023,6,5/19/2021,E,LIST,16,I,Liquidambar styraciflua,sweetgum,mesophyte,2,high,NA,NA
 1024,6,5/19/2021,E,QUFA,38.1,C,Quercus falcata,southern red oak,hardwood pyro,2,high,NA,NA
 1025,6,5/19/2021,E,QUAL,22,I,Quercus alba,white oak,hardwood pyro,2,high,NA,NA
@@ -1215,7 +1210,6 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1214,7,5/19/2021,2,PITA,11,S,Pinus taeda,loblolly pine,pine,3,low,growing,NA
 1215,7,5/19/2021,2,LIST,32,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 1216,7,5/19/2021,2,PITA,41,C,Pinus taeda,loblolly pine,pine,3,low,growing,NA
-1217,7,5/19/2021,2,DIVI,3.5,S,Diospyros virginiana,persimmon,intermediate,3,low,growing,NA
 1218,7,5/19/2021,2,PITA,17.7,I,Pinus taeda,loblolly pine,pine,3,low,growing,NA
 1219,7,5/19/2021,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
 1220,7,5/19/2021,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,growing,NA
@@ -1231,7 +1225,6 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1230,7,5/19/2021,E,PITA,24.8,I,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 1231,7,5/19/2021,E,PITA,30.1,C,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 1232,7,5/19/2021,E,PITA,29.6,C,Pinus taeda,loblolly pine,pine,3,low,NA,NA
-1233,7,5/19/2021,2,DIVI,1.5,S,Diospyros virginiana,persimmon,intermediate,3,low,growing,NA
 1234,7,5/19/2021,2,PITA,27,C,Pinus taeda,loblolly pine,pine,3,low,growing,NA
 1235,7,5/19/2021,2,PIEC,17,I,Pinus echinata,shortleaf pine,pine,3,low,growing,NA
 1236,7,5/19/2021,2,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,3,low,growing,NA
@@ -1287,8 +1280,8 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1286,7,5/19/2021,3,LIST,12.3,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
 1287,7,5/19/2021,3,LIST,5.2,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,control,NA
 1288,7,5/19/2021,E,PITA,13,I,Pinus taeda,loblolly pine,pine,3,low,NA,NA
-1289,7,5/19/2021,E,CARYA,6,S,Carya sp.,hickory,intermediate,3,low,NA,NA
-1290,7,5/19/2021,E,CARYA,12,I,Carya sp.,hickory,intermediate,3,low,NA,NA
+1289,7,5/19/2021,E,CARYA,6,S,Carya sp.,hickory,mesophyte,3,low,NA,NA
+1290,7,5/19/2021,E,CARYA,12,I,Carya sp.,hickory,mesophyte,3,low,NA,NA
 1291,7,5/19/2021,E,PITA,26.2,C,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 1292,7,5/19/2021,3,PIEC,9.4,I,Pinus echinata,shortleaf pine,pine,3,low,control,NA
 1293,7,5/19/2021,3,PITA,4.6,S,Pinus taeda,loblolly pine,pine,3,low,control,NA
@@ -1304,7 +1297,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1303,7,5/19/2021,FB,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
 1304,7,5/19/2021,FB,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
 1305,7,5/19/2021,FB,VACCI,1.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
-1306,7,5/19/2021,4,CARYA,2.6,S,Carya sp.,hickory,intermediate,3,low,early,NA
+1306,7,5/19/2021,4,CARYA,2.6,S,Carya sp.,hickory,mesophyte,3,low,early,NA
 1307,7,5/19/2021,4,PITA,30.2,C,Pinus taeda,loblolly pine,pine,3,low,early,NA
 1308,7,5/19/2021,4,PITA,38,C,Pinus taeda,loblolly pine,pine,3,low,early,NA
 1309,7,5/19/2021,4,ACRU,25,I,Acer rubrum,red maple,mesophyte,3,low,early,NA
@@ -1356,7 +1349,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1355,7,5/19/2021,4,LITU,10.5,I,Liquidambar styraciflua,tulip poplar,mesophyte,3,low,early,NA
 1356,7,5/19/2021,E,PITA,40.5,C,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 1357,7,5/19/2021,FB,NYSY,11.1,I,Nyssa sylvatica,black gum,mesophyte,3,low,NA,NA
-1358,7,5/19/2021,FB,CARYA,9.5,I,Carya sp.,hickory,intermediate,3,low,NA,NA
+1358,7,5/19/2021,FB,CARYA,9.5,I,Carya sp.,hickory,mesophyte,3,low,NA,NA
 1359,7,5/19/2021,FB,PITA,4.8,S,Pinus taeda,loblolly pine,pine,3,low,NA,NA
 1360,7,5/19/2021,FB,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
 1361,7,5/19/2021,FB,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,3,low,NA,NA
@@ -1371,7 +1364,6 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1370,8,5/20/2021,1,QUNI,22.2,C,Quercus nigra,water oak,mesophyte,1,control,growing,NA
 1371,8,5/20/2021,1,VACCI,2.5,S,Vaccinium sp.,blueberry,mesophyte,1,control,growing,NA
 1372,8,5/20/2021,1,PRUNUS,7.3,S,Prunus sp.,cherry,mesophyte,1,control,growing,NA
-1373,8,5/20/2021,1,FLAG,2.3,S,#N/A,#N/A,#N/A,1,control,growing,NA
 1374,8,5/20/2021,E,LIST,19.4,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 1375,8,5/20/2021,1,PRUNUS,6.5,S,Prunus sp.,cherry,mesophyte,1,control,growing,NA
 1376,8,5/20/2021,1,QUNI,31.7,C,Quercus nigra,water oak,mesophyte,1,control,growing,NA
@@ -1443,7 +1435,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1442,8,5/20/2021,2,QUAL,6.4,S,Quercus alba,white oak,hardwood pyro,1,control,control,NA
 1443,8,5/20/2021,2,QUNI,18.8,I,Quercus nigra,water oak,mesophyte,1,control,control,NA
 1444,8,5/20/2021,2,LIST,9.8,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,control,NA
-1445,8,5/20/2021,2,CARYA,3.1,S,Carya sp.,hickory,intermediate,1,control,control,NA
+1445,8,5/20/2021,2,CARYA,3.1,S,Carya sp.,hickory,mesophyte,1,control,control,NA
 1446,8,5/20/2021,2,JUVI,9.8,S,Juniperus virginiana,eastern red cedar,mesophyte,1,control,control,NA
 1447,8,5/20/2021,2,LIST,2,S,Liquidambar styraciflua,sweetgum,mesophyte,1,control,control,NA
 1448,8,5/20/2021,2,LIST,2,S,Liquidambar styraciflua,sweetgum,mesophyte,1,control,control,NA
@@ -1560,8 +1552,8 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1559,9,5/20/2021,1,QUNI,25,C,Quercus nigra,water oak,mesophyte,2,high,early,NA
 1560,9,5/20/2021,1,ACRU,23.7,I,Acer rubrum,red maple,mesophyte,2,high,early,NA
 1561,9,5/20/2021,1,QUNI,5,S,Quercus nigra,water oak,mesophyte,2,high,early,NA
-1562,9,5/20/2021,1,CARYA,6.5,I,Carya sp.,hickory,intermediate,2,high,early,NA
-1563,9,5/20/2021,1,CARYA,3.5,S,Carya sp.,hickory,intermediate,2,high,early,NA
+1562,9,5/20/2021,1,CARYA,6.5,I,Carya sp.,hickory,mesophyte,2,high,early,NA
+1563,9,5/20/2021,1,CARYA,3.5,S,Carya sp.,hickory,mesophyte,2,high,early,NA
 1564,9,5/20/2021,1,QUNI,8,I,Quercus nigra,water oak,mesophyte,2,high,early,NA
 1565,9,5/20/2021,1,LIST,14.8,I,Liquidambar styraciflua,sweetgum,mesophyte,2,high,early,NA
 1566,9,5/20/2021,1,PRUNUS,5.1,I,Prunus sp.,cherry,mesophyte,2,high,early,NA
@@ -1627,7 +1619,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1626,9,5/20/2021,2,NYSY,2.6,S,Nyssa sylvatica,black gum,mesophyte,2,high,late,NA
 1627,9,5/20/2021,E,PITA,46.8,D,Pinus taeda,loblolly pine,pine,2,high,NA,NA
 1628,9,5/20/2021,2,QUAL,22.3,C,Quercus alba,white oak,hardwood pyro,2,high,late,NA
-1629,9,5/20/2021,2,CARYA,3.9,S,Carya sp.,hickory,intermediate,2,high,late,NA
+1629,9,5/20/2021,2,CARYA,3.9,S,Carya sp.,hickory,mesophyte,2,high,late,NA
 1630,9,5/20/2021,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,2,high,late,NA
 1631,9,5/20/2021,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,2,high,late,NA
 1632,9,5/20/2021,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,2,high,late,NA
@@ -1723,11 +1715,11 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1722,9,5/20/2021,4,QUNI,33.3,C,Quercus nigra,water oak,mesophyte,2,high,growing,NA
 1723,9,5/20/2021,4,LIST,12.3,I,Liquidambar styraciflua,sweetgum,mesophyte,2,high,growing,NA
 1724,9,5/20/2021,4,ULAL,6.6,S,Ulmus alata,winged elm,mesophyte,2,high,growing,NA
-1725,9,5/20/2021,E,CARYA,8.8,I,Carya sp.,hickory,intermediate,2,high,NA,NA
+1725,9,5/20/2021,E,CARYA,8.8,I,Carya sp.,hickory,mesophyte,2,high,NA,NA
 1726,9,5/20/2021,4,PITA,15.4,S,Pinus taeda,loblolly pine,pine,2,high,growing,NA
 1727,9,5/20/2021,4,ULAL,6,S,Ulmus alata,winged elm,mesophyte,2,high,growing,NA
 1728,9,5/20/2021,4,VACCI,5.5,S,Vaccinium sp.,blueberry,mesophyte,2,high,growing,NA
-1729,9,5/20/2021,E,CARYA,34.4,C,Carya sp.,hickory,intermediate,2,high,NA,NA
+1729,9,5/20/2021,E,CARYA,34.4,C,Carya sp.,hickory,mesophyte,2,high,NA,NA
 1730,9,5/20/2021,E,ACRU,20,C,Acer rubrum,red maple,mesophyte,2,high,NA,NA
 1731,9,5/20/2021,4,LIST,20.1,I,Liquidambar styraciflua,sweetgum,mesophyte,2,high,growing,NA
 1732,9,5/20/2021,4,PITA,61,D,Pinus taeda,loblolly pine,pine,2,high,growing,NA
@@ -1827,7 +1819,6 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1826,10,5/21/2021,2,PITA,15,I,Pinus taeda,loblolly pine,pine,1,control,control,NA
 1827,10,5/21/2021,2,LIST,18.1,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,control,NA
 1828,10,5/21/2021,2,QUNI,27,C,Quercus nigra,water oak,mesophyte,1,control,control,NA
-1829,10,5/21/2021,2,DIVI,1,S,Diospyros virginiana,persimmon,intermediate,1,control,control,NA
 1830,10,5/21/2021,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,1,control,control,NA
 1831,10,5/21/2021,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,1,control,control,NA
 1832,10,5/21/2021,2,VACCI,1,S,Vaccinium sp.,blueberry,mesophyte,1,control,control,NA
@@ -1855,7 +1846,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1854,10,5/21/2021,2,LIST,18.9,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,control,NA
 1855,10,5/21/2021,2,PITA,9.1,I,Pinus taeda,loblolly pine,pine,1,control,control,NA
 1856,10,5/21/2021,2,QUNI,5,S,Quercus nigra,water oak,mesophyte,1,control,control,NA
-1857,10,5/21/2021,2,CARYA,2,S,Carya sp.,hickory,intermediate,1,control,control,NA
+1857,10,5/21/2021,2,CARYA,2,S,Carya sp.,hickory,mesophyte,1,control,control,NA
 1858,10,5/21/2021,2,PIEC,10.5,I,Pinus echinata,shortleaf pine,pine,1,control,control,NA
 1859,10,5/21/2021,2,LIST,18.2,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,control,NA
 1860,10,5/21/2021,2,LIST,12.8,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,control,NA
@@ -2174,11 +2165,11 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 2173,11,5/21/2021,FB,PITA,26.1,C,Pinus taeda,loblolly pine,pine,4,medium,NA,NA
 2174,11,5/21/2021,FB,PIEC,31.2,C,Pinus echinata,shortleaf pine,pine,4,medium,TRUE,control
 2175,12,###############################################################################################################################################################################################################################################################,1,PITA,51.5,D,Pinus taeda,loblolly pine,pine,1,control,NA,NA
-2176,12,###############################################################################################################################################################################################################################################################,1,CARYA,7.4,I,Carya sp.,hickory,intermediate,1,control,NA,NA
+2176,12,###############################################################################################################################################################################################################################################################,1,CARYA,7.4,I,Carya sp.,hickory,mesophyte,1,control,NA,NA
 2177,12,###############################################################################################################################################################################################################################################################,1,LIST,23,C,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2178,12,###############################################################################################################################################################################################################################################################,1,PRUNUS,6.4,S,Prunus sp.,cherry,mesophyte,1,control,NA,NA
 2179,12,###############################################################################################################################################################################################################################################################,1,LIST,17.7,C,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
-2180,12,###############################################################################################################################################################################################################################################################,E,CARYA,31.3,C,Carya sp.,hickory,intermediate,1,control,NA,NA
+2180,12,###############################################################################################################################################################################################################################################################,E,CARYA,31.3,C,Carya sp.,hickory,mesophyte,1,control,NA,NA
 2181,12,###############################################################################################################################################################################################################################################################,E,FAGR,64.3,C,Fagus grandifolia,American beech,mesophyte,1,control,NA,NA
 2182,12,###############################################################################################################################################################################################################################################################,E,LIST,38,C,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2183,12,###############################################################################################################################################################################################################################################################,1,VACCI,4,S,Vaccinium sp.,blueberry,mesophyte,1,control,NA,NA
@@ -2187,10 +2178,10 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 2186,12,###############################################################################################################################################################################################################################################################,1,QUNI,42.1,C,Quercus nigra,water oak,mesophyte,1,control,NA,NA
 2187,12,###############################################################################################################################################################################################################################################################,1,ULAL,6.6,I,Ulmus alata,winged elm,mesophyte,1,control,NA,NA
 2188,12,###############################################################################################################################################################################################################################################################,1,PRUNUS,8.4,S,Prunus sp.,cherry,mesophyte,1,control,NA,NA
-2189,12,###############################################################################################################################################################################################################################################################,1,CARYA,4.2,S,Carya sp.,hickory,intermediate,1,control,NA,NA
+2189,12,###############################################################################################################################################################################################################################################################,1,CARYA,4.2,S,Carya sp.,hickory,mesophyte,1,control,NA,NA
 2190,12,###############################################################################################################################################################################################################################################################,1,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,1,control,NA,NA
 2191,12,###############################################################################################################################################################################################################################################################,E,ACRU,7.9,I,Acer rubrum,red maple,mesophyte,1,control,NA,NA
-2192,12,###############################################################################################################################################################################################################################################################,1,CARYA,9.8,I,Carya sp.,hickory,intermediate,1,control,NA,NA
+2192,12,###############################################################################################################################################################################################################################################################,1,CARYA,9.8,I,Carya sp.,hickory,mesophyte,1,control,NA,NA
 2193,12,###############################################################################################################################################################################################################################################################,1,LIST,13.3,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2194,12,###############################################################################################################################################################################################################################################################,1,ACRU,24.5,I,Acer rubrum,red maple,mesophyte,1,control,NA,NA
 2195,12,###############################################################################################################################################################################################################################################################,1,LIST,33.1,C,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
@@ -2287,7 +2278,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 2286,12,###############################################################################################################################################################################################################################################################,3,VACCI,3,S,Vaccinium sp.,blueberry,mesophyte,1,control,NA,NA
 2287,12,###############################################################################################################################################################################################################################################################,3,LIST,4.8,S,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2288,12,###############################################################################################################################################################################################################################################################,3,QUAL,5.8,S,Quercus alba,white oak,hardwood pyro,1,control,NA,NA
-2289,12,###############################################################################################################################################################################################################################################################,3,CARYA,11.5,I,Carya sp.,hickory,intermediate,1,control,NA,NA
+2289,12,###############################################################################################################################################################################################################################################################,3,CARYA,11.5,I,Carya sp.,hickory,mesophyte,1,control,NA,NA
 2290,12,###############################################################################################################################################################################################################################################################,3,QUAL,22.8,C,Quercus alba,white oak,hardwood pyro,1,control,NA,NA
 2291,12,###############################################################################################################################################################################################################################################################,3,QUAL,15.7,C,Quercus alba,white oak,hardwood pyro,1,control,NA,NA
 2292,12,###############################################################################################################################################################################################################################################################,3,PIEC,21.3,C,Pinus echinata,shortleaf pine,pine,1,control,NA,NA
@@ -2312,7 +2303,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 2311,12,###############################################################################################################################################################################################################################################################,4,QUNI,29.6,C,Quercus nigra,water oak,mesophyte,1,control,NA,NA
 2312,12,###############################################################################################################################################################################################################################################################,4,QUAL,3.5,S,Quercus alba,white oak,hardwood pyro,1,control,NA,NA
 2313,12,###############################################################################################################################################################################################################################################################,4,VACCI,3.5,S,Vaccinium sp.,blueberry,mesophyte,1,control,NA,NA
-2314,12,###############################################################################################################################################################################################################################################################,4,CARYA,13.9,I,Carya sp.,hickory,intermediate,1,control,NA,NA
+2314,12,###############################################################################################################################################################################################################################################################,4,CARYA,13.9,I,Carya sp.,hickory,mesophyte,1,control,NA,NA
 2315,12,###############################################################################################################################################################################################################################################################,4,LIST,11,S,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2316,12,###############################################################################################################################################################################################################################################################,4,PITA,46,D,Pinus taeda,loblolly pine,pine,1,control,NA,NA
 2317,12,###############################################################################################################################################################################################################################################################,4,ACRU,1.5,S,Acer rubrum,red maple,mesophyte,1,control,NA,NA
