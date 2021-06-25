@@ -125,7 +125,7 @@ basal_area_m2_ft2_plot <- basal_area_m2_ft2 %>%
 ####### plot BA total
 plot_basal_area <- basal_area_m2_ft2 %>% 
   group_by(plot) %>% 
-  summarise(before_ba_m2ha = sum(ba_m2)/0.1011714,
+  summarise(#before_ba_m2ha = sum(ba_m2)/0.1011714,
             before_ba_ft2a = sum(ba_ft2)/0.25)
 
 ###### checking percent pine BA per plot
@@ -183,18 +183,18 @@ meso_ba <- meso %>%
             ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
   ungroup(.) %>% 
   group_by(plot) %>% 
-  summarise(meso_ba_m2ha = sum(ba_m2)/0.1011714,
+  summarise(#meso_ba_m2ha = sum(ba_m2)/0.1011714,
             meso_ba_ft2a = sum(ba_ft2)/0.25)
 
 ba_x_meso <- merge(plot_basal_area, meso_ba)
 
 #testing diff #s
 
-meso_10 <- trees %>% 
+meso_20 <- trees %>% 
   filter(functional_group=="mesophyte") %>% 
-  filter(dbh>=25)
+  filter(dbh>=20)
 
-meso_ba_10 <- meso_10 %>% 
+meso_ba_10 <- meso_20 %>% 
   group_by(stem_id, plot, species, functional_group) %>% 
   summarise(dbh_cm = dbh,
             dbh_in = (dbh)*0.393701) %>% 
@@ -202,10 +202,10 @@ meso_ba_10 <- meso_10 %>%
             ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
   ungroup(.) %>% 
   group_by(plot) %>% 
-  summarise(meso_ba_m2ha_10 = sum(ba_m2)/0.1011714,
+  summarise(#meso_ba_m2ha_10 = sum(ba_m2)/0.1011714,
             meso_ba_ft2a_10 = sum(ba_ft2)/0.25)
 
-ba_x_meso_10 <- merge(ba_x_meso, meso_ba_10)
+ba_x_meso_20 <- merge(ba_x_meso, meso_ba_10)
 
 
 ba_x_meso_plot_10 <- ba_x_meso_10 %>%
