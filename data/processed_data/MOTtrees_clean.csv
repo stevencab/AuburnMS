@@ -2,7 +2,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1,1,20210517,1,QUNI,32.8,C,Quercus nigra,water oak,mesophyte,3,low,late,NA
 2,1,20210517,1,JUVI,8.5,I,Juniperus virginiana,eastern red cedar,mesophyte,3,low,late,NA
 3,1,20210517,1,LIST,19.2,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
-4,1,20210517,1,SW,14.5,I,Oxydendrum arboreum,sourwood,mesophyte,3,low,late,CHECK THIS
+4,1,20210517,1,NYSY,14.5,I,Nyssa sylvatica,black gum,mesophyte,3,low,late,CHECK THIS
 5,1,20210517,1,ACRU,14.5,I,Acer rubrum,red maple,mesophyte,3,low,late,NA
 6,1,20210517,1,QUNI,6.4,I,Quercus nigra,water oak,mesophyte,3,low,late,NA
 7,1,20210517,1,LIST,27.7,C,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
@@ -53,7 +53,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 53,1,20210517,2,JUVI,9,S,Juniperus virginiana,eastern red cedar,mesophyte,3,low,early,NA
 54,1,20210517,2,JUVI,18.4,I,Juniperus virginiana,eastern red cedar,mesophyte,3,low,early,NA
 55,1,20210517,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,3,low,early,NA
-56,1,20210517,2,SW,16,I,Oxydendrum arboreum,sourwood,mesophyte,3,low,early,CHECK THIS
+56,1,20210517,2,NYSY,16,I,Nyssa sylvatica,black gum,mesophyte,3,low,early,CHECK THIS
 57,1,20210517,2,PITA,16.8,C,Pinus taeda,loblolly pine,pine,3,low,early,NA
 58,1,20210517,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
 59,1,20210517,2,LIST,1.6,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA

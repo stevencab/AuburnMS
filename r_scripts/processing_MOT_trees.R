@@ -125,7 +125,7 @@ basal_area_m2_ft2_plot <- basal_area_m2_ft2 %>%
 ####### plot BA total
 plot_basal_area <- basal_area_m2_ft2 %>% 
   group_by(plot) %>% 
-  summarise(#before_ba_m2ha = sum(ba_m2)/0.1011714,
+  summarise(before_ba_m2ha = sum(ba_m2)/0.1011714,
             before_ba_ft2a = sum(ba_ft2)/0.25)
 
 ###### checking percent pine BA per plot
