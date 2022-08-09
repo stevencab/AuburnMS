@@ -6,7 +6,7 @@ library(tidyr)
 library(cowplot)
 
 # Colorblind ggplot palette with black:
-cbbPalette <- c("#D55E00", "#E69F00", "#009E73", "#56B4E9", "#0072B2", "#CC79A7")
+cbbPalette <- c("#FF0000", "#FF9999", "#FFCC99", "#CC99FF", "#0033FF", "#999999")
 # Colorblind ggplot palette with grey:
 cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
@@ -15,21 +15,99 @@ Master <- read_csv("data/processed_data/MixedStand_Master.csv")
 
 #Let's begin with data visualization
 
-#View(Master)
+#View(Master) regressions with CC and fuel comp+loads based on pine pct and BA
 
-ggplot(Master, aes(x=BA_ft2a)) +
+p1 <- ggplot(Master, aes(x=BA_ft2a)) +
   geom_point(aes(y = Avg_CC, color = Site)) +
   geom_smooth(aes(y = Avg_CC), method = lm, se = F) +
-  scale_y_continuous(breaks = c(70,80,90,100), limits = c(70,100))
+  scale_y_continuous(breaks = c(75,80,85,90,95,100), limits = c(73,100)) +
+  annotate("text", x = 100, y = 80, label =  lb1 , parse = T, fontface = 2) +
+  ylab("Canopy Cover (%)") +
+  xlab("Total BA (ft2/acre)")
+
+lb1 <- paste("R^2 == 0.001793")
+x1 <- lm(Avg_CC ~ BA_ft2a, Master)
+summary(x1)
+ggsave(plot = p1, filename = "figures/canopyxtotalba.png")
+
+p2 <- ggplot(Master, aes(x=Pine_ft2a)) +
+  geom_point(aes(y = Avg_CC, color = Site)) +
+  geom_smooth(aes(y = Avg_CC), method = lm, se = F) +
+  scale_y_continuous(breaks = c(75,80,85,90,95,100), limits = c(73,100)) +
+  annotate("text", x = 50, y = 80, label =  lb2 , parse = T, fontface = 2) +
+  annotate("text", x = 50, y = 78, label =  "t = -2.139 *" , fontface = 2) +
+  ylab("Canopy Cover (%)") +
+  xlab("Pine BA (ft2/acre)")
+
+
+lb2 <- paste("R^2 == 0.0455")
+
+x2 <- lm(Avg_CC ~ Pine_ft2a, Master)
+summary(x2)
+ggsave(plot = p2, filename = "figures/canopyxpineba.png")
+
 
 
 litterba <- read_csv("data/processed_data/litterxba.csv")
 
 
-litterba$Little_type <- factor(litterba$Little_type, levels = c("Pinus","Upland oak","Sweetgum","Water oak","Mesophyte"))
+comp_pinepct <- ggplot(litterba, aes(x = Pine_pctBAft2a)) +
+  scale_color_manual(name = "Litter type", values =cbbPalette) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = T) +
+  ylab("Litter type by mass (%)") +
+  xlab("Pine BA (%)") + 
+  labs(title = "Litter Composition vs. Pine BA %", color = "Litter Type") +
+  theme(plot.title = element_text(hjust =0.5)) 
+  annotate("text", x = 20, y = 100, label = "n = 98 plots", fontface = 2)
+ggsave(plot = comp_pinepct, filename = "figures/comp_pinepct.png", height = 6, width = 12.7)
+
+comp_pinecont <- ggplot(litterba, aes(x = Pine_ft2a)) +
+  scale_color_manual(name = "Litter type", values =cbbPalette) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = T) +
+  ylab("Litter type by mass (%)") +
+  xlab("Pine BA (ft2/acre)") + 
+  labs(title = "Litter Composition vs. Pine BA Raw", color = "Litter Type") +
+  theme(plot.title = element_text(hjust =0.5)) 
+annotate("text", x = 20, y = 100, label = "n = 98 plots", fontface = 2)
+ggsave(plot = comp_pinecont, filename = "figures/comp_pinecont.png", height = 6, width = 12.7)
+
+load_pinepct <- ggplot(litterba, aes(x = Pine_pctBAft2a)) +
+  scale_color_manual(name = "Litter type", values =cbbPalette) +
+  geom_point(aes(y = Load_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Load_wt, color = Little_type), method = lm, se = T) +
+  ylab("Fuel load (g/m2)") +
+  xlab("Pine BA (%)") + 
+  labs(title = "Fuel load vs. Pine BA %", color = "Litter Type") +
+  theme(plot.title = element_text(hjust =0.5)) 
+annotate("text", x = 20, y = 100, label = "n = 98 plots", fontface = 2)
+ggsave(plot = load_pinepct, filename = "figures/load_pinepct.png", height = 6, width = 12.7)
+
+load_pinecont <- ggplot(litterba, aes(x = Pine_ft2a)) +
+  scale_color_manual(name = "Litter type", values =cbbPalette) +
+  geom_point(aes(y = Load_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Load_wt, color = Little_type), method = lm, se = T) +
+  ylab("Fuel load (g/m2)") +
+  xlab("Pine BA (ft2/acre)") + 
+  labs(title = "Fuel load vs. Pine BA Raw", color = "Litter Type") +
+  theme(plot.title = element_text(hjust =0.5)) 
+annotate("text", x = 20, y = 100, label = "n = 98 plots", fontface = 2)
+ggsave(plot = load_pinecont, filename = "figures/load_pinecont.png", height = 6, width = 12.7)
+
+x3 <- lm(Avg_Meso_load ~ Pine_ft2a, Master)
+summary(x3)
+
+
+#### creating pine pct separations with litter
+
+litterba <- read_csv("data/processed_data/litterxba.csv")
+
+
+litterba$Little_type <- factor(litterba$Little_type, levels = c("Pinus","Upland oak","Sweetgum","Water oak","Mesophyte", "Total"))
 
 ggplot(litterba, aes(x=Pine_pctBAft2a)) + 
-  scale_color_manual(name = "Litter Type", values =c("#FF0000","#FF9999","#FFCC99","#CC99FF","#0033FF")) +
+  scale_color_manual(name = "Litter Type", values =c("#FF0000","#FF9999","#FFCC99","#CC99FF","#0033FF", "#0072B2")) +
   geom_jitter(aes(y = Pct_wt, color = Little_type), alpha = 0.6, width = 0.25, height = 0.5) +
   geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
   labs(title="Percent Leaf Litter x Percent Pine BA",
@@ -41,19 +119,6 @@ ggplot(litterba, aes(x=Pine_pctBAft2a)) +
 aggregate(BA_ft2a  ~ Site,
           data = Master,
           function(x) round(c(mean = mean(x), sd = sd(x)), 2))
-
-res_aov <- aov(Slope ~ Site,
-               data = Master)
-shapiro.test(res_aov$residuals)
-summary(res_aov)
-
-plot_num(Master, BA_ft2a)
-
-t.test(Master$BA_ft2a ~ Master$Avg_Balls, var.equal = T)
-
-
-avg cc 0.01, avg herb dead 0.02, slope 0.09, pine pct 9e-14, UO pct ***, WO 0.09, meso **,
-
 
 litterba
 
@@ -92,18 +157,6 @@ test70_100 <- pine70_100 %>%
   group_by(Little_type) %>% 
   summarise(Percent_Litter_mean = mean(Pct_wt),
             Percent_litter_sd = sd(Pct_wt))
-
-
-y1 <- ggplot(litterba, aes(x = Pine_pctBAft2a)) +
-  scale_color_manual(name = "Litter type", values =cbbPalette) +
-  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
-  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = T) +
-  ylab("Litter type by mass (%)") +
-  xlab("Pine BA (%)") + 
-  labs(title = "Litter Composition vs. Pine BA", color = "Litter Type") +
-  theme(plot.title = element_text(hjust =0.5)) 
-  annotate("text", x = 20, y = 100, label = "n = 98 plots", fontface = 2)
-ggsave(plot = y1, filename = "figures/litterxallplots.png", height = 6, width = 12.7)
 
 t1 <- ggplot(pine0_30, aes(x = Pine_pctBAft2a)) +
   scale_color_manual(name = "Litter type", values =cbbPalette) +
@@ -168,8 +221,6 @@ final_pineba <- plot_grid(t5, legend, ncol = 1, rel_heights = c(1, .1))
 
 ggsave(plot = final_pineba, filename = "figures/litterxpineba.png", height = 4.2, width = 11)
        
-       , height = 5.5, width = 8.5)
-ggsav
 
 t5 <- cowplot::plot_grid(t1 + theme(axis.title.x = element_blank()), 
                          t2 + theme(axis.title.x = element_blank()),
@@ -188,7 +239,7 @@ MasterPCA <- read_csv("data/processed_data/MixedStand_MasterPCA.csv")
 
 
 
-myPr <- prcomp(MasterPCA[,3:17], scale = T)
+myPr <- prcomp(MasterPCA[,3:12], scale = T)
 summary(myPr)
 plot(myPr, type = "l")
 biplot(myPr, scale = 0)
@@ -205,16 +256,16 @@ ggplot(MasterPCA2, aes(PC1, PC2, col = Site, fill = Site)) +
   stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) +
   geom_point(shape = 21, col = "black")
 
-cor(MasterPCA[,3:17], MasterPCA2[,18:19])
+cor(MasterPCA[,3:27], MasterPCA2[,28:29])
 
 
 ## testing cluster analysis
 
-MasterPCAscaled <- scale(MasterPCA[,3:17])
+MasterPCAscaled <- scale(MasterPCA[,3:12])
 
 # k-means clustering
 
-fitK <- kmeans(MasterPCAscaled, 10)
+fitK <- kmeans(MasterPCAscaled, 6)
 plot(MasterPCA, col = fitK$cluster)
 
 k <- list()
@@ -250,7 +301,6 @@ plot(MasterPCA, col = clusters)
 #density based
 
 install.packages("dbscan")
-library(dbscan
-        )
+library(dbscan)
 kNNdistplot(MasterPCAscaled, k = 5)
-fitD <- dbscan(MasterPCAscaled, eps = , minPts = 17)
+fitD <- dbscan(MasterPCAscaled, eps = 0.5, minPts = 16)
