@@ -244,3 +244,33 @@ aggregate(Meso_load_pct  ~ Site,
             SG_pct = (Avg_SG/Avg_Total)*100,
             WO_pct = (Avg_WO/Avg_Total)*100,
             Meso_pct = (Avg_Meso/Avg_Total)*100)
+
+summary(mixed_trees)
+
+mixed_trees <- mixed_trees %>% 
+  filter(Species %in% c("ACRU","LITU","QUNI","LIST","QUAL","QUFA", "QURU", "PITA","PIEL","PIPA"))
+
+ggplot(mixed_trees, aes(Species))+
+  geom_bar() + 
+  facet_wrap(~Site)
+
+woody <- read_csv("data/raw_data/Mixed Stands/MixedStand_WoodyDebris.csv")
+
+
+woody <- woody %>% 
+  group_by(Site, Plot) %>% 
+  summarise(Pieces_1hr =  sum(Woody_0.25),
+            Pieces_10hr = sum(Woody_1),
+            Pieces_100hr = sum(Woody_3))
+
+calcs <- woody %>% 
+  group_by(Site, Plot) %>% 
+  summarise(Biomass_TA_1hr = (11.64*Pieces_1hr*0.00151*0.48*1.13)/18,
+            Biomass_TA_10hr = (11.64*Pieces_10hr*0.289*0.48*1.13)/18,
+            Biomass_TA_100hr = (11.64*Pieces_100hr*2.76*0.40*1.13)/36)
+
+FWD <- calcs %>% 
+  group_by(Site,Plot) %>% 
+  summarise(FWD_Mgha = ((sum(Biomass_TA_1hr,Biomass_TA_10hr,Biomass_TA_100hr)*2242)/1000))
+
+hist(log(FWD$FWD_ta))

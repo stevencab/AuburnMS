@@ -13,7 +13,7 @@ cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2",
 
 Master <- read_csv("data/processed_data/MixedStand_Master.csv")
 
-#Let's begin with data visualization
+#####Let's begin with data visualization ----- 
 
 #View(Master) regressions with CC and fuel comp+loads based on pine pct and BA
 
@@ -23,7 +23,10 @@ p1 <- ggplot(Master, aes(x=BA_ft2a)) +
   scale_y_continuous(breaks = c(75,80,85,90,95,100), limits = c(73,100)) +
   annotate("text", x = 100, y = 80, label =  lb1 , parse = T, fontface = 2) +
   ylab("Canopy Cover (%)") +
-  xlab("Total BA (ft2/acre)")
+  xlab("Total BA (ft2/acre)") +
+  facet_wrap(~Site)
+
+hist(log(Master$Avg_CC))
 
 lb1 <- paste("R^2 == 0.001793")
 x1 <- lm(Avg_CC ~ BA_ft2a, Master)
@@ -37,7 +40,9 @@ p2 <- ggplot(Master, aes(x=Pine_ft2a)) +
   annotate("text", x = 50, y = 80, label =  lb2 , parse = T, fontface = 2) +
   annotate("text", x = 50, y = 78, label =  "t = -2.139 *" , fontface = 2) +
   ylab("Canopy Cover (%)") +
-  xlab("Pine BA (ft2/acre)")
+  xlab("Pine BA (ft2/acre)") +  
+  facet_wrap(~Site)
+
 
 
 lb2 <- paste("R^2 == 0.0455")
@@ -58,8 +63,9 @@ comp_pinepct <- ggplot(litterba, aes(x = Pine_pctBAft2a)) +
   ylab("Litter type by mass (%)") +
   xlab("Pine BA (%)") + 
   labs(title = "Litter Composition vs. Pine BA %", color = "Litter Type") +
-  theme(plot.title = element_text(hjust =0.5)) 
-  annotate("text", x = 20, y = 100, label = "n = 98 plots", fontface = 2)
+  theme(plot.title = element_text(hjust =0.5)) +
+  facet_wrap(~Site)
+  
 ggsave(plot = comp_pinepct, filename = "figures/comp_pinepct.png", height = 6, width = 12.7)
 
 comp_pinecont <- ggplot(litterba, aes(x = Pine_ft2a)) +
@@ -99,7 +105,7 @@ x3 <- lm(Avg_Meso_load ~ Pine_ft2a, Master)
 summary(x3)
 
 
-#### creating pine pct separations with litter
+#### creating pine pct separations with litter ----
 
 litterba <- read_csv("data/processed_data/litterxba.csv")
 
@@ -128,8 +134,8 @@ pine0_30 <- litterba %>%
 pine30_50 <- litterba %>% 
   filter(between(Pine_pctBAft2a,30,49.999))
 
-pine50_70 <- litterba %>% 
-  filter(between(Pine_pctBAft2a,50,69.9999))
+pine30_70 <- litterba %>% 
+  filter(between(Pine_pctBAft2a,30,69.9999))
 
 pine70_100 <- litterba %>% 
   filter(between(Pine_pctBAft2a,70,100))
@@ -148,7 +154,7 @@ test30_50 <- pine30_50 %>%
   summarise(Percent_Litter_mean = mean(Pct_wt),
             Percent_litter_sd = sd(Pct_wt))
 
-test50_70 <- pine50_70 %>% 
+test30_70 <- pine50_70 %>% 
   group_by(Little_type) %>% 
   summarise(Percent_Litter_mean = mean(Pct_wt),
             Percent_litter_sd = sd(Pct_wt))
@@ -184,7 +190,7 @@ t2 <- ggplot(pine30_50, aes(x = Pine_pctBAft2a)) +
 
 
 
-t3 <- ggplot(pine50_70, aes(x = Pine_pctBAft2a)) +
+t3 <- ggplot(pine30_70, aes(x = Pine_pctBAft2a)) +
   scale_color_manual(name = "Litter type", values =cbbPalette) +
   geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
   geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = T) +
@@ -215,8 +221,8 @@ legend <- get_legend(
   t1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
-t5 <- cowplot::plot_grid(t1, t2, t3, t4,
-                         ncol = 4)
+t5 <- cowplot::plot_grid(t1, t3, t4,
+                         ncol = 3)
 final_pineba <- plot_grid(t5, legend, ncol = 1, rel_heights = c(1, .1))
 
 ggsave(plot = final_pineba, filename = "figures/litterxpineba.png", height = 4.2, width = 11)
@@ -232,17 +238,19 @@ t5 <- cowplot::plot_grid(t1 + theme(axis.title.x = element_blank()),
 read_csv(load_pct2, )
 
 
-## pca testing
+
+## pca testing ----
 
 
 MasterPCA <- read_csv("data/processed_data/MixedStand_MasterPCA.csv")
 
-
-
-myPr <- prcomp(MasterPCA[,3:12], scale = T)
+myPr <- prcomp(MasterPCA[,4:20], scale = T)
 summary(myPr)
 plot(myPr, type = "l")
-biplot(myPr, scale = 0)
+biplot(myPr, scale = 0
+       )
+
+
 
 #extract pc scores
 
@@ -252,7 +260,7 @@ MasterPCA2 <- cbind(MasterPCA, myPr$x[,1:2])
 
 ## ggplotting with pc scores
 
-ggplot(MasterPCA2, aes(PC1, PC2, col = Site, fill = Site)) +
+ggplot(MasterPCA2, aes(PC1, PC2, col = group, fill = group, size = Pine_pctBAft2a)) +
   stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) +
   geom_point(shape = 21, col = "black")
 
@@ -262,15 +270,16 @@ cor(MasterPCA[,3:27], MasterPCA2[,28:29])
 ## testing cluster analysis
 
 MasterPCAscaled <- scale(MasterPCA[,3:12])
+motscale <- scale(MOTPCA[,3:10])
 
 # k-means clustering
 
-fitK <- kmeans(MasterPCAscaled, 6)
-plot(MasterPCA, col = fitK$cluster)
+fitK <- kmeans(motscale, 4)
+plot(motscale, col = fitK$cluster)
 
 k <- list()
 for(i in 1:10){
-  k[[i]] <- kmeans(MasterPCAscaled, i)
+  k[[i]] <- kmeans(motscale, i)
 }
 k
 
@@ -304,3 +313,67 @@ install.packages("dbscan")
 library(dbscan)
 kNNdistplot(MasterPCAscaled, k = 5)
 fitD <- dbscan(MasterPCAscaled, eps = 0.5, minPts = 16)
+
+
+###### site specific regressions -----
+
+#canopy
+ggplot(Master, aes(x=Pine_ft2a)) +
+  geom_point(aes(y = Avg_CC)) +
+  geom_smooth(aes(y = Avg_CC), method = lm, se = F) +
+  scale_y_continuous(breaks = c(75,80,85,90,95,100), limits = c(73,100)) +
+  ylab("Canopy Cover (%)") +
+  xlab("Pine BA (ft2/acre)") +
+  facet_wrap(~Site)
+
+hist(log(Master$Avg_CC))
+
+lb1 <- paste("R^2 == 0.001793")
+x1 <- lm(Avg_CC ~ BA_ft2a, Master)
+summary(x1)
+ggsave(plot = p1, filename = "figures/canopyxtotalba.png")
+
+
+#fuel comp
+
+ggplot(litterba, aes(x=Pine_ft2a)) +
+  geom_point(aes(y = Pct_wt, color = Little_type)) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
+  ylab("Fuel type by mass (%)") +
+  xlab("Pine BA (ft2/acre)") + 
+  facet_wrap(~Site)
+
+#fuel load
+
+ggplot(litterba, aes(x=Pine_ft2a)) +
+  geom_point(aes(y = Load_wt, color = Little_type)) +
+  geom_smooth(aes(y = Load_wt, color = Little_type), method = lm, se = F) +
+  ylab("Fuel load (g/m2)") +
+  xlab("Pine BA (ft2/acre)") + 
+  facet_wrap(~Site)
+
+#herb cover
+
+ggplot(Master, aes(x=Pine_ft2a)) +
+  geom_point(aes(y = Avg_Herb_Live)) +
+  geom_smooth(aes(y = Avg_Herb_Live), method = lm, se = F) +
+  ylab("Herbaceous fuel cover m2") +
+  xlab("Pine BA (ft2/acre)") + 
+  facet_wrap(~Site)
+#herb height
+
+ggplot(Master, aes(x=Pine_ft2a)) +
+  geom_point(aes(y = Avg_Herb_Ht)) +
+  geom_smooth(aes(y = Avg_Herb_Ht), method = lm, se = F) +
+  ylab("Herbaceous fuel cover m2") +
+  xlab("Pine BA (ft2/acre)") + 
+  facet_wrap(~Site)
+
+#seed structures
+
+ggplot(Master, aes(x=Pine_ft2a)) +
+  geom_point(aes(y = Avg_Cones)) +
+  geom_smooth(aes(y = Avg_Cones), method = lm, se = F) +
+  ylab("Cones m2") +
+  xlab("Pine BA (ft2/acre)") + 
+  facet_wrap(~Site)
