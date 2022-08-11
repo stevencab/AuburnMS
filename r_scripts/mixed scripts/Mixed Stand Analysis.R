@@ -244,10 +244,17 @@ read_csv(load_pct2, )
 
 MasterPCA <- read_csv("data/processed_data/MixedStand_MasterPCA.csv")
 
-myPr <- prcomp(MasterPCA[,4:20], scale = T)
+l_fun <- sapply(MasterPCA, function(x) log(x, base = 10))
+negs <- l_fun
+
+l_fun[!is.infinite(.)] <- 0
+
+test <- cbind(MasterPCA,l_fun)
+test <- test[,-(3:22), drop = F]
+myPr <- prcomp(MasterPCA[,3:20], scale = T)
 summary(myPr)
 plot(myPr, type = "l")
-biplot(myPr, scale = 0
+  biplot(myPr, scale = 0
        )
 
 
@@ -256,11 +263,11 @@ biplot(myPr, scale = 0
 
 str(myPr)
 myPr$x
-MasterPCA2 <- cbind(MasterPCA, myPr$x[,1:2])
+MasterPCA2 <- cbind(test, myPr$x[,1:2])
 
 ## ggplotting with pc scores
 
-ggplot(MasterPCA2, aes(PC1, PC2, col = group, fill = group, size = Pine_pctBAft2a)) +
+ggplot(MasterPCA2, aes(PC1, PC2, col = Site, fill = Site)) +
   stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) +
   geom_point(shape = 21, col = "black")
 
@@ -274,7 +281,7 @@ motscale <- scale(MOTPCA[,3:10])
 
 # k-means clustering
 
-fitK <- kmeans(motscale, 4)
+fitK <- kmeans(MasterPCA2, 4)
 plot(motscale, col = fitK$cluster)
 
 k <- list()
@@ -297,7 +304,7 @@ for(i in 1:6){
 
 ### hierachial clustering
 
-d <- dist(MasterPCAscaled)
+d <- dist(scalelog)
 fitH <- hclust(d, "ward.D2")
 plot(fitH
      )
@@ -305,7 +312,7 @@ plot(fitH
 rect.hclust(fitH, k = 5, border = "red")
 clusters <- cutree(fitH, 5)
 clusters
-plot(MasterPCA, col = clusters)
+plot(scalelog, col = clusters)
 
 #density based
 
@@ -377,3 +384,57 @@ ggplot(Master, aes(x=Pine_ft2a)) +
   ylab("Cones m2") +
   xlab("Pine BA (ft2/acre)") + 
   facet_wrap(~Site)
+
+
+
+
+#new pca log scale
+pcalog <- read_csv("data/processed_data/MixedStand_MasterPCAlogscale.csv")
+
+
+  
+
+
+myPr <- prcomp(pcalog[,3:22], scale = F)
+summary(myPr)
+plot(myPr, type = "l")
+biplot(myPr, scale = 0
+)
+
+
+
+#extract pc scores
+
+str(myPr)
+myPr$x
+MasterPCA2 <- cbind(pcalog, myPr$x[,1:2])
+
+## ggplotting with pc scores
+
+ggplot(MasterPCA2, aes(PC1, PC2, col = Site, fill = Site)) +
+  stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) +
+  geom_point(shape = 21, col = "black")
+
+cor(pcalog[,3:20], MasterPCA2[,21:22])
+
+
+scalelog <- scale(pcalog[,3:22])
+fitK <- kmeans(scalelog, 4)
+plot(scalelog, col = fitK$cluster)
+
+k <- list()
+for(i in 1:10){
+  k[[i]] <- kmeans(scalelog, i)
+}
+k
+
+betweenss_totss <- list()
+for(i in 1:10){
+  betweenss_totss[[i]] <- k[[i]]$betweenss/k[[i]]$totss
+}
+plot(1:10, betweenss_totss, type = "b",
+     ylab = "Between SS/ Total SS", xlab = "# Clusters k")
+
+for(i in 1:6){
+  plot(MasterPCA, col = k[[i]]$cluster)
+}

@@ -183,6 +183,47 @@ slopeduff <- slopeduff %>%
             Avg_Depth_cm = as.numeric(de1 + de2)/2,
             Avg_Duff_cm = as.numeric(du1 + du2)/2)
 
+### woody debris 
+
+fine_woody <- read_csv("data/raw_data/Mixed Stands/MixedStand_FWD.csv")
+
+
+fine <- fine_woody %>% 
+  group_by(Site, Plot) %>% 
+  summarise(Pieces_1hr =  sum(Woody_0.25),
+            Pieces_10hr = sum(Woody_1),
+            Pieces_100hr = sum(Woody_3))
+
+calcs1 <- fine %>% 
+  group_by(Site, Plot) %>% 
+  summarise(Biomass_TA_1hr = (11.64*Pieces_1hr*0.00151*0.48*1.13)/18,
+            Biomass_TA_10hr = (11.64*Pieces_10hr*0.289*0.48*1.13)/18,
+            Biomass_TA_100hr = (11.64*Pieces_100hr*2.76*0.40*1.13)/36)
+
+FWD <- calcs1 %>% 
+  group_by(Site,Plot) %>% 
+  summarise(FWD_Mgha = ((sum(Biomass_TA_1hr,Biomass_TA_10hr,Biomass_TA_100hr)*2242)/1000))
+
+hist(log(FWD$FWD_Mgha))
+
+coarse_woody <- read_csv("data/raw_data/Mixed Stands/MixedStand_CWD.csv")
+
+
+coarse <- coarse_woody %>% 
+  group_by(Site, Plot, Direction) %>% 
+  summarise(Transect_biomass =  sum(biomass))
+
+CWD <- coarse %>% 
+  group_by(Site, Plot) %>% 
+  summarise(CWD_Mgha = mean(Transect_biomass)*2242/1000)
+
+hist(CWD$CWD_Mgha)
+
+Woody_Debirs <- inner_join(FWD,CWD)
+write_csv(Woody_Debirs, file = "data/processed_data/MixedStand_Debris.csv")
+
+### make everything
+
 lastone <- inner_join(x = herbs3, y = slopeduff)
 
 master_notrees <- inner_join(x = lastone, y = all_litter)
@@ -254,23 +295,38 @@ ggplot(mixed_trees, aes(Species))+
   geom_bar() + 
   facet_wrap(~Site)
 
-woody <- read_csv("data/raw_data/Mixed Stands/MixedStand_WoodyDebris.csv")
+fine_woody <- read_csv("data/raw_data/Mixed Stands/MixedStand_FWD.csv")
 
 
-woody <- woody %>% 
+fine <- fine_woody %>% 
   group_by(Site, Plot) %>% 
   summarise(Pieces_1hr =  sum(Woody_0.25),
             Pieces_10hr = sum(Woody_1),
             Pieces_100hr = sum(Woody_3))
 
-calcs <- woody %>% 
+calcs1 <- fine %>% 
   group_by(Site, Plot) %>% 
   summarise(Biomass_TA_1hr = (11.64*Pieces_1hr*0.00151*0.48*1.13)/18,
             Biomass_TA_10hr = (11.64*Pieces_10hr*0.289*0.48*1.13)/18,
             Biomass_TA_100hr = (11.64*Pieces_100hr*2.76*0.40*1.13)/36)
 
-FWD <- calcs %>% 
+FWD <- calcs1 %>% 
   group_by(Site,Plot) %>% 
   summarise(FWD_Mgha = ((sum(Biomass_TA_1hr,Biomass_TA_10hr,Biomass_TA_100hr)*2242)/1000))
 
-hist(log(FWD$FWD_ta))
+hist(log(FWD$FWD_Mgha))
+
+coarse_woody <- read_csv("data/raw_data/Mixed Stands/MixedStand_CWD.csv")
+
+
+coarse <- coarse_woody %>% 
+  group_by(Site, Plot, Direction) %>% 
+  summarise(Transect_biomass =  sum(biomass))
+
+CWD <- coarse %>% 
+  group_by(Site, Plot) %>% 
+  summarise(CWD_Mgha = mean(Transect_biomass)*2242/1000)
+
+hist(CWD$CWD_Mgha)
+
+Woody_Debirs <- inner_join(FWD,CWD)
