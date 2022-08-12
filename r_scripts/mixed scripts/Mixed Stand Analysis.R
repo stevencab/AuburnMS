@@ -3,6 +3,7 @@ library(dplyr)
 library(ggplot2)
 library(stringi, stringr)
 library(tidyr)
+library(factoextra)
 library(cowplot)
 
 # Colorblind ggplot palette with black:
@@ -108,6 +109,10 @@ summary(x3)
 #### creating pine pct separations with litter ----
 
 litterba <- read_csv("data/processed_data/litterxba.csv")
+
+littersum <- litterba %>% 
+  group_by(Site, Plot) %>% 
+  summarise(Pct_wt = )
 
 
 litterba$Little_type <- factor(litterba$Little_type, levels = c("Pinus","Upland oak","Sweetgum","Water oak","Mesophyte", "Total"))
@@ -244,14 +249,10 @@ read_csv(load_pct2, )
 
 MasterPCA <- read_csv("data/processed_data/MixedStand_MasterPCA.csv")
 
-l_fun <- sapply(MasterPCA, function(x) log(x, base = 10))
-negs <- l_fun
 
-l_fun[!is.infinite(.)] <- 0
 
-test <- cbind(MasterPCA,l_fun)
-test <- test[,-(3:22), drop = F]
-myPr <- prcomp(MasterPCA[,3:20], scale = T)
+
+myPr <- prcomp(MasterPCA[,4:14], center = T, scale = T)
 summary(myPr)
 plot(myPr, type = "l")
   biplot(myPr, scale = 0
@@ -263,11 +264,11 @@ plot(myPr, type = "l")
 
 str(myPr)
 myPr$x
-MasterPCA2 <- cbind(test, myPr$x[,1:2])
+MasterPCA2 <- cbind(MasterPCA, myPr$x[,1:2])
 
 ## ggplotting with pc scores
 
-ggplot(MasterPCA2, aes(PC1, PC2, col = Site, fill = Site)) +
+ggplot(MasterPCA2, aes(PC1, PC2, col = group, fill = group)) +
   stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) +
   geom_point(shape = 21, col = "black")
 
@@ -324,6 +325,13 @@ fitD <- dbscan(MasterPCAscaled, eps = 0.5, minPts = 16)
 
 ###### site specific regressions -----
 
+litterba_summed <- litterba %>%
+  filter(Little_type == c("Sweetgum","Water Oak", "Mesophyte"))
+
+  
+group_by(Site, Plot, Little_type)
+
+
 #canopy
 ggplot(Master, aes(x=Pine_ft2a)) +
   geom_point(aes(y = Avg_CC)) +
@@ -343,7 +351,7 @@ ggsave(plot = p1, filename = "figures/canopyxtotalba.png")
 
 #fuel comp
 
-ggplot(litterba, aes(x=Pine_ft2a)) +
+ggplot(litterba, aes(x=Pine_pctBAft2a)) +
   geom_point(aes(y = Pct_wt, color = Little_type)) +
   geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
   ylab("Fuel type by mass (%)") +
@@ -352,7 +360,7 @@ ggplot(litterba, aes(x=Pine_ft2a)) +
 
 #fuel load
 
-ggplot(litterba, aes(x=Pine_ft2a)) +
+ggplot(litterba, aes(x=Pine_pctBAft2a)) +
   geom_point(aes(y = Load_wt, color = Little_type)) +
   geom_smooth(aes(y = Load_wt, color = Little_type), method = lm, se = F) +
   ylab("Fuel load (g/m2)") +
@@ -395,7 +403,7 @@ pcalog <- read_csv("data/processed_data/MixedStand_MasterPCAlogscale.csv")
   
 
 
-myPr <- prcomp(pcalog[,3:22], scale = F)
+myPr <- prcomp(pcalog[,3:15], center = F, scale = F)
 summary(myPr)
 plot(myPr, type = "l")
 biplot(myPr, scale = 0
@@ -415,26 +423,36 @@ ggplot(MasterPCA2, aes(PC1, PC2, col = Site, fill = Site)) +
   stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) +
   geom_point(shape = 21, col = "black")
 
-cor(pcalog[,3:20], MasterPCA2[,21:22])
+cor(pcalog[,3:18], MasterPCA2[,19:20])
 
 
-scalelog <- scale(pcalog[,3:22])
-fitK <- kmeans(scalelog, 4)
-plot(scalelog, col = fitK$cluster)
+#hier clust on log scale
 
-k <- list()
-for(i in 1:10){
-  k[[i]] <- kmeans(scalelog, i)
-}
-k
+scalelog <- scale(pcalog[,3:15])
 
-betweenss_totss <- list()
-for(i in 1:10){
-  betweenss_totss[[i]] <- k[[i]]$betweenss/k[[i]]$totss
-}
-plot(1:10, betweenss_totss, type = "b",
-     ylab = "Between SS/ Total SS", xlab = "# Clusters k")
+d <- dist(scalelog)
+fitH <- hclust(d, "ward.D2")
+plot(fitH
+)
+rect.hclust(fitH, k = 2, border = "red")
 
-for(i in 1:6){
-  plot(MasterPCA, col = k[[i]]$cluster)
-}
+
+clusters <- cutree(fitH, 2)
+clusters
+length(clusters)
+
+plot(scalelog, col = clusters)
+
+
+rownames(scalelog) <- paste(pcalog$Site, 1:dim(pcalog)[1], sep = "_")
+
+
+fviz_cluster(object = list(data=scalelog, cluster = clusters))
+
+
+
+
+
+
+
+
