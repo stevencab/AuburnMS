@@ -252,7 +252,7 @@ MasterPCA <- read_csv("data/processed_data/MixedStand_MasterPCA.csv")
 
 
 
-myPr <- prcomp(MasterPCA[,4:14], center = T, scale = T)
+myPr <- prcomp(MasterPCA[,4:12], center = T, scale = T)
 summary(myPr)
 plot(myPr, type = "l")
   biplot(myPr, scale = 0
@@ -268,11 +268,11 @@ MasterPCA2 <- cbind(MasterPCA, myPr$x[,1:2])
 
 ## ggplotting with pc scores
 
-ggplot(MasterPCA2, aes(PC1, PC2, col = group, fill = group)) +
+ggplot(MasterPCA2, aes(PC1, PC2, col = Site, fill = Site, size = pine_iv)) +
   stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) +
   geom_point(shape = 21, col = "black")
 
-cor(MasterPCA[,3:27], MasterPCA2[,28:29])
+cor(MasterPCA[,4:29], MasterPCA2[,30:31])
 
 
 ## testing cluster analysis
@@ -304,8 +304,8 @@ for(i in 1:6){
 
 
 ### hierachial clustering
-
-d <- dist(scalelog)
+scalednew <- scale(MasterPCA[,4:12])
+d <- dist(scalednew)
 fitH <- hclust(d, "ward.D2")
 plot(fitH
      )
@@ -351,7 +351,7 @@ ggsave(plot = p1, filename = "figures/canopyxtotalba.png")
 
 #fuel comp
 
-ggplot(litterba, aes(x=Pine_pctBAft2a)) +
+ggplot(litterba, aes(x=pine_iv)) +
   geom_point(aes(y = Pct_wt, color = Little_type)) +
   geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
   ylab("Fuel type by mass (%)") +
@@ -360,7 +360,7 @@ ggplot(litterba, aes(x=Pine_pctBAft2a)) +
 
 #fuel load
 
-ggplot(litterba, aes(x=Pine_pctBAft2a)) +
+ggplot(litterba, aes(x=pine_iv)) +
   geom_point(aes(y = Load_wt, color = Little_type)) +
   geom_smooth(aes(y = Load_wt, color = Little_type), method = lm, se = F) +
   ylab("Fuel load (g/m2)") +
