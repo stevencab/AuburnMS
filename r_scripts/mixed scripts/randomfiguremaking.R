@@ -100,7 +100,9 @@ ggplot(litter, aes(x=Pine_pctBAft2a, y=Pct_wt)) +
   geom_point(aes(color = Little_type)) +
   geom_smooth(method = "lm", aes(color = Little_type), se = F) +
   ylab("Leaf liter fuel composition by mass (%)") +
-  xlab("Pine Basal Area (%)")
+  xlab("Pine Basal Area (%)") +
+  geom_vline(xintercept = 30) +
+  geom_hline(yintercept = 30)
 
 ggplot(litter, aes(x=Pine_pctBAft2a, y=Pct_wt)) +
   geom_point(aes(color = Little_type)) +
@@ -129,9 +131,17 @@ Master$group <- factor(Master$group, levels = c(">70% Pine","30 - 70% Pine","< 3
 seedcalc$Functional <- factor(seedcalc$Functional, levels = c("Pine","Upland Oak","Mesophyte","#N/A"))
 
 #canopy cover
-ggplot(Master, aes(x=group)) +
+ggplot(Master, aes(x=group, y= Avg_CC)) +
   geom_boxplot(aes(y=Avg_CC)) +
-  theme_bw()
+  theme_bw() +
+  scale_x_discrete(labels=c(">70% Pine" = "Pine","30 - 70% Pine" = "Mixed","< 30% Pine" = "Hardwood")) +
+  xlab("Forest Type") +
+  ylab("Canopy Cover %") +
+  geom_signif(comparisons = mycomps1, map_signif_level = T)
+lol2 <- lm(data = Master, Avg_CC~group)
+
+summary(lol2)
+TukeyHSD(aov(lol2))
 cc <- ggplot(Master, aes(x=group, y = Avg_CC)) +
   geom_boxplot(aes(y=Avg_CC)) +
   theme_bw()+
@@ -337,22 +347,297 @@ usloads <- left_join(herbcalcsplot,biodepthduff)
 #write_csv(usloads, "data/processed_data/understoryloads.csv")
 
 usloads <- read_csv("data/processed_data/understoryloads.csv")
-usloads$group <- factor(usloads$group, levels = c(">70% Pine","30 - 70% Pine","< 30% Pine"))
-usloads$Biomass_Load_Source <- factor(usloads$Biomass_Load_Source, levels = c("FWD", "CWD", "Herbaceous", "Shrubs", "Litter", "Duff"))
+usloads$group <- factor(usloads$group, levels = c("Pine","Mixed","Hardwood"))
+usloads$Biomass_Load_Source <- factor(usloads$Biomass_Load_Source, levels = c("Litter", "Duff", "Herbaceous", "Shrubs", "FWD", "CWD"))
 usloadsgroup <- usloads %>% 
   group_by(group, Biomass_Load_Source) %>% 
   summarise(Load_kgm2 = mean(Load_kgm2))
 cbbPalette <- c("#FF0000", "#FF9999", "#FFCC99", "#CC99FF", "#0033FF", "#999999")
 
+usloadssite <- usloads %>% 
+  group_by(Site, Biomass_Load_Source) %>% 
+  summarise(Load_kgm2 = mean(Load_kgm2))
 
 allloads <- ggplot(usloadsgroup, aes(x = group, y = Load_kgm2))+
   geom_bar(position = "stack", stat = "identity", aes(fill = Biomass_Load_Source)) +
   theme_bw() + 
   labs(y = ~Biomass~ kg/m^2) +
-  xlab("Stand Type") +
+  xlab("Forest Type") +
   scale_fill_manual(name = "Biomass_Load_Source", values =cbbPalette) +
-  guides(fill=guide_legend(title="Biomass Source")) +
-  ggtitle("Biomass of fuel sources across Pine, Mixed, and Hardwood Forests")
+  guides(fill=guide_legend(title="Biomass Source")) 
+  #ggtitle("Biomass of fuel sources across Pine, Mixed, and Hardwood Forests")
 ggsave(plot = allloads, "figures/biomass_allfuelsources.png", height = 6, width = 9)
 filter(usloads$group=="< 30% Pine")
+
+
+
+res1 <- lm(data = Master, Avg_CC~group)
+summary(res1)
+TukeyHSD(aov(res1))
+unique(usloads$Biomass_Load_Source)
+
+herby <- filter(usloads, Biomass_Load_Source=="Herbaceous")           
+shrubs <- filter(usloads, Biomass_Load_Source=="Shrubs")   
+litty <- filter(usloads, Biomass_Load_Source=="Litter")   
+duffy <- filter(usloads, Biomass_Load_Source=="Duff")   
+fwd <- filter(usloads, Biomass_Load_Source=="FWD")   
+cwd <- filter(usloads, Biomass_Load_Source=="CWD")   
+
+res1 <- lm(data = herby, Load_kgm2~Site)
+summary(res1)
+anova(res1)
+tuk1 <- TukeyHSD(aov(res1))
+cld1 <- multcompLetters4(res1, tuk1)
+
+
+res2 <- lm(data = shrubs, Load_kgm2~Site)
+summary(res2)
+anova(res2)
+tuk2 <- TukeyHSD(aov(res2))
+cld2 <- multcompLetters4(res2, tuk2)
+
+res3 <- lm(data = litty, Load_kgm2~Site)
+summary(res3)
+anova(res3)
+tuk3 <- TukeyHSD(aov(res3))
+cld3 <- multcompLetters4(res3, tuk3)
+
+res4 <- lm(data = duffy, Load_kgm2~Site)
+summary(res4)
+anova(res4)
+tuk4 <- TukeyHSD(aov(res4))
+cld4 <- multcompLetters4(res4, tuk4)
+
+
+res5 <- lm(data = fwd, Load_kgm2~Site)
+summary(res5)
+anova(res5)
+tuk5 <- TukeyHSD(aov(res5))
+cld5 <- multcompLetters4(res5, tuk5)
+
+
+res6 <- lm(data = cwd, Load_kgm2~Site)
+summary(res6)
+anova(res6)
+tuk6 <- TukeyHSD(aov(res6))
+cld6 <- multcompLetters4(res6, tuk6)
+
+
+res6.1 <- lm(data = cwd, Load_kgm2~Site)
+summary(res6.1)
+anova(res6.1)
+TukeyHSD(aov(res6.1))
+anova(res6,res6.1)
+n = 97
+Master
+
+duffy %>% 
+  summarise(cc = mean(Load_kgm2),
+            se = sd(Load_kgm2)/(sqrt(n)))
+
+
+###### for canopy groups
+
+res1 <- lm(data = herby, Load_kgm2~group)
+summary(res1)
+anova(res1)
+tuk1 <- TukeyHSD(aov(res1))
+cld1 <- multcompLetters4(res1, tuk1)
+
+
+res2 <- lm(data = shrubs, Load_kgm2~group)
+summary(res2)
+anova(res2)
+tuk2 <- TukeyHSD(aov(res2))
+cld2 <- multcompLetters4(res2, tuk2)
+
+res3 <- lm(data = litty, Load_kgm2~group)
+summary(res3)
+anova(res3)
+tuk3 <- TukeyHSD(aov(res3))
+cld3 <- multcompLetters4(res3, tuk3)
+
+res4 <- lm(data = duffy, Load_kgm2~group)
+summary(res4)
+anova(res4)
+tuk4 <- TukeyHSD(aov(res4))
+cld4 <- multcompLetters4(res4, tuk4)
+
+
+res5 <- lm(data = fwd, Load_kgm2~group)
+summary(res5)
+anova(res5)
+tuk5 <- TukeyHSD(aov(res5))
+cld5 <- multcompLetters4(res5, tuk5)
+
+
+res6 <- lm(data = cwd, Load_kgm2~group)
+summary(res6)
+anova(res6)
+tuk6 <- TukeyHSD(aov(res6))
+cld6 <- multcompLetters4(res6, tuk6)
+
+#### for thesis big fuel comp
+
+litter <-read_csv("data/processed_data/litterxba_mesossummed.csv")
+newtest <- c("#FF0000", "#FF9999", "#FFCC99")
+litter$Little_type <- factor(litter$Little_type, levels = c("Pinus","Upland oak","Mesophyte"))
+
+
+hardwood <- litter %>% 
+  filter(group=="Hardwood")
+
+mixed <- litter %>% 
+  filter(group=="Mixed")
+
+pine <- litter %>% 
+  filter(group=="Pine")
+
+
+t1 <- ggplot(hardwood, aes(x = Pine_pctBAft2a, y = Pct_wt)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
+  ylab("Litter type by mass (%)") +
+  xlab("Pine Basal Area (%)") + 
+  theme_bw() +
+  labs(title = "Hardwood Stand", color = "Litter Type") +
+  scale_y_continuous(limits = c(0,100)) +
+  annotate("text", x = 22.5, y = 100, label = "n = 8", fontface = 2) +
+  theme(plot.title = element_text(hjust =0.5), legend.position = "none", axis.title.y = element_blank())
+  
+  
+t2 <- ggplot(mixed, aes(x = Pine_pctBAft2a)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
+  ylab("Litter type by mass (%)") +
+  xlab("Pine Basal Area (%)") + 
+  theme_bw() +
+  labs(title = "Mixed Stand", color = "Litter Type") +
+  scale_y_continuous(limits = c(0,100)) +
+  annotate("text", x = 50, y = 100, label = "n = 68", fontface = 2) +
+  theme(plot.title = element_text(hjust =0.5), legend.position = "none", axis.title.y = element_blank())
+
+t3 <- ggplot(pine, aes(x = Pine_pctBAft2a)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
+  ylab("Litter type by mass (%)") +
+  xlab("Pine Basal Area (%)") + 
+  theme_bw() +   labs(title = "Pine Stand", color = "Litter Type") +
+  scale_y_continuous(limits = c(0,100)) +
+  annotate("text", x = 85, y = 100, label = "n = 21", fontface = 2) +
+  theme(plot.title = element_text(hjust =0.5), legend.position = "none")
+
+legend <- get_legend(
+  
+  t1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+    guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+
+t5 <- cowplot::plot_grid(t3, t2, t1,
+                         ncol = 3)
+final_pineba <- plot_grid(t5, legend, ncol = 1, rel_heights = c(1, .1))
+
+#ggsave(plot = final_pineba, filename = "figures/litterxpineba.png", height = 4.2, width = 11)
+
+
+t5 <- cowplot::plot_grid(t1 + theme(axis.title.x = element_blank()), 
+                         t2 + theme(axis.title.x = element_blank()),
+                         t3 + theme(axis.title.x = element_blank()),
+                         t4 + theme(axis.title.x = element_blank()),
+                         ncol = 4)
+
+t7 <- ggplot(litter, aes(x = Pine_pctBAft2a)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
+  ylab("Litter type by mass (%)") +
+  xlab("Pine Basal Area (%)") + 
+  theme_bw() +   labs(color = "Litter Type") +
+  scale_y_continuous(limits = c(0,100)) +
+  theme(legend.position = "bottom")
+
+
+pinuslitter <- lm(data=mixed, Pct_wt~Pine_pctBAft2a + Little_type)
+summary(pinuslitter)
+confint(pinuslitter)
+TukeyHSD(aov(pinuslitter))
+anova(pinuslitter,model2)
+lol23 <- litter %>% 
+  filter(Little_type=="Mesophyte")
+car::vif(pinuslitter)
+
+tuk7 <- TukeyHSD(aov(pinuslitter))
+cld7 <- multcompLetters4(pinuslitter, tuk7)
+
+
+#testing longleaf and other pine things
+
+mixed_trees <- read_csv("data/raw_data/Mixed Stands/MixedStand_Trees.csv")
+
+
+dbh_cm_in <- mixed_trees %>% 
+  group_by(Stem_id, Plot, Site, Species, Genus) %>% 
+  summarise(dbh_cm = DBH,
+            dbh_in = (DBH)*0.393701)
+
+basal_area_m2_ft2 <- dbh_cm_in %>% 
+  group_by(Stem_id, Plot, Site, Species, Genus) %>% 
+  summarise(ba_m2 = dbh_cm^2*(0.00007854),
+            ba_ft2 = dbh_in^2*(0.005454))
+
+allbutlongleaf <- basal_area_m2_ft2 %>% 
+  filter(Genus=="Pinus") %>% 
+  filter(Species!="PIPA")
+
+longleaf <- basal_area_m2_ft2 %>% 
+  filter(Species=="PIPA")
+
+abl_ba <- allbutlongleaf %>% 
+  group_by(Plot,Site) %>% 
+  summarise(otherpinesba = sum(ba_ft2)/0.05)
+
+ll_ba <- longleaf %>% 
+  group_by(Plot,Site) %>% 
+  summarise(longleafba = sum(ba_ft2)/0.05)
+
+llxlitter <- left_join(ll_ba, litter) %>% 
+  group_by(Site, Plot, group, Little_type, Pct_wt, Load_wt) %>% 
+  summarise(longleafpctba = longleafba/BA_ft2a*100)
+
+ablxlitter <- left_join(abl_ba, litter) %>% 
+  group_by(Site, Plot, group, Little_type, Pct_wt, Load_wt) %>% 
+  summarise(otherpinespctba = otherpinesba/BA_ft2a*100)
+
+
+longleaf <- ggplot(llxlitter, aes(x = longleafpctba)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
+  ylab("Litter type by mass (%)") +
+  xlab("Longleaf Pine Basal Area (%)") + 
+  theme_bw() +   labs(color = "Litter Type") +
+  scale_y_continuous(limits = c(0,100)) +
+  annotate("text", x = 50, y = 100, label = "n = 28", fontface = 2) +
+  theme(plot.title = element_text(hjust =0.5), legend.position = "none")
+
+otherpines <- ggplot(ablxlitter, aes(x = otherpinespctba)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
+  ylab("Litter type by mass (%)") +
+  xlab("Other Pine Basal Area (%)") + 
+  theme_bw() +   labs(color = "Litter Type") +
+  scale_y_continuous(limits = c(0,100)) +
+  annotate("text", x = 50, y = 100, label = "n = 93", fontface = 2) +
+  theme(plot.title = element_text(hjust =0.5), legend.position = "none")
+t10 <- cowplot::plot_grid(longleaf, otherpines,
+                         ncol = 2)
+final_pineba <- plot_grid(t10, legend, ncol = 1, rel_heights = c(1, .1))
+
+lltest <- llxlitter %>% 
+  filter(Little_type=="Pinus")
+long <- lm(data = lltest, Pct_wt ~ longleafpctba)
+summary(long)
+TukeyHSD(aov(long))
+alltest <- ablxlitter %>% 
+  filter(Little_type=="Pinus")
+long2 <- lm(data = alltest, Pct_wt ~ otherpinespctba)
+summary(long2)
+TukeyHSD(aov(long2))
 
