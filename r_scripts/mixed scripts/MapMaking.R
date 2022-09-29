@@ -17,16 +17,17 @@ alabama <- subset(state, region=="alabama")
 counties <- map_data("county")
 alabama_county <- subset(counties, region=="alabama")
 
+#get county layers
 lee_county <- subset(alabama_county, subregion=="lee")
 tallapoosa_county <- subset(alabama_county, subregion=="tallapoosa")
 cleburne_county <- subset(alabama_county, subregion=="cleburne")
 calhoun_county <- subset(alabama_county, subregion=="calhoun")
-cleburncalhoun <- rbind(cleburne_county,calhoun_county)
 macon_county <- subset(alabama_county, subregion=="macon")
 
+#make these combined becasue they border eachother
 leemacontallapoosa <- rbind(lee_county,macon_county,tallapoosa_county)
 
-
+cleburncalhoun <- rbind(cleburne_county,calhoun_county)
 
 al_map <- ggplot(data=alabama, mapping=aes(x=long, y=lat, group=group)) + 
   coord_fixed(1.3) + 
@@ -44,6 +45,7 @@ al_map <- ggplot(data=alabama, mapping=aes(x=long, y=lat, group=group)) +
 
 al_map
 
+#load gps info
 gpsinfo <- readr::read_csv("data/raw_data/Mixed Stands/MixedStand_PlotLocationsGPS.csv")
 
 leec <- gpsinfo %>% 
@@ -55,6 +57,7 @@ tallapoosac <- gpsinfo %>%
 cleburnec <- gpsinfo %>% 
   filter(county=="cleburne")
 
+#map for lee/macon/tallapoosa counties
 lmt_map <- ggplot(data=leemacontallapoosa, mapping=aes(x=long, y=lat, group=group)) + 
   coord_fixed(1.3) + 
   geom_polygon(color="black", fill="gray") + 
@@ -70,6 +73,7 @@ lmt_map <- ggplot(data=leemacontallapoosa, mapping=aes(x=long, y=lat, group=grou
   annotate("text", x = -85.599, y = 32.397, label =  "Tuskegee NF (n = 29)", size = 3, fontface = 2) +  
   theme(axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(),
         axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank())
+
 
 calhouncleburn_map <- ggplot(data=cleburncalhoun, mapping=aes(x=long, y=lat, group=group)) + 
   coord_fixed(1.3) + 
@@ -87,6 +91,9 @@ ggsave(plot = al_map, "figures/maps/mixed stands/alabamacounty.png", width =8, h
 ggsave(plot = calhouncleburn_map, "figures/maps/mixed stands/calhouncleburn.png", width =5, height = 8)
 ggsave(plot = lmt_map, "figures/maps/mixed stands/leemacontallapoosa.png",  width =5, height = 8)
 
+
+
+#old ignore
 macon_map <- ggplot(data=macon_county, mapping=aes(x=long, y=lat, group=group)) + 
   coord_fixed(1.3) + 
   geom_polygon(color="black", fill="gray") + 
@@ -122,9 +129,4 @@ calhouncleburn_map <- ggplot(data=cleburncalhoun, mapping=aes(x=long, y=lat, gro
   theme(axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(),
         axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank())
 
-
-  
-
-leetrans <- usmap_transform(leec)
-  
 
