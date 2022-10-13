@@ -329,7 +329,6 @@ herbcalcsplot <-  herbcalcs %>%
   summarise(Biomass_Herb = mean(Biomass_Herb1),
             Biomass_Shrub = mean(Biomass_Shrub1))
 
-
 depthduff <- slopeduff %>% 
   group_by(Site, Plot) %>% 
   summarise(Bio_de1 = (de1/100)*44.051,

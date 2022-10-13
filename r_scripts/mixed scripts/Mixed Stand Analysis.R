@@ -38,7 +38,7 @@ p2 <- ggplot(Master, aes(x=Pine_ft2a)) +
   geom_point(aes(y = Avg_CC, color = Site)) +
   geom_smooth(aes(y = Avg_CC), method = lm, se = F) +
   scale_y_continuous(breaks = c(75,80,85,90,95,100), limits = c(73,100)) +
-  annotate("text", x = 50, y = 80, label =  lb2 , parse = T, fontface = 2) +
+  annotate("text", x = 50, y = 80, label =  "lb2" , parse = T, fontface = 2) +
   annotate("text", x = 50, y = 78, label =  "t = -2.139 *" , fontface = 2) +
   ylab("Canopy Cover (%)") +
   xlab("Pine BA (ft2/acre)") +  
@@ -51,6 +51,7 @@ lb2 <- paste("R^2 == 0.0455")
 x2 <- lm(Avg_CC ~ Pine_ft2a, Master)
 summary(x2)
 ggsave(plot = p2, filename = "figures/canopyxpineba.png")
+
 
 
 

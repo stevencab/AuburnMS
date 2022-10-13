@@ -148,32 +148,28 @@ p1 <- ggplot(fli, aes(x = Burn_Szn, y = fli, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
-                     values = c("#00AFBB","#E7B800","#FC4E07")) +
+  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
   labs(y=expression(paste("Fireline Intensity  kW  ",  m^{-1})))
 p2 <- ggplot(fli, aes(x = Burn_Szn, y = consump, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
-                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
   labs(y="Fuel Consumption (%)")
 p3 <- ggplot(fli, aes(x = Burn_Szn, y = frs1, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
-                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
   labs(y=expression(paste("Fire Spread Rate  cm  ", s^{-1})))
 p4 <- ggplot(fli, aes(x = Burn_Szn, y = avg_max_temp, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
-                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
   labs(y = "Maximum Temperature °C")
 
@@ -181,6 +177,8 @@ legend <- get_legend(
   p1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
     labs(fill = "Burn Timing") +
+    scale_fill_grey(start = 0.2, end = .85))
+    
     scale_fill_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
                       values = c("#00AFBB","#E7B800","#FC4E07")))
 
@@ -195,10 +193,14 @@ title <- ggdraw() +
     plot.margin = margin(0,0,0,40)
   )
 
-p5 <- cowplot::plot_grid(p1 + theme(axis.title.x = element_blank()),
-                         p2 + theme(axis.title.x = element_blank()),
-                         p3 + theme(axis.title.x = element_blank()),
-                         p4 + theme(axis.title.x = element_blank()),
+p5 <- cowplot::plot_grid(p1 + theme(axis.title.x = element_blank()) + scale_fill_grey(start = 0.2, end = .85)
+,
+                         p2 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
+,
+                         p3 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
+,
+                         p4 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
+,
                          ncol = 2,
                          labels = "AUTO")
 
@@ -209,7 +211,7 @@ res1 <- lm(data=fli, fli~Burn_Szn)
 summary(res1)
 TukeyHSD(aov(res1))
 
-fli_litterpct <- left_join(fli, edlldl)
+fli_litterpct <- left_join(fli, burnlittercomp)
 fli_lit_burn <- anti_join(fli_litterpct, typeburn)
 
 typeburn$litter_type <- NULL
@@ -295,7 +297,7 @@ burnlittercomp
 firecomp <- left_join(fli,burnlittercomp)
 firecomp$Burn_Szn <- factor(firecomp$Burn_Szn, levels = c("ED","LD","GS"))
 fc1 <- ggplot(firecomp, aes(x = pine, y = fli)) +
-  geom_point(aes(color = Burn_Szn)) +
+  geom_point(aes(color = Burn_Szn), size = 2) +
   geom_smooth(aes(color = Burn_Szn), method = "lm", se = F) +
   theme_bw() +
   facet_wrap(~Treatment) +
@@ -305,7 +307,7 @@ fc1 <- ggplot(firecomp, aes(x = pine, y = fli)) +
   labs(y=expression(paste("Fireline Intensity  kW  ",  m^{-1})))
 
 fc2 <- ggplot(firecomp, aes(x = pine, y = consump)) +
-  geom_point(aes(color = Burn_Szn)) +
+  geom_point(aes(color = Burn_Szn), size = 2) +
   geom_smooth(aes(color = Burn_Szn), method = "lm", se = F) +
   theme_bw() +
   facet_wrap(~Treatment) +
@@ -315,7 +317,7 @@ fc2 <- ggplot(firecomp, aes(x = pine, y = consump)) +
   labs(y="Fuel Consumption (%)")
 
 fc3 <- ggplot(firecomp, aes(x = pine, y = frs1)) +
-  geom_point(aes(color = Burn_Szn)) +
+  geom_point(aes(color = Burn_Szn), size = 2) +
   geom_smooth(aes(color = Burn_Szn), method = "lm", se = F) +
   theme_bw() +
   facet_wrap(~Treatment) +
@@ -326,12 +328,10 @@ fc3 <- ggplot(firecomp, aes(x = pine, y = frs1)) +
        x="Fuel bed pine litter (%) ")
 
 fc4 <- ggplot(firecomp, aes(x = pine, y = avg_max_temp)) +
-  geom_point(aes(color = Burn_Szn)) +
+  geom_point(aes(color = Burn_Szn), size = 2) +
   geom_smooth(aes(color = Burn_Szn), method = "lm", se = F) +
   theme_bw() +
   facet_wrap(~Treatment) +
-  scale_color_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
-                                          values = c("#00AFBB","#E7B800","#FC4E07")) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
   labs(y = "Maximum Temperature °C",
        x="Fuel bed pine litter (%) ")
@@ -342,6 +342,8 @@ legend2 <- get_legend(
   fc1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
     labs(color = "Burn Timing") +
+    scale_color_grey(start = 0.2, end = .85))
+
     scale_color_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
                       values = c("#00AFBB","#E7B800","#FC4E07")))
 title2 <- ggdraw() +
@@ -355,10 +357,10 @@ title2 <- ggdraw() +
     plot.margin = margin(0,0,0,40)
   )
 
-fc5 <- cowplot::plot_grid(fc1 + theme(axis.title.x = element_blank()),
-                         fc2 + theme(axis.title.x = element_blank()),
-                         fc3,
-                         fc4,
+fc5 <- cowplot::plot_grid(fc1 + theme(axis.title.x = element_blank()) + scale_color_grey(start = 0.2, end = .85),
+                         fc2 + theme(axis.title.x = element_blank()) + scale_color_grey(start = 0.2, end = .85),
+                         fc3 + scale_color_grey(start = 0.2, end = .85),
+                         fc4 + scale_color_grey(start = 0.2, end = .85),
                          ncol = 2, labels = "AUTO")
 
 
@@ -414,8 +416,7 @@ change1 <- ggplot(compchangeplot, aes(x = Treatment, y = litter_pct, fill = litt
   geom_boxplot() +
   facet_wrap(~collection) + 
   theme_bw() + 
-  scale_fill_manual(labels = c("Pine", "Upland Oak", "Mesophyte"), 
-                     values = c("#00AFBB","#E7B800","#FC4E07")) +
+  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0), legend.position = "bottom") +
   guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
   labs(y = "Leaf litter by mass (%)",
@@ -442,9 +443,79 @@ comp1 <- lm(data=mesoonly, litter_pct~canopy_trt)
 summary(comp1)
 TukeyHSD(aov(comp1))
 
-comp2 <- lme(data=compchangeplot, litter_pct~Treatment*collection, random = ~1|Plot) 
+comp2 <- lme(data=compchangeplot, litter_pct~Treatment*collection, random = ~1|Plot/Treatment) 
 summary(comp2)
 intervals(comp2)
-anova(comp2,comp1)
+anova(comp2,comp3)
+ 
 
 TukeyHSD(aov(comp1))
+
+
+canopy <- read_csv("data/raw_data/Midstory Removal/most important/CanopyCoversALL.csv")
+
+
+beforeafter <- canopy %>% 
+  filter(time %in% c("7/1/2021","9/28/2022")) %>% 
+  group_by(time, plot, treatment) %>%
+  summarise(avg_cc = mean(pct_cc)) %>% 
+  mutate(meso_os = "hi")
+
+beforeafter$meso_os[beforeafter$plot==c(1)] <- "high"
+beforeafter$meso_os[beforeafter$plot==c(3)] <- "high"
+beforeafter$meso_os[beforeafter$plot==c(9)] <- "high"
+beforeafter$meso_os[beforeafter$plot==c(12)] <- "high"
+
+
+beforeafter$meso_os[beforeafter$plot==c(2)] <- "med"
+beforeafter$meso_os[beforeafter$plot==c(7)] <- "med"
+beforeafter$meso_os[beforeafter$plot==c(8)] <- "med"
+beforeafter$meso_os[beforeafter$plot==c(10)] <- "med"
+
+beforeafter$meso_os[beforeafter$plot==c(4)] <- "low"
+beforeafter$meso_os[beforeafter$plot==c(5)] <- "low"
+beforeafter$meso_os[beforeafter$plot==c(6)] <- "low"
+beforeafter$meso_os[beforeafter$plot==c(11)] <- "low"
+
+boxplot(data=beforeafter, avg_cc~meso_os+time+treatment)
+
+
+ggplot(beforeafter, aes(x = time, y = avg_cc, fill = meso_os)) +
+  geom_boxplot() +
+  facet_wrap(~treatment)
+
+onlypre <- beforeafter %>% 
+  filter(time=="7/1/2021")
+onlypost <- beforeafter %>% 
+  filter(time=="9/28/2022")
+onlycon <- beforeafter %>% 
+  filter(treatment=="control")
+onlythin <- beforeafter %>% 
+  filter(treatment=="thin")
+
+cc1 <- lme(data=beforeafter, avg_cc~time+treatment*meso_os, random = ~1|plot/treatment)
+summary(cc1)
+TukeyHSD(aov(cc1))
+
+pre <- lm(data = onlypre, avg_cc~treatment)
+summary(pre)
+intervals(pre)
+post <- lm(data = onlypost, avg_cc~meso_os)
+summary(post)
+confint(post)
+post2 <- lm(data = onlypost, avg_cc~treatment)
+summary(post2)
+anova(post,post2)
+
+thin <- lm(data=onlythin, avg_cc~time)
+summary(thin)
+confint(thin)
+
+
+fli
+new <- lme(fli~Treatment+Burn_Szn+meso_os, data = fli, random = ~1|Plot/Treatment/Burn_Szn)
+summary(new)
+
+
+trees <- read_csv("data/processed_data/MOTtrees_clean.csv")
+
