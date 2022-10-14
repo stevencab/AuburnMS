@@ -14,7 +14,7 @@ Master <- read_csv("data/processed_data/MixedStand_Master.csv")
 mixed_trees <- read_csv("data/raw_data/Mixed Stands/MixedStand_Trees.csv")
 usloads_short <- read_csv("data/raw_data/Mixed Stands/understoryloads_short.csv")
 usloads <- read_csv("data/processed_data/understoryloads.csv")
-litter <- read_csv("data/processed_data/litterxba.csv")
+litter <- read_csv("data/processed_data/litterxba_mesossummed.csv")
 littershort <- read_csv("data/processed_data/litterba_short.csv")
 
 
@@ -300,24 +300,7 @@ f15 <- plot_grid(f13,f14,
 
 f16 <- plot_grid(f15, legend4, ncol = 1, rel_heights = c(1, .1))
 
-Masterlogcc <- Master %>% 
-  mutate(sqrtCC = sqrt(Avg_CC))
 
-
-plot(cclm, 2)
-car::leveneTest(logCC~Site, data = Masterlogcc)
-aov_res <- residuals(object = cclm)
-shapiro.test(x = aov_res)
-
-cclm <- lm(data=Master,Avg_CC~Site*group)
-hist(log(Master$Avg_CC))
-hist(data=iris, iris$Sepal.Length)
-summary(cclm)
-TukeyHSD(aov(cclm))
-
-cclm2 <- lm(data=Masterlogcc,sqrtCC~Site*group)
-summary(cclm2)
-TukeyHSD(aov(cclm2))
 
 # litter across site and forest type
 
@@ -397,7 +380,7 @@ summary(litres3)
 
 f21 <- ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type,
                    shape = Little_type))+
-  geom_smooth(method="lm", se=F, size = 1.5) +
+  geom_smooth(method="lm", se=F, size = 2) +
   scale_color_grey(start = 0.2, end = 0.8) +
   theme_bw() +
   geom_vline(xintercept = 30, linetype = "dashed", size = 1) +
@@ -412,27 +395,16 @@ f21 <- ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type,
        color="Species Group",
        shape="Species Group",
        size="Species Group") +
-  geom_point(size = 4,stroke = 1.1, position = "jitter") +
+  geom_point(size = 4,stroke = 1.1, alpha = 0.4, position = "jitter") +
   scale_shape_manual(values=c(21,22,24)) +
   theme(legend.position = "none")
 
 legend6 <- get_legend(
   
   f21 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
-    guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+    guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f22 <- plot_grid(f21, legend6, ncol = 1, rel_heights = c(1, .1))
-
-
-f21
-f22
-f23
-f24
-f25
-f26
-f27
-f28
-
 
 #### figure for longleaf only vs other pines
 
@@ -446,60 +418,424 @@ basal_area_m2_ft2 <- dbh_cm_in %>%
   summarise(ba_m2 = dbh_cm^2*(0.00007854),
             ba_ft2 = dbh_in^2*(0.005454))
 
-allbutlongleaf <- basal_area_m2_ft2 %>% 
+pine_ba <- basal_area_m2_ft2 %>% 
   filter(Genus=="Pinus") %>% 
-  filter(Species!="PIPA")
+  group_by(Plot, Site) %>% 
+  summarise(pine_bam2 = sum(ba_m2)/0.05,
+            pine_baft2 = sum(ba_ft2)/0.05)
 
-longleaf <- basal_area_m2_ft2 %>% 
-  filter(Species=="PIPA")
+longleaf_ba <- basal_area_m2_ft2 %>% 
+  filter(Species=="PIPA") %>% 
+  group_by(Plot, Site) %>% 
+  summarise(longleaf_bam2 = sum(ba_m2)/0.05,
+            longleaf_baft2 = sum(ba_ft2)/0.05)
 
-abl_ba <- allbutlongleaf %>% 
+otherpines_ba <- basal_area_m2_ft2 %>% 
+  filter(Genus=="Pinus") %>% 
+  filter(Species!="PIPA") %>% 
   group_by(Plot,Site) %>% 
-  summarise(otherpinesba = sum(ba_ft2)/0.05)
+  summarise(otherpine_bam2 = sum(ba_m2)/0.05,
+            otherpine_baft2 = sum(ba_ft2)/0.05)
 
-ll_ba <- longleaf %>% 
+longleafx_total <- left_join(longleaf_ba,pine_ba) ### this is for calc LL/total ba
+otherpinex_total <- left_join(otherpines_ba,pine_ba) ### this is for calc others/total ba
+
+#LL
+longleafx_total
+longleaf_pct <- longleafx_total %>% 
   group_by(Plot,Site) %>% 
-  summarise(longleafba = sum(ba_ft2)/0.05)
+  summarise(longleafpct = longleaf_bam2/pine_bam2*100)
+combinedpines_pct[is.na(combinedpines_pct)] <- 0 #fix na's for 100% LL plots
 
-llxlitter <- left_join(ll_ba, litter) %>% 
-  group_by(Site, Plot, group, Little_type, Pct_wt, Load_wt) %>% 
-  summarise(longleafpctba = longleafba/BA_ft2a*100)
+#### use this for making the longleaf figure, n=27 plots w/ LL
+longleafxlitter <- left_join(longleafx_total, litter)
 
-ablxlitter <- left_join(abl_ba, litter) %>% 
-  group_by(Site, Plot, group, Little_type, Pct_wt, Load_wt) %>% 
-  summarise(otherpinespctba = otherpinesba/BA_ft2a*100)
+## other pines
+otherpinex_total
+otherpine_pct <- otherpinex_total %>% 
+  group_by(Plot,Site) %>% 
+  summarise(otherpinepct = otherpine_baft2 /pine_baft2*100)
 
+#use this for making other pine figure n = 92
+othersxlitter <- left_join(otherpinex_total, litter)
 
-longleaf <- ggplot(llxlitter, aes(x = longleafpctba)) +
-  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
-  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
-  ylab("Litter type by mass (%)") +
-  xlab("Longleaf Pine Basal Area (%)") + 
-  theme_bw() +   labs(color = "Litter Type") +
+##figure making
+
+longleafxlitter$Little_type[longleafxlitter$Little_type=="Mesophyte"] <- "Encroaching"
+longleafxlitter$Little_type[longleafxlitter$Little_type=="Pinus"] <- "Pine"
+
+longleafxlitter$Little_type <- factor(longleafxlitter$Little_type, 
+                             levels = c("Encroaching",
+                                        "Pine",
+                                        "Upland oak"))
+
+othersxlitter$Little_type[othersxlitter$Little_type=="Mesophyte"] <- "Encroaching"
+othersxlitter$Little_type[othersxlitter$Little_type=="Pinus"] <- "Pine"
+
+othersxlitter$Little_type <- factor(othersxlitter$Little_type, 
+                                      levels = c("Encroaching",
+                                                 "Pine",
+                                                 "Upland oak"))
+
+f23 <- ggplot(longleafxlitter, aes(x = longleaf_bam2, shape = Little_type)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), size = 2, stroke = 1.1) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), size = 2,method = lm, se = F) +
+  labs(y = "Litter type by mass (%)",
+       x = expression(paste("Longleaf pine basal area m"^2~ha^{~-1})),
+       color = "Species Group",
+       shape = "Species Group") +
+  theme_bw() +   
   scale_y_continuous(limits = c(0,100)) +
-  annotate("text", x = 50, y = 100, label = "n = 28", fontface = 2) +
-  theme(plot.title = element_text(hjust =0.5), legend.position = "none")
+  annotate("text", x = 6.2, y = 87.5, label = "n = 27", fontface = 2, size = 8) +
+  theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
+  scale_color_grey(start = 0.35, end = 0.8) +
+  scale_shape_manual(values=c(21,22,24))
+  
 
-otherpines <- ggplot(ablxlitter, aes(x = otherpinespctba)) +
-  geom_point(aes(y = Pct_wt, color = Little_type), alpha = 0.5) +
-  geom_smooth(aes(y = Pct_wt, color = Little_type), method = lm, se = F) +
-  ylab("Litter type by mass (%)") +
-  xlab("Other Pine Basal Area (%)") + 
-  theme_bw() +   labs(color = "Litter Type") +
+f24 <- ggplot(othersxlitter, aes(x = otherpine_bam2, shape = Little_type)) +
+  geom_point(aes(y = Pct_wt, color = Little_type), size = 2, stroke = 1.1) +
+  geom_smooth(aes(y = Pct_wt, color = Little_type), size = 2,method = lm, se = F) +
+  labs(y = "Litter type by mass (%)",
+       x = expression(paste("Other pine species basal area m"^2~ha^{~-1})),
+       color = "Species Group",
+       shape = "Species Group") + 
+  theme_bw() +  
   scale_y_continuous(limits = c(0,100)) +
-  annotate("text", x = 50, y = 100, label = "n = 93", fontface = 2) +
-  theme(plot.title = element_text(hjust =0.5), legend.position = "none")
-t10 <- cowplot::plot_grid(longleaf, otherpines,
-                          ncol = 2)
-final_pineba <- plot_grid(t10, legend, ncol = 1, rel_heights = c(1, .1))
+  annotate("text", x = 10.84, y = 87.5, label = "n = 92", fontface = 2, size = 8) +
+  theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
+  scale_color_grey(start = 0.35, end = 0.8)  +
+  scale_shape_manual(values=c(21,22,24))
+  
 
-lltest <- llxlitter %>% 
-  filter(Little_type=="Pinus")
-long <- lm(data = lltest, Pct_wt ~ longleafpctba)
-summary(long)
-TukeyHSD(aov(long))
-alltest <- ablxlitter %>% 
-  filter(Little_type=="Pinus")
-long2 <- lm(data = alltest, Pct_wt ~ otherpinespctba)
-summary(long2)
-TukeyHSD(aov(long2))
+legend7 <- get_legend(
+  
+  f23 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+    guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+
+f25 <- plot_grid(f23,f24,
+                 ncol = 2)  
+
+f26 <- plot_grid(f25, legend7, ncol = 1, rel_heights = c(1, .1))
+
+##### end figure making. f1-26 are figure making process
+
+
+#begin lm analysis of everything ##### 
+#start from the top
+
+#stand descriptions of basal area and canopy cover
+
+standchars <- Master %>% 
+  summarise(stand_ba = mean(BA_m2ha),
+            ba_se = std.error(BA_m2ha),
+            pine_ba = mean(Pine_m2ha),
+            pine_se = std.error(Pine_m2ha),
+            pine_pct = mean(Pine_pctBAft2a),
+            pine_pct = std.error(Pine_pctBAft2a))
+
+mean(Master_figs$BA_m2ha)
+Across all sites, mean stand basal area was 39.5 +/- 1.1.
+The pine basal area was 22.5 +/- 0.958, and 
+mean relative pine basal ara was 57.3 pct +/- 1.9 (Figure 2)
+
+qmdandtpha <- test3 %>% 
+  summarise(qmd_mean = mean(QMD),
+            qmd_se = std.error(QMD),
+            tpha_mean = mean(TPHA),
+            tpha_se = std.error(TPHA)) %>% 
+  summarise(qmd_mean2 = mean(qmd_mean),
+            qmd_se2 = std.error(qmd_se),
+            tpha_mean2 = mean(tpha_mean),
+            tpha_se2 = std.error(tpha_se))
+  
+
+mean qmd all stands was 30.8 cm +/- 0.5 
+mean tpha all stands was 263 tpha +/- 8.2
+
+HOWEVER broken up into species categories
+
+qmdandtpha2 <- test3 %>% 
+  group_by(tert) %>% 
+  summarise(qmd_mean = mean(QMD),
+            qmd_se = std.error(QMD),
+            tpha_mean = mean(TPHA),
+            tpha_se = std.error(TPHA)) 
+
+encroaching sp QMD 20.4 +/- 0.7
+encroaching sp tpha 364 +/- 25
+
+pine sp QMD 39.3 +/- 1.2
+pine sp tpha 218 +/- 13
+
+up oak QMD 30.6 +/- 1.6
+up oak tpha 134 +/- 11
+
+#this is a problem because........ oak bottle neck........
+#size class and density disparity........... (in discussion)
+
+#canopy cover
+f14
+
+Masterlogcc <- Master %>% 
+  mutate(sqrtCC = sqrt(Avg_CC))
+
+cclm <- lm(data=Master,Avg_CC~group*Site)
+
+summary(cclm)
+plot(cclm, 2)
+car::leveneTest(Avg_CC~Site*group, data = Master)
+aov_res <- residuals(object = cclm)
+shapiro.test(x = aov_res)
+
+cclm <- lm(data=Master,Avg_CC~Site*group)
+hist(Master$Avg_CC)
+hist(iris$Sepal.Length)
+summary(cclm)
+TukeyHSD(aov(cclm))
+
+cclm2 <- lm(data=Masterlogcc,sqrtCC~group)
+anova(cclm2,cclm)
+summary(cclm2)
+TukeyHSD(aov(cclm2))
+
+ccmeans <- Master %>% 
+  group_by(group) %>% 
+  summarise(cc_mean = mean(Avg_CC),
+            cc_se = std.error(Avg_CC))
+
+among all sites, CC was 92.3 +/- 0.5.
+
+hardwood forest had 93.1 +/- 1.9
+mixed forest had 92.8 +/- 0.5
+pine forest had 90.4 +/- 1.4
+
+
+Due to larger sample sizes at 
+between TUNF and MOTDF and TANF, we detected significant differences  (p < 0.05)
+but effect size 5% differnce, are not meaning full as they are still
+closed canopy forests.
+
+there were no significant differences in canopy cover among 
+forest types (p = 0.13), and the interaction of site*forest type 
+was non-significant (0.25).
+
+
+#fuel load differences 
+
+usloads_short
+logloads <- usloads_short %>% 
+  mutate(logcwd = log(CWD+1.01),
+         logfwd = log(FWD+1.01),
+         logherbs = log(Herbs+1.01),
+         logshrubs= log(Shrub+1.01),
+         logduff = log(Duff+1.01),
+         loglitter = log(Litter+1.01))
+
+car::leveneTest(logherbs~Site*group, data = logloads)
+hist(logloads$loglitter)
+aov_res <- residuals(object = cwdtest)
+shapiro.test(x = aov_res)
+
+
+cwdtest <- lm(data=logloads, logcwd~Site*group)
+fwdtest <- lm(data=logloads, logfwd~Site*group)
+herbtest <- lm(data=logloads, logherbs~Site*group)
+shrubtest <- lm(data=logloads, logshrubs~Site*group)
+dufftest <- lm(data=logloads, logduff~Site*group)
+littertest <- lm(data=logloads, loglitter~Site*group)
+
+summary(cwdtest)
+summary(fwdtest)
+summary(herbtest)
+summary(shrubtest)
+summary(dufftest)
+summary(littertest)
+
+TukeyHSD(aov(cwdtest))
+TukeyHSD(aov(fwdtest))
+TukeyHSD(aov(herbtest))
+TukeyHSD(aov(shrubtest))
+TukeyHSD(aov(dufftest))
+TukeyHSD(aov(littertest))
+
+loads_sum <- usloads_short %>% 
+  summarise(mean_cwd = mean(CWD*10),
+            se_cwd = std.error(CWD*10),
+            mean_fwd = mean(FWD*10),
+            se_fwd = std.error(FWD*10),
+            mean_herb = mean(Herbs*10),
+            se_herb = std.error(Herbs*10),
+            mean_shrub = mean(Shrub*10),
+            se_shrub = std.error(Shrub*10),
+            mean_duff = mean(Duff*10),
+            se_duff = std.error(Duff*10),
+            mean_litter = mean(Litter*10),
+            se_litter = std.error(Litter*10))
+            
+total_loads <- usloads_short %>% 
+  group_by(Plot) %>% 
+  summarise(plot_total = sum(CWD*10,FWD*10,Herbs*10,Shrub*10,Duff*10,Litter*10),
+            se_total = std.error(sum(CWD,FWD,Herbs,Shrub,Duff,Litter)))
+
+total_loads2 <- total_loads %>% 
+  summarise(mean_total = mean(plot_total),
+            se_total = std.error(plot_total))
+
+#understory vegetation
+ALL STANDS (Mg ha-1)
+herbs: 0.32 +/- 0.04 DIFF IN TANF/TUNF/(MOT) P < 0.05 DUE TO SAMP SIZE
+shrubs: 1.99 +/- 0.3 NO DIFF IN SITE OR FOREST TYPE
+#coarse and fine woody debris
+ALL STANDS (Mg ha-1)
+coarse: 7.58 +/- 1.1 NO DIFF IN SITE OR FOREST TYPE
+fine: 3.57 +/- 0.2 NO DIFF IN SITE OR FOREST TYPE
+  
+#litter and duff
+ALL STANDS (Mg ha-1)
+duff: 5.12 +/- 0.5 NO DIFF IN SITE OR FOREST TYPE
+litter: 5.0 +/- 0.1 HERE WEEE GOOOOOO
+*signif dif in fuel load between pine-hardwood and mixed-hardwood
+1.0 mg ha-1 and 0.7 mg ha-1 respectively
+
+#total loads 
+ALL STANDS (Mg ha-1)
+23.6 +/- 1.3
+
+#comparison of litter composition and regression results
+
+littershort
+
+sqrtlitter <- littershort %>% 
+  group_by(Site,Plot,group, Pine_pctBAft2a) %>% 
+  summarise(sqrtpine = asin(sqrt(pine_pct/100)),
+            sqrtuo = asin(sqrt(uo_pct/100)),
+            sqrtencr = asin(sqrt(encr_pct/100)),
+            sqrtpctBA = asin(sqrt(Pine_pctBAft2a/100)))
+
+car::leveneTest(sqrtencr~Site*group, data = sqrtlitter)
+hist(sqrtlitter$sqrtpine)
+aov_res <- residuals(object = fueltest)
+shapiro.test(x = aov_res)
+
+pinetest <- lm(data=sqrtlitter, sqrtpine~group+Site)
+uotest <- lm(data=sqrtlitter, sqrtuo~group+Site)
+encrtest <- lm(data=sqrtlitter, sqrtencr~group+Site)
+
+summary(pinetest)
+summary(uotest)
+summary(encrtest)
+
+TukeyHSD(aov(pinetest))
+TukeyHSD(aov(uotest))
+TukeyHSD(aov(encrtest))
+confint(pinetest)
+
+#pine
+pine is sig diff in all three groups p < 0.001
+pine had 38.3% +/- 17.6 more leaf litter in pine than hard !!!
+pine had 23.4% +/- 15.8 more leaf litter in mixed than hardwood
+pine had 14.8% +/- 10.6 more leaf litter in pine than mixed
+#uo
+uo is sig diff in mix-hard and pine-hard comp p < 0.001
+uo had 34.9% +/- 17.5 LESS leaf litter in pine than hard !!!
+uo had 28.1% +/- 15.5 LESS leaf litter in mixed in than hard !!! 
+uo had 6.8% +/- 10.5 less leaf litter in pine than mixed ~nonsig
+#encroaching
+encr is signif between mixed and pine p < 0.05
+encr had 3.4% +/- 13.2 less leaf litter in pine than hard
+encr had 4.6% +/- 11.9 more leaf litter in mixed than hardwood
+encr had 8.1% +/- 7.9 less more leaf litter in pine than mixed
+
+
+
+#### for reg of litter comps x pine BA 
+
+car::leveneTest(sqrtencr~Pine_pctBAft2a, data = sqrtlitter)
+hist(sqrtlitter$sqrtpine)
+aov_res <- residuals(object = encrcompba)
+shapiro.test(x = aov_res)
+
+#transformed data for analysis
+pinecompba <- lm(sqrtpine~sqrtpctBA, data = sqrtlitter)
+uocompba <- lm(sqrtuo~sqrtpctBA, data = sqrtlitter)
+encrcompba <- lm(sqrtencr~sqrtpctBA, data = sqrtlitter)
+
+summary(pinecompba)
+summary(uocompba)
+summary(encrcompba)
+
+#regular data for raw numbers to report
+pine1 <- lm(data=littershort, pine_pct~Pine_pctBAft2a)
+uo1 <- lm(data=littershort, uo_pct~Pine_pctBAft2a)
+encr1 <- lm(data=littershort, encr_pct~Pine_pctBAft2a)
+summary(pine1)
+summary(uo1)
+summary(encr1)
+
+
+#pine
+pine is signif, p < 0.001, r2 = 0.40
+each 10% increase in pine BA = 6.9 +/- 0.1 increase pine leaf litter mass
+#uo
+uo is signif, p < 0.001, r2 = 0.13
+each 10% increase in pine BA = 4.5 +/- 0.1 decrease uo leaf litter mass
+
+#encroaching
+encr is signif p < 0.01, r2 = 0.07
+each 10% increase in pine BA = 2.3 +/- 0.1 decrease encrac leaf litter mass
+
+#something about t he intersection of all three at around 35%
+#litter with BA of longleaf pine vs other pines
+
+longleaffortest <- left_join(longleafx_total,littershort)
+otherpinefortest <- left_join(otherpinex_total,littershort)
+
+hist(longleaffortest$uo_pct)
+
+
+llmod1 <- lm(data=longleaffortest, pine_pct~longleaf_bam2)
+llmod2 <- lm(data=longleaffortest, uo_pct~longleaf_bam2)
+llmod3 <- lm(data=longleaffortest, encr_pct~longleaf_bam2)
+
+summary(llmod1)
+summary(llmod2)
+summary(llmod3)
+
+#longleaf differences
+#pine
+pine is signif, p < 0.05, r2 = 0.17
+each 1 increase in pine BA m2 = 2.1 +/- 0.9 increase pine leaf litter mass
+#uo
+uo is not, p = 0.1, r2 = 0.10
+each 1 increase in pine BA m2 = 1.9 +/- 1.1 decrease uo leaf litter mass
+
+#encroaching
+encr is not p = 0.94 , r2 = 0.00
+each 1 increase in pine BA m2 = 0.9 +/- 1.1 decrease encrac leaf litter mass
+
+
+othermod1 <- lm(data=otherpinefortest, pine_pct~otherpine_bam2)
+othermod2 <- lm(data=otherpinefortest, uo_pct~otherpine_bam2)
+othermod3 <- lm(data=otherpinefortest, encr_pct~otherpine_bam2)
+
+summary(othermod1)
+summary(othermod2)
+summary(othermod3)
+
+#other pine differences
+#pine
+pine is signif, p < 0.001, r2 = 0.30
+each 1 increase in pine BA m2 = 2.4 +/- 0.4 increase pine leaf litter mass
+#uo
+uo is p < 0.001, r2 = 0.29
+each 1 increase in pine BA m2 = 2.9 +/- 0.5 decrease uo leaf litter mass
+
+#encroaching
+encr is not p = 0.27 , r2 = 0.01
+each 1 increase in pine BA m2 = 0.4 +/- 0.4 decrease encrac leaf litter mass
+
+
+ggplot(otherpinefortest, (aes(x=otherpine_bam2,y=pine_pct)))+
+  geom_smooth(method="lm") +
+  geom_point()
+
