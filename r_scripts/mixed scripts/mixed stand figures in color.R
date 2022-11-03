@@ -1,4 +1,4 @@
-####thesis final mixed stand analysis for pub 
+####thesis final mixed stand analysis for pub IN COLOR
 
 library(ggplot2)
 library(readr)
@@ -17,10 +17,12 @@ usloads <- read_csv("data/processed_data/understoryloads.csv")
 litter <- read_csv("data/processed_data/litterxba_mesossummed.csv")
 littershort <- read_csv("data/processed_data/litterba_short.csv")
 
+cbbPalette <- c("#FF0000", "#FF9999", "#FFCC99", "#CC99FF", "#0033FF", "#999999")
+newtest <- c("#FF0000", "#FF9999", "#FFCC99")
 
 Master # this is literally everything raw data
 NOT THIS FOR TREES MAKE SURE ITS MIXED STAND TREES!! # this is all trees
-usloads #this is for figure making only
+  usloads #this is for figure making only
 usloads_short #this is for data analysis
 litter #this is for figure making only
 litter_short #this is for data analysis
@@ -35,8 +37,8 @@ mixed_trees <- read_csv("data/raw_data/Mixed Stands/MixedStand_Trees.csv")
 
 mixed_trees <- mixed_trees %>% 
   filter(Plot!=71) 
- 
-  
+
+
 
 test <- mixed_trees %>% 
   group_by(Site, Plot, tert) %>% 
@@ -56,7 +58,7 @@ test$Functional <- factor(test$Functional, levels =
 ggplot(test, aes(width = 0.8, color = Functional)) +
   geom_histogram(aes(x=Mean_DBH,y=TPA, fill = Functional),stat="identity",
                  position = "jitter",binwidth = 6,)
-  
+
 ggplot(test2, aes(width = 0.8, fill = Functional)) +
   geom_histogram(aes(x=TPA, fill = Functional), color = "black",binwidth = 50)
 
@@ -73,7 +75,7 @@ ggplot(test, aes(x=QMD,y=TPHA, color = secondary)) +
 test2 <- test %>% 
   mutate(logTPHA = log(TPHA),
          logQMD = log(QMD))
-  
+
 ggplot(test2, aes(x=logQMD,y=logTPHA, color = tert)) +
   geom_point(position = "jitter", size =2) +
   geom_smooth(method = "lm", formula = y ~ poly(x, 3), se = F) +
@@ -82,7 +84,7 @@ ggplot(test2, aes(x=logQMD,y=logTPHA, color = tert)) +
   labs(x = "logQMD (cm)",
        y = "logTPHA",
        color="Species Group")
-  
+
 
 ggplot(test3, aes(x=QMD, fill = tert)) +
   geom_bar(stat="bin", position = "stack", color = "black",
@@ -97,11 +99,11 @@ ggplot(test3, aes(x=TPHA, fill = tert)) +
 
 geom_smooth(method="lm", SE = F) +
   theme_bw() + 
-
-
+  
+  
   #models#
-
-sitevar <- lm(Litter~Site+group, data = usloads_short)
+  
+  sitevar <- lm(Litter~Site+group, data = usloads_short)
 summary(sitevar)
 TukeyHSD(aov(sitevar))
 
@@ -138,23 +140,30 @@ f2 <- ggplot(Master, aes(x = Pine_pctBAft2a, fill = Site)) +
   geom_vline(xintercept = 70, linetype = "longdash", size = 1.5) +
   xlab("Relative pine basal area (%)")+
   ylab("Number of stands") +
-  annotate("text", x = 20, y = 8.5, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 4) +
-  annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
-  annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
+  annotate("text", x = 20, y = 8.8, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 8) +
+  annotate("text", x = 50, y = 8.8, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 8) +
+  annotate("text", x = 89, y = 8.8, label =  "Pine Forest\n n = 21" , fontface = 2, size = 8) +
   theme(legend.position = "none") +
+  scale_fill_brewer(palette = "YlOrBr") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) 
+
++
+  scale_fill_manual(values = c(cbbPalette))
   scale_fill_grey(start = 0.35, end = 0.9)
 
 
 
 legend <- get_legend(
   
-  f1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  f2 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f3 <- cowplot::plot_grid(f1,f2,
-                   ncol = 2)  
+                         ncol = 2)  
 
-f4 <- plot_grid(f3, legend, ncol = 1, rel_heights = c(1, .1))
+f4 <- plot_grid(f2, legend, ncol = 1, rel_heights = c(1, .1))
 
 # QMD and TPHA figures
 
@@ -170,7 +179,11 @@ f5 <- ggplot(test3, aes(x = QMD, fill = tert)) +
   #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
   #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
   theme(legend.position = "none") +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                     values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   scale_x_continuous(limits=c(0,80))
 f6 <- ggplot(test3, aes(x = TPHA, fill = tert)) +
   geom_histogram(stat="bin", color = "black",binwidth = 50) +
@@ -182,7 +195,11 @@ f6 <- ggplot(test3, aes(x = TPHA, fill = tert)) +
   #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
   #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
   theme(legend.position = "none") +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                     values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   scale_x_continuous(limits=c(0,900))
 
 legend2 <- get_legend(
@@ -191,7 +208,7 @@ legend2 <- get_legend(
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f7 <- plot_grid(f5,f6,
-            ncol = 2)  
+                ncol = 2)  
 
 f8 <- plot_grid(f7, legend2, ncol = 1, rel_heights = c(1, .1))
 
@@ -233,21 +250,27 @@ f10 <- ggplot(usloads_mghagroup, aes(x=group,y=Mean_Load_Mgha, fill=Biomass_Load
   labs(x="Forest Type",
        y=expression(paste("Mean fuel load  Mg ha"^~-1)),
        fill="Fuel load type") +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_brewer(palette = "YlOrBr") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   theme(legend.position = "none")
+  
 
-
+(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+  legend.text = element_text(size = 12)) 
 
 
 legend3 <- get_legend(
   
-  f9 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  f10 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+              legend.text = element_text(size = 12))  +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f11 <- plot_grid(f9,f10,
-                ncol = 2)  
+                 ncol = 2)  
 
-f12 <- plot_grid(f11, legend3, ncol = 1, rel_heights = c(1, .1))
+f12 <- plot_grid(f10, legend3, ncol = 1, rel_heights = c(1, .1))
 
 #canopy cover
 
@@ -272,8 +295,8 @@ my_comparisons1 <- list( c("CRAT", "MOTDF"),
                          c("KNP","CRAT"),
                          c("KNP","TANF"))
 my_comparisons2 <- list( c("Hardwood Forest", "Mixed Forest"),
-                        c("Pine Forest", "Hardwood Forest"),
-                        c("Mixed Forest", "Pine Forest") )
+                         c("Pine Forest", "Hardwood Forest"),
+                         c("Mixed Forest", "Pine Forest") )
 
 f13 <- ggplot(Master, aes(x=Site,y=Avg_CC, fill = Site)) +
   geom_boxplot() +
@@ -289,10 +312,13 @@ f14 <- ggplot(Master, aes(x=group,y=Avg_CC, fill = group)) +
   theme_bw() +
   labs(x="\nForest Type",
        y= "Mean canopy cover (%)") +
-  #stat_compare_means(comparisons = my_comparisons) +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  stat_compare_means(comparisons = my_comparisons2, hide.ns = T) +
+  scale_fill_brewer(palette = "YlOrBr") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   theme(legend.position = "none")
-  
+
 legend4 <- get_legend(f13 + theme(legend.position = "none"))
 
 f15 <- plot_grid(f13,f14,
@@ -311,9 +337,9 @@ litter$Little_type[litter$Little_type=="Mesophyte"] <- "Encroaching"
 litter$Little_type[litter$Little_type=="Pinus"] <- "Pine"
 
 litter$Little_type <- factor(litter$Little_type, 
-                                     levels = c("Encroaching",
-                                                "Pine",
-                                                "Upland oak"))
+                             levels = c("Encroaching",
+                                        "Pine",
+                                        "Upland oak"))
 litter$Site[litter$Site=="CR"] <- "CRAT"
 litter$Site[litter$Site=="MOT"] <- "MOTDF"
 litter$Site[litter$Site=="Talladega"] <- "TANF"
@@ -339,26 +365,28 @@ f18 <- ggplot(litter, aes(x=group,y=Pct_wt, fill = Little_type)) +
        y= "Percent leaf litter by mass (%)", 
        fill = "Leaf Litter Group") +
   #stat_compare_means(comparisons = my_comparisons) +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_brewer(palette = "YlOrBr") +
+  theme(axis.title=element_text(size=14)) +
   theme(legend.position = "none")
 
 legend5 <- get_legend(
   
-  f17 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  f18 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+              legend.text = element_text(size = 12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f19 <- plot_grid(f17,f18,
                  ncol = 2)  
 
-f20 <- plot_grid(f19, legend5, ncol = 1, rel_heights = c(1, .1))
+f20 <- plot_grid(f18, legend5, ncol = 1, rel_heights = c(1, .1))
 
 ## litter regression figs
 
 littershort <- read_csv("data/processed_data/litterba_short.csv")
 littershort$Little_type <- factor(littershort$Little_type, 
-                             levels = c("Encroaching",
-                                        "Pine",
-                                        "Upland oak"))
+                                  levels = c("Encroaching",
+                                             "Pine",
+                                             "Upland oak"))
 
 ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type))+
   geom_point(size = 1.5) +
@@ -379,17 +407,16 @@ litres3 <- lm(data=littershort,pine_load~Pine_ft2a)
 summary(litres3)
 
 f21 <- ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type,
-                   shape = Little_type))+
+                          shape = Little_type))+
   geom_smooth(method="lm", se=F, size = 2) +
-  scale_color_grey(start = 0.2, end = 0.8) +
   theme_bw() +
   geom_vline(xintercept = 30, linetype = "dashed", size = 1) +
   geom_vline(xintercept = 70, linetype = "dashed", size = 1) +
-  annotate("text", x = 18, y = 75, label =  "Hardwood Forest\n", fontface = 2, size = 6) +
-  annotate("text", x = 50, y = 75, label =  "Mixed Forest\n" , fontface = 2, size = 6) +
-  annotate("text", x = 85.5, y = 75, label =  "Pine Forest\n" , fontface = 2, size = 6) +
+  annotate("text", x = 18, y = 75, label =  "Hardwood Forest\n", fontface = 2, size = 8) +
+  annotate("text", x = 50, y = 75, label =  "Mixed Forest\n" , fontface = 2, size = 8) +
+  annotate("text", x = 85.5, y = 75, label =  "Pine Forest\n" , fontface = 2, size = 8) +
   scale_x_continuous(breaks = c(0,10,20,30,40,50,60,70,80,90,100),
-                                limits=c(10,100)) +
+                     limits=c(10,100)) +
   labs(x="Relative pine basal area (%)",
        y="Percent leaf litter by mass (%)",
        color="Species Group",
@@ -397,11 +424,17 @@ f21 <- ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type,
        size="Species Group") +
   geom_point(size = 4,stroke = 1.1, alpha = 0.4, position = "jitter") +
   scale_shape_manual(values=c(21,22,24)) +
+  scale_color_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                     values = c("#FFFFFF","#FFFFFF","#FFFFFF")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   theme(legend.position = "none")
 
 legend6 <- get_legend(
   
-  f21 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  f21 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+              legend.text = element_text(size = 12)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f22 <- plot_grid(f21, legend6, ncol = 1, rel_heights = c(1, .1))
@@ -465,17 +498,17 @@ longleafxlitter$Little_type[longleafxlitter$Little_type=="Mesophyte"] <- "Encroa
 longleafxlitter$Little_type[longleafxlitter$Little_type=="Pinus"] <- "Pine"
 
 longleafxlitter$Little_type <- factor(longleafxlitter$Little_type, 
-                             levels = c("Encroaching",
-                                        "Pine",
-                                        "Upland oak"))
+                                      levels = c("Encroaching",
+                                                 "Pine",
+                                                 "Upland oak"))
 
 othersxlitter$Little_type[othersxlitter$Little_type=="Mesophyte"] <- "Encroaching"
 othersxlitter$Little_type[othersxlitter$Little_type=="Pinus"] <- "Pine"
 
 othersxlitter$Little_type <- factor(othersxlitter$Little_type, 
-                                      levels = c("Encroaching",
-                                                 "Pine",
-                                                 "Upland oak"))
+                                    levels = c("Encroaching",
+                                               "Pine",
+                                               "Upland oak"))
 
 f23 <- ggplot(longleafxlitter, aes(x = longleaf_bam2, shape = Little_type)) +
   geom_point(aes(y = Pct_wt, color = Little_type), size = 2, stroke = 1.1) +
@@ -488,9 +521,11 @@ f23 <- ggplot(longleafxlitter, aes(x = longleaf_bam2, shape = Little_type)) +
   scale_y_continuous(limits = c(0,100)) +
   annotate("text", x = 6.2, y = 87.5, label = "n = 27", fontface = 2, size = 8) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  scale_color_grey(start = 0.35, end = 0.8) +
-  scale_shape_manual(values=c(21,22,24))
-  
+  scale_shape_manual(values=c(21,22,24)) +
+  scale_color_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                     values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=14)) 
+
 
 f24 <- ggplot(othersxlitter, aes(x = otherpine_bam2, shape = Little_type)) +
   geom_point(aes(y = Pct_wt, color = Little_type), size = 2, stroke = 1.1) +
@@ -503,13 +538,16 @@ f24 <- ggplot(othersxlitter, aes(x = otherpine_bam2, shape = Little_type)) +
   scale_y_continuous(limits = c(0,100)) +
   annotate("text", x = 10.84, y = 87.5, label = "n = 92", fontface = 2, size = 8) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  scale_color_grey(start = 0.35, end = 0.8)  +
-  scale_shape_manual(values=c(21,22,24))
-  
+  scale_shape_manual(values=c(21,22,24)) +
+  scale_color_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                     values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=14))
+
 
 legend7 <- get_legend(
   
-  f23 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  f23 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+              legend.text = element_text(size = 12)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f25 <- plot_grid(f23,f24,
@@ -547,7 +585,7 @@ qmdandtpha <- test3 %>%
             qmd_se2 = std.error(qmd_se),
             tpha_mean2 = mean(tpha_mean),
             tpha_se2 = std.error(tpha_se))
-  
+
 
 mean qmd all stands was 30.8 cm +/- 0.5 
 mean tpha all stands was 263 tpha +/- 8.2
@@ -672,7 +710,7 @@ loads_sum <- usloads_short %>%
             se_duff = std.error(Duff*10),
             mean_litter = mean(Litter*10),
             se_litter = std.error(Litter*10))
-            
+
 total_loads <- usloads_short %>% 
   group_by(Plot) %>% 
   summarise(plot_total = sum(CWD*10,FWD*10,Herbs*10,Shrub*10,Duff*10,Litter*10),
@@ -690,7 +728,7 @@ shrubs: 1.99 +/- 0.3 NO DIFF IN SITE OR FOREST TYPE
 ALL STANDS (Mg ha-1)
 coarse: 7.58 +/- 1.1 NO DIFF IN SITE OR FOREST TYPE
 fine: 3.57 +/- 0.2 NO DIFF IN SITE OR FOREST TYPE
-  
+
 #litter and duff
 ALL STANDS (Mg ha-1)
 duff: 5.12 +/- 0.5 NO DIFF IN SITE OR FOREST TYPE
@@ -734,13 +772,13 @@ confint(pinetest)
 #pine
 pine is sig diff in all three groups p < 0.001
 pine had 38.3% +/- 17.6 more leaf litter in pine than hard !!!
-pine had 23.4% +/- 15.8 more leaf litter in mixed than hardwood
+  pine had 23.4% +/- 15.8 more leaf litter in mixed than hardwood
 pine had 14.8% +/- 10.6 more leaf litter in pine than mixed
 #uo
 uo is sig diff in mix-hard and pine-hard comp p < 0.001
 uo had 34.9% +/- 17.5 LESS leaf litter in pine than hard !!!
-uo had 28.1% +/- 15.5 LESS leaf litter in mixed in than hard !!! 
-uo had 6.8% +/- 10.5 less leaf litter in pine than mixed ~nonsig
+  uo had 28.1% +/- 15.5 LESS leaf litter in mixed in than hard !!! 
+  uo had 6.8% +/- 10.5 less leaf litter in pine than mixed ~nonsig
 #encroaching
 encr is signif between mixed and pine p < 0.05
 encr had 3.4% +/- 13.2 less leaf litter in pine than hard

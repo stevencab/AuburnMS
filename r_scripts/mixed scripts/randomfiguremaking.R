@@ -47,20 +47,20 @@ seed <- sapseed %>%
 sapcalc <- sap %>% 
   group_by(Site, Plot, Functional) %>%
   summarise(sum_count = sum(Count),
-            Saplings_100m2 = log((sum_count/3.6)*100))
+            Saplings_100m2 = log(((sum_count+1)/3.6)*100))
 
 seedcalc <- seed %>% 
   group_by(Site, Plot, Functional) %>%
   summarise(sum_count = sum(Count),
-            Seedlings_100m2 = log((sum_count/1.13)*100))
+            Seedlings_100m2 = log(((sum_count+1)/1.13)*100))
 
 #more sap seed for transfer to master for PCA
 
 sapseedsums <- sapseed %>% 
-  group_by(Site, Plot, Type) %>% 
+  group_by(Site, Plot, Type, Functional) %>% 
   summarise(pine_sum = sum(Count[Functional=="pine"]),
             uo_sum = sum(Count[Functional=="upland oak"]),
-            meso_sum = sum(Count[Functional=="mesophyte"]))
+            meso_sum = sum(Count[Functional=="mesophyte"])) 
 
 sapseedarea <- sapseedsums %>% 
   group_by(Site, Plot) %>% 
@@ -70,6 +70,15 @@ sapseedarea <- sapseedsums %>%
             Pine_Saplings100m2 = ((pine_sum[Type=="Sapling"]/3.6)*100),
             UO_Saplings100m2 = ((uo_sum[Type=="Sapling"]/3.6)*100),
             Meso_Saplings100m2 = ((meso_sum[Type=="Sapling"]/3.6)*100))
+
+sapseedareaHA <- sapseedsums %>% 
+  group_by(Site, Plot, Functional) %>% 
+  summarise(Pine_SeedlingsHA = ((pine_sum[Type=="Seedling"]/4.01)*10000),
+            UO_SeedlingsHA = ((uo_sum[Type=="Seedling"]/4.01)*10000),
+            Meso_SeedlingsHA = ((meso_sum[Type=="Seedling"]/4.01)*10000),
+            Pine_SaplingsHA = ((pine_sum[Type=="Sapling"]/40.72)*10000),
+            UO_SaplingsHA = ((uo_sum[Type=="Sapling"]/40.72)*10000),
+            Meso_SaplingsHA = ((meso_sum[Type=="Sapling"]/40.72)*10000))
 
 write_csv(sapseedarea, file = "data/processed_data/MixedStand_SaplingsSeedlings.csv")
             
@@ -96,7 +105,6 @@ litter$Little_type <- factor(litter$Little_type, levels = c("Pinus","Upland oak"
 
 #fuel composition 
 
-ggplot(litter, aes(x=Pine_pctBAft2a, y=Pct_wt)) +
   geom_point(aes(color = Little_type)) +
   geom_smooth(method = "lm", aes(color = Little_type), se = F) +
   ylab("Leaf liter fuel composition by mass (%)") +
@@ -216,21 +224,29 @@ cp8 <- ggplot(Master, aes(x=group, y = Avg_Duff_cm)) +
 
 
 #seedling density
-
-cp9 <- ggplot(seedgroup, aes(x=group, y = Seedlings_100m2, color = Functional)) +
+test45 <- left_join(sapseedarea,Master, by = "Plot")
+cp9 <- ggplot(seedgroup %>% filter(!is.na(Functional)), aes(x=group, y = Seedlings_100m2, fill = Functional)) +
   geom_boxplot(aes(y=Seedlings_100m2)) +
   theme_bw() +
   theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5)) +
   ggtitle("log(seedlings per 100m2)") +
-  ylab("log(Seedlings per 100m2") +
-  geom_signif(comparisons = mycomps2, map_signif_level = T)
+  labs(y="log(Seedlings per 100m2)",
+       x = "Forest Type",
+       color = "Species Group") +
+  scale_fill_manual(labels = c("#N/A","Encroaching", "Pine", "Upland oak"), 
+                     values = c("#FFFFFF","#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
+  geom_signif(comparisons = mycomps2, map_signif_level = F)
+
 
 
 mycomps1 <- list(c("30 - 70% Pine",">70% Pine"), c("< 30% Pine",">70% Pine"),
                  c("30 - 70% Pine", "< 30% Pine"))
 
-mycomps2 <- list(c("pine","upland oak"), c("pine","mesophyte"),
-                c("mesophyte", "upland oak"))
+mycomps2 <- list(c("Pine","Upland oak"), c("Pine","Encroaching"),
+                c("Encroaching", "Upland oak"))
 
 seedcalc_hl <- seedcalc %>% 
   filter(Functional=="pine", Seedlings_100m2 > 7 )
@@ -238,13 +254,18 @@ seedcalc_hl <- seedcalc %>%
 
 #sapling density
 
-cp10 <- ggplot(sapgroup, aes(x=group, y = Saplings_100m2, color = Functional)) +
+cp10 <- ggplot(sapgroup, aes(x=group, y = Saplings_100m2, fill = Functional)) +
   geom_boxplot(aes(y=Saplings_100m2)) +
 theme_bw() +
   theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5)) +
-  ggtitle("log(saplings per 100m2)") +
-  ylab("log(Saplings per 100m2") +  
-  geom_signif(comparisons = mycomps2, map_signif_level = T)
+  ggtitle("log(Saplings per 100m2)") +
+  labs(y="log(Saplings per 100m2)",
+       x = "Forest Type",
+       color = "Species Group") +  scale_fill_manual(labels = c("#N/A","Encroaching", "Pine", "Upland oak"), 
+                     values = c("#FFFFFF","#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
 
 
 #cones

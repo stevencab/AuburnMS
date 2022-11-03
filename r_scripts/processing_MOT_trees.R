@@ -149,11 +149,31 @@ ba_x_pine_plot <- ba_x_pine %>%
   group_by(plot) %>% 
   summarise(pct_pine = (pine_ba_m2ha/before_ba_m2ha)*100)
 
+new1 <- trees %>% 
+  filter(functional_group=="mesophyte") %>% 
+  filter(dbh < 20.0)
 
 ####### do the same for % pyrophye and mesophyte #########
 
 pyro <- trees %>% 
   filter(functional_group=="pine" | functional_group=="hardwood pyro")
+
+new2 <- rbind(pyro,new1)
+
+new3 <- new1 %>% 
+  filter(location!="E") %>% 
+  group_by(stem_id, plot, species, functional_group) %>% 
+  summarise(dbh_cm = dbh,
+            dbh_in = (dbh)*0.393701) %>% 
+  summarise(ba_m2 = ((pi)*(dbh_cm/2)^2)/(10000),
+            ba_ft2 = ((pi)*(dbh_in/2)^2)/(144)) %>% 
+  ungroup(.) %>% 
+  group_by(plot) %>% 
+  summarise(AFTER_ba_m2ha = sum(ba_m2)/0.1011714,
+            AFTER_ba_ft2a = sum(ba_ft2)/0.25)
+new4 <- left_join(new3,plot_basal_area)
+new5 <- new4 %>% 
+  summarise(change = mean(AFTER_ba_m2ha))
 
 pyro_ba <- pyro %>% 
   group_by(stem_id, plot, species, functional_group) %>% 

@@ -1,5 +1,5 @@
-####thesis final midstory analysis for pub 
-
+####thesis final midstory analysis for pub  IN COLOR
+ 
 library(ggplot2)
 library(readr)
 library(dplyr)
@@ -84,9 +84,9 @@ MasterFuelLoadsMgha_MSR <- left_join(join2,CWD)
 
 allloads <- read_csv("data/processed_data/midstory removal/TotalFuelLoads_Mgha_long2.csv") 
 allloads$Load_type <- factor(allloads$Load_type, 
-                                      levels = c("FWD","CWD", "Herbaceous", "Shrubs","Duff", "Litter"))
+                             levels = c("FWD","CWD", "Herbaceous", "Shrubs","Duff", "Litter"))
 allloads$Collection   <- factor(allloads$Collection  , 
-                             levels = c("Pre-Thin", "Post-Thin"))
+                                levels = c("Pre-Thin", "Post-Thin"))
 
 #^this is for figure making!!!!
 
@@ -110,13 +110,18 @@ g1 <- ggplot(allloads, aes(x = Treatment, y = Total_load))+
   labs(x="Treatment",
        y=expression(paste("Mean fuel load  Mg ha"^~-1)),
        fill="Fuel load type") +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_brewer(palette = "YlOrBr") +
   theme(legend.position = "none") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   facet_wrap(~Collection)
 
 legendg1 <- get_legend(
   
-  g1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  g1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 g2 <- plot_grid(g1, legendg1, ncol = 1, rel_heights = c(1, .1))
@@ -180,7 +185,7 @@ totals <- log_loads %>%
   group_by(Collection, Plot, Treatment, meso_os) %>% 
   summarise(total_bio = sum(Biomass_Duff_kgm2+Biomass_Herb+Biomass_Litter_kgm2+Biomass_Shrub+CWD_Mgha+FWD_Mgha)) %>% 
   filter(Collection=="post-thin")
- 
+
 totaltest <- lme(data=totals, total_bio~Treatment,random = ~1|Plot/Treatment)
 summary(totaltest)
 
@@ -212,7 +217,7 @@ litterlong <- litterlong %>%
   filter(litter_type %in% c("sg","wo","meso")) %>% 
   group_by(collection,Plot,Treatment,Burn_Szn,canopy_trt) %>% 
   summarise(litter_pct = sum(litter_pct)) 
-  
+
 
 ggplot(compchange, aes(x = Treatment, y = litter_pct, fill = litter_type)) +
   geom_boxplot() +
@@ -281,10 +286,10 @@ littermsr2 <- read_csv("data/processed_data/midstory removal/longlitter.csv") %>
   filter(litter_type!=c("sg")) %>%
   filter(litter_type!=c("wo")) %>%
   filter(litter_type!=c("meso"))
-  
+
 littermsr <- littermsr %>% 
   mutate(litter_type=c("encroaching"))
-  
+
 
 msrlit <- rbind(littermsr2,littermsr) %>% 
   group_by(collection, Plot, Treatment, canopy_trt, litter_type) %>% 
@@ -325,18 +330,24 @@ trees_msrdist <- trees %>%
   summarise(QMD = dbh)
 sqrt((sum((dbh)^2))/n_distinct(stem_id))
 g3 <- ggplot(trees_msrdist, aes(x=QMD,fill = functional_group)) +
-geom_histogram(stat="bin", color = "black",binwidth = 4) +
+  geom_histogram(stat="bin", color = "black",binwidth = 4) +
   theme_bw() +
   labs(x= expression(paste("DBH (cm)")),
        y= "Number of individuals",
        fill = "Species Group") +
   theme(legend.position = "none") + 
-  scale_x_continuous(limits = c(0,70)) + 
-  scale_fill_grey(start = 0.35, end =0.9)
+  scale_x_continuous(limits = c(0,70)) +
+  scale_fill_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                                                           values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
 
 legendg2 <- get_legend(
   
-  g3 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  g3 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 g5 <- plot_grid(g3,g4,
@@ -364,9 +375,13 @@ g4 <- ggplot(msrtpha, aes(x = functional_group, y = TPHA,fill = functional_group
   theme_bw() +
   labs(x= expression(paste("Species group")),
        y= "Density (trees per hectare)") +
-  scale_fill_grey(start = 0.35, end =0.9) +
-  theme(legend.position = "none") 
-  
+  theme(legend.position = "none") +
+  scale_fill_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
+
 
 #litter change figs
 
@@ -423,6 +438,9 @@ compchange$litter_type[compchange$litter_type=="uo"] <- "Upland oak"
 compchange$litter_type[compchange$litter_type=="pine"] <- "Pine"
 compchange$litter_type <- factor(compchange$litter_type, levels = c(
   "Encroaching","Pine", "Upland oak"))
+
+compchange <- read_csv("data/processed_data/midstory removal/littercompchangesplotALL.csv")
+
 decomp <- ggplot(compchange, aes(x = Treatment, y = litter_pct, fill = litter_type)) +
   geom_boxplot() +
   facet_wrap(~collection) + 
@@ -446,29 +464,46 @@ ggplot(decomp, aes(x = collection, y = mean_pct, color = litter_type, group = li
   stat_summary(fun=mean, geom="point", size = 5)
 
 #for pub
-g7 <- ggplot(decomp, aes(x = collection, y = mean_pct, color = litter_type, group = litter_type))+
+decomp2 <- decomp %>% 
+  group_by(collection, Treatment, litter_type) %>% 
+  summarise(mean_se = std.error(mean_pct))
+
+
+decomp3 <- merge(decomp,decomp2, all.x = T)
+= "collection", "Treatment", "litter_type")
+
+
+g7 <- ggplot(decomp3, aes(x = collection, y = mean_pct, color = litter_type, group = litter_type))+
   facet_wrap(~Treatment) +
   theme_bw() +
   geom_point(alpha = 0.35) +
   stat_summary(fun=mean, geom="line", size = 1) +
   stat_summary(fun=mean, geom="point", size = 5) +
+  geom_errorbar(aes(ymin = mean_pct - mean_se,
+                    ymax = mean_pct + mean_se, group = litter_type)) +
   labs(x = "\nLeaf litter harvest (m/dd/yyyy)",
        y = "\nLeaf litter by mass (%)",
        color = "Species Group") +
-  scale_color_grey(start = 0.35, end =0.9) +
+  scale_color_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14,angle = 45, hjust = 1),
+        axis.text.y = element_text(size=14)) +
   theme(legend.position = "none")
 
 legendg3 <- get_legend(
   
-  g7 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  g7 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 g8 <- plot_grid(g7, legendg3, ncol = 1, rel_heights = c(1, .1))
 
 
-  guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) 
-  
-  
+guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) 
+
+
 
 ggplot(decomp, aes(x = collection, y = mean_pct, color = litter_type, group = litter_type))+
   facet_wrap(~canopy_trt) +
@@ -538,7 +573,7 @@ summary(duftest)
 totalraws <- fornumbsmaster %>% 
   group_by(Collection, Plot, Treatment, canopy_trt) %>% 
   mutate(sumtotallogfl2 =sum(Biomass_Herb+Biomass_Shrub+CWD_Mgha+FWD_Mgha+
-                                 Biomass_Litter_kgm2+Biomass_Duff_kgm2))
+                               Biomass_Litter_kgm2+Biomass_Duff_kgm2))
 
 
 totaltest3 <- lme(data=totalraws, sumtotallogfl2~Treatment+canopy_trt,random = ~1|Plot/Treatment)
@@ -575,4 +610,5 @@ emmeans(moduo, pairwise ~ canopy_trt)
 modmeso <- lme(data=mesodecomp, litter_pct~canopy_trt+collection, random = ~1|Plot/canopy_trt/Treatment) 
 summary(modmeso)
 emmeans(modmeso, pairwise ~ canopy_trt)
+
 

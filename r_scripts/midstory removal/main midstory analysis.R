@@ -148,39 +148,61 @@ p1 <- ggplot(fli, aes(x = Burn_Szn, y = fli, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  labs(y=expression(paste("Fireline Intensity  kW  ",  m^{-1})))
+  labs(y=expression(paste("Fireline Intensity  kW  ",  m^{-1}))) +
+  scale_fill_manual(labels = c("ED", "LD", "GS"), 
+                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
 p2 <- ggplot(fli, aes(x = Burn_Szn, y = consump, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  labs(y="Fuel Consumption (%)")
+  labs(y="Fuel Consumption (%)") +
+  scale_fill_manual(labels = c("ED", "LD", "GS"), 
+                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
 p3 <- ggplot(fli, aes(x = Burn_Szn, y = frs1, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  labs(y=expression(paste("Fire Spread Rate  cm  ", s^{-1})))
+  labs(y=expression(paste("Fire Spread Rate  cm  ", s^{-1}))) +
+  scale_fill_manual(labels = c("ED", "LD", "GS"), 
+                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
 p4 <- ggplot(fli, aes(x = Burn_Szn, y = avg_max_temp, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
   theme_bw()+
-  scale_fill_grey(start = 0.2, end = .85) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  labs(y = "Maximum Temperature °C")
+  labs(y = "Maximum Temperature °C") +
+  scale_fill_manual(labels = c("ED", "LD", "GS"), 
+                    values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
 
 legend <- get_legend(
-  p1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  p3 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
-    labs(fill = "Burn Timing") +
-    scale_fill_grey(start = 0.2, end = .85))
+    labs(fill = "Burn Season") 
+  
+  +
+    scale_fill_grey(start = 0.35, end =0.9))
     
-    scale_fill_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
-                      values = c("#00AFBB","#E7B800","#FC4E07")))
+newcolorsSEASON <- scale_fill_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
+                      values = c("#00AFBB","#E7B800","#FC4E07"))
+newcolorsSPECIES <- scale_color_manual(labels = c("Encroaching", "Pine", "Upland oak"), 
+                               values = c("#00AFBB","#E7B800","#FC4E07"))
 
 title <- ggdraw() +
   draw_label(
@@ -201,10 +223,18 @@ p5 <- cowplot::plot_grid(p1 + theme(axis.title.x = element_blank()) + scale_fill
 ,
                          p4 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
 ,
+                         ncol = 1,
+                         labels = "AUTO")
+
+p5 <- cowplot::plot_grid(p2 + theme(axis.title.x = element_blank()) +   scale_fill_manual(labels = c("ED", "LD", "GS"), 
+                                                                                          values = c("#00AFBB","#E7B800","#FC4E07"))
+                         ,
+                         p3 + theme(axis.title.x = element_blank()) +   scale_fill_manual(labels = c("ED", "LD", "GS"), 
+                                                                                          values = c("#00AFBB","#E7B800","#FC4E07")),
                          ncol = 2,
                          labels = "AUTO")
 
-p6 <- plot_grid(title,p5, ncol = 1, legend,rel_heights = c(0.1,1))
+p6 <- plot_grid(p5,legend, ncol = 1,rel_heights = c(1,.1))
 #ggsave(plot=p6,"figures/midstory removal figs/firebehaviorxtrtseason.png", height = 10, width = 10)
 #^final for four major fire metrics per control/thin
 res1 <- lm(data=fli, fli~Burn_Szn)
@@ -333,7 +363,7 @@ fc4 <- ggplot(firecomp, aes(x = pine, y = avg_max_temp)) +
   theme_bw() +
   facet_wrap(~Treatment) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  labs(y = "Maximum Temperature °C",
+  labs(y = "Maximum Temperature (°C)",
        x="Fuel bed pine litter (%) ")
 
 
@@ -341,7 +371,7 @@ fc4 <- ggplot(firecomp, aes(x = pine, y = avg_max_temp)) +
 legend2 <- get_legend(
   fc1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
-    labs(color = "Burn Timing") +
+    labs(color = "Burn Season") +
     scale_color_grey(start = 0.2, end = .85))
 
     scale_color_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
@@ -385,14 +415,13 @@ pct_litter
 litterlong
 
 pineuo <- litterlong %>% 
-  filter(litter_type %in% c("pine","uo")) %>% 
-  filter(collection %in% c("6/24/2021","6/24/2022"))
+  filter(litter_type %in% c("pine","uo"))
+
 testlit <- litterlong %>%
   filter(litter_type %in% c("sg","wo","meso")) %>% 
   group_by(collection, Plot, Treatment, Burn_Szn, canopy_trt) %>% 
   summarise(litter_type = "meso",
-            litter_pct = sum(litter_pct)) %>% 
-  filter(collection %in% c("6/24/2021","6/24/2022"))
+            litter_pct = sum(litter_pct))
 
 compchange <- rbind(pineuo,testlit)
 compchange$litter_type <- factor(compchange$litter_type, levels = c("pine","uo","meso"))
@@ -400,14 +429,15 @@ compchange$litter_type <- factor(compchange$litter_type, levels = c("pine","uo",
 compchangeplot <- compchange %>% 
   group_by(collection, Plot, Treatment, canopy_trt, litter_type) %>% 
   summarise(litter_pct = mean(litter_pct))
-
+#write_csv(compchangeplot,"data/processed_data/midstory removal/littercompchangesplotALL.csv")
+compchangeplot2 <- read_csv("data/processed_data/midstory removal/littercompchangesplot.csv")
 compchangeplot$Treatment[compchangeplot$Treatment=="thin"] <- "Thin"
 compchangeplot$Treatment[compchangeplot$Treatment=="control"] <- "Control"
-compchangeplot$canopy_trt[compchangeplot$canopy_trt=="low"] <- "Low"
+compchangeplot$canopy_trt[as.character(compchangeplot$canopy_trt=="low")] <- as.character("Low")
 compchangeplot$canopy_trt[compchangeplot$canopy_trt=="med"] <- "Medium"
 compchangeplot$canopy_trt[compchangeplot$canopy_trt=="high"] <- "High"
-compchangeplot$collection[compchangeplot$collection=="6/24/2021"] <- "2021 - Before Thinning"
-compchangeplot$collection[compchangeplot$collection=="6/24/2022"] <- "2022 - After Thinning"
+compchangeplot2$collection[compchangeplot2$collection=="6/24/2021"] <- "2021 - Before Thinning"
+compchangeplot2$collection[compchangeplot2$collection=="6/24/2022"] <- "2022 - After Thinning"
 compchangeplot$canopy_trt <- factor(compchangeplot$canopy_trt, levels = c("Low","Medium","High"))
 compchangeplot$litter_type <- factor(compchangeplot$litter_type, levels = c("pine","uo","meso"))
 
@@ -421,9 +451,7 @@ change1 <- ggplot(compchangeplot, aes(x = Treatment, y = litter_pct, fill = litt
   guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
   labs(y = "Leaf litter by mass (%)",
        x="Treatment",
-       fill = "Litter Type") + 
-  ggtitle("Changes in fuel composition before and after thinning treatment")
-
+       fill = "Species Group")
 change2 <- ggplot(compchangeplot, aes(x = canopy_trt, y = litter_pct, fill = litter_type)) +
   geom_boxplot() +
   theme_bw() + 
@@ -452,37 +480,59 @@ anova(comp2,comp3)
 TukeyHSD(aov(comp1))
 
 
-canopy <- read_csv("data/raw_data/Midstory Removal/most important/CanopyCoversALL.csv")
+#canopy <- read_csv("data/raw_data/Midstory Removal/most important/CanopyCoversALL.csv")
 
-
+canopy <- read_csv("data/processed_data/midstory removal/CanopyCoverBeforeAfter.csv")
 beforeafter <- canopy %>% 
   filter(time %in% c("7/1/2021","9/28/2022")) %>% 
   group_by(time, plot, treatment) %>%
   summarise(avg_cc = mean(pct_cc)) %>% 
   mutate(meso_os = "hi")
 
-beforeafter$meso_os[beforeafter$plot==c(1)] <- "high"
-beforeafter$meso_os[beforeafter$plot==c(3)] <- "high"
-beforeafter$meso_os[beforeafter$plot==c(9)] <- "high"
-beforeafter$meso_os[beforeafter$plot==c(12)] <- "high"
+beforeafter$meso_os[beforeafter$plot==c(1)] <- "High"
+beforeafter$meso_os[beforeafter$plot==c(3)] <- "High"
+beforeafter$meso_os[beforeafter$plot==c(9)] <- "High"
+beforeafter$meso_os[beforeafter$plot==c(12)] <- "High"
 
 
-beforeafter$meso_os[beforeafter$plot==c(2)] <- "med"
-beforeafter$meso_os[beforeafter$plot==c(7)] <- "med"
-beforeafter$meso_os[beforeafter$plot==c(8)] <- "med"
-beforeafter$meso_os[beforeafter$plot==c(10)] <- "med"
+beforeafter$meso_os[beforeafter$plot==c(2)] <- "Medium"
+beforeafter$meso_os[beforeafter$plot==c(7)] <- "Medium"
+beforeafter$meso_os[beforeafter$plot==c(8)] <- "Medium"
+beforeafter$meso_os[beforeafter$plot==c(10)] <- "Medium"
 
-beforeafter$meso_os[beforeafter$plot==c(4)] <- "low"
-beforeafter$meso_os[beforeafter$plot==c(5)] <- "low"
-beforeafter$meso_os[beforeafter$plot==c(6)] <- "low"
-beforeafter$meso_os[beforeafter$plot==c(11)] <- "low"
+beforeafter$meso_os[beforeafter$plot==c(4)] <- "Low"
+beforeafter$meso_os[beforeafter$plot==c(5)] <- "Low"
+beforeafter$meso_os[beforeafter$plot==c(6)] <- "Low"
+beforeafter$meso_os[beforeafter$plot==c(11)] <- "Low"
 
 boxplot(data=beforeafter, avg_cc~meso_os+time+treatment)
 
+beforeafter$treatment <- factor(beforeafter$treatment, levels = c(
+  "Before Thinning",
+  "After Thinning"))
+beforeafter$meso_os <- factor(beforeafter$meso_os, levels = c("Low","Medium","High"))
 
-ggplot(beforeafter, aes(x = time, y = avg_cc, fill = meso_os)) +
+g45 <- ggplot(beforeafter, aes(x = meso_os, y = avg_cc, fill = meso_os)) +
   geom_boxplot() +
-  facet_wrap(~treatment)
+  facet_wrap(~treatment) +
+  theme_bw() +
+  scale_fill_manual(values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14),
+        legend.position = "none") +
+  labs(y = "\nAverage Canopy Cover (%)",
+       x = "\nResidual Encroaching Overstory Group")
+legendg45 <- get_legend(
+  
+  g45 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_blank(), 
+             legend.text=element_text(size=12)) +
+    guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+  
+
+g46 <- plot_grid(g45, legendg45, ncol = 1, rel_heights = c(1, .1))
+
 
 onlypre <- beforeafter %>% 
   filter(time=="7/1/2021")
@@ -507,7 +557,7 @@ post2 <- lm(data = onlypost, avg_cc~treatment)
 summary(post2)
 anova(post,post2)
 
-thin <- lm(data=onlythin, avg_cc~time)
+thin <- lm(data=onlythin, avg_cc~time+meso_os)
 summary(thin)
 confint(thin)
 
@@ -519,3 +569,29 @@ summary(new)
 
 trees <- read_csv("data/processed_data/MOTtrees_clean.csv")
 
+boxplot(data=burn, fuel_moist~canopy_trt)
+burn$canopy_trt <- factor(burn$canopy_trt, levels = c("low","med","high"))
+burn$Burn_Szn <- factor(burn$Burn_Szn, levels = c("ED","LD","GS"))
+
+g95 <- ggplot(burn, aes(x = Burn_Szn, y = fuel_moist, fill = Treatment)) +
+  geom_boxplot() +
+  theme_bw() +
+  labs(x = "Burn Season",
+       y = "Fuel moisture (%)",
+       fill = "Treatment") +
+  scale_fill_manual(values = c("#00AFBB","#E7B800","#FC4E07")) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14),
+        legend.position = "none") +
+  facet_wrap(~canopy_trt)
+
+legendg95 <- get_legend(
+  
+  g95 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+              legend.title=element_blank(), 
+              legend.text=element_text(size=12)) +
+    guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+
+
+g96 <- plot_grid(g95, legendg95, ncol = 1, rel_heights = c(1, .1))
