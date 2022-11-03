@@ -1,0 +1,289 @@
+collection,Plot,Treatment,canopy_trt,litter_type,litter_pct
+6/24/2021,1,Control,High,Encroaching,58.4490294
+6/24/2021,1,Control,High,Pine,38.98643678
+6/24/2021,1,Control,High,Upland oak,2.56453383
+6/24/2021,1,Thin,High,Encroaching,38.1560104
+6/24/2021,1,Thin,High,Pine,56.98264216
+6/24/2021,1,Thin,High,Upland oak,4.861347445
+6/24/2021,2,Control,Medium,Encroaching,24.94993157
+6/24/2021,2,Control,Medium,Pine,51.206907
+6/24/2021,2,Control,Medium,Upland oak,23.84316143
+6/24/2021,2,Thin,Medium,Encroaching,54.54416284
+6/24/2021,2,Thin,Medium,Pine,39.23640191
+6/24/2021,2,Thin,Medium,Upland oak,6.219435256
+6/24/2021,3,Control,High,Encroaching,28.87770851
+6/24/2021,3,Control,High,Pine,66.52038369
+6/24/2021,3,Control,High,Upland oak,4.601907795
+6/24/2021,3,Thin,High,Encroaching,49.27816435
+6/24/2021,3,Thin,High,Pine,47.91670007
+6/24/2021,3,Thin,High,Upland oak,2.805135578
+6/24/2021,4,Control,Low,Encroaching,25.33499663
+6/24/2021,4,Control,Low,Pine,26.30486617
+6/24/2021,4,Control,Low,Upland oak,48.3601372
+6/24/2021,4,Thin,Low,Encroaching,48.95525846
+6/24/2021,4,Thin,Low,Pine,28.18176622
+6/24/2021,4,Thin,Low,Upland oak,22.86297531
+6/24/2021,5,Control,Low,Encroaching,26.89390637
+6/24/2021,5,Control,Low,Pine,44.69570901
+6/24/2021,5,Control,Low,Upland oak,28.41038462
+6/24/2021,5,Thin,Low,Encroaching,10.98429099
+6/24/2021,5,Thin,Low,Pine,51.44768406
+6/24/2021,5,Thin,Low,Upland oak,37.56802496
+6/24/2021,6,Control,Low,Encroaching,21.76933984
+6/24/2021,6,Control,Low,Pine,41.30974324
+6/24/2021,6,Control,Low,Upland oak,36.92091692
+6/24/2021,6,Thin,Low,Encroaching,9.488678201
+6/24/2021,6,Thin,Low,Pine,87.67409972
+6/24/2021,6,Thin,Low,Upland oak,2.837222082
+6/24/2021,7,Control,Medium,Encroaching,36.55355809
+6/24/2021,7,Control,Medium,Pine,61.35832625
+6/24/2021,7,Control,Medium,Upland oak,2.088115662
+6/24/2021,7,Thin,Medium,Encroaching,24.32070326
+6/24/2021,7,Thin,Medium,Pine,75.67929674
+6/24/2021,7,Thin,Medium,Upland oak,0
+6/24/2021,8,Control,Medium,Encroaching,44.05233837
+6/24/2021,8,Control,Medium,Pine,46.52479873
+6/24/2021,8,Control,Medium,Upland oak,9.422862901
+6/24/2021,8,Thin,Medium,Encroaching,57.58018672
+6/24/2021,8,Thin,Medium,Pine,42.25684066
+6/24/2021,8,Thin,Medium,Upland oak,0.162972621
+6/24/2021,9,Control,High,Encroaching,36.30662687
+6/24/2021,9,Control,High,Pine,59.55994836
+6/24/2021,9,Control,High,Upland oak,4.13342477
+6/24/2021,9,Thin,High,Encroaching,36.80827614
+6/24/2021,9,Thin,High,Pine,59.23891134
+6/24/2021,9,Thin,High,Upland oak,3.952812524
+6/24/2021,10,Control,Medium,Encroaching,26.22171761
+6/24/2021,10,Control,Medium,Pine,65.67956671
+6/24/2021,10,Control,Medium,Upland oak,8.098715687
+6/24/2021,10,Thin,Medium,Encroaching,14.9758461
+6/24/2021,10,Thin,Medium,Pine,76.01235325
+6/24/2021,10,Thin,Medium,Upland oak,9.011800655
+6/24/2021,11,Control,Low,Encroaching,25.20339553
+6/24/2021,11,Control,Low,Pine,37.15518499
+6/24/2021,11,Control,Low,Upland oak,37.64141948
+6/24/2021,11,Thin,Low,Encroaching,39.92259178
+6/24/2021,11,Thin,Low,Pine,27.93608518
+6/24/2021,11,Thin,Low,Upland oak,32.14132304
+6/24/2021,12,Control,High,Encroaching,21.11766572
+6/24/2021,12,Control,High,Pine,66.16802215
+6/24/2021,12,Control,High,Upland oak,12.71431212
+6/24/2021,12,Thin,High,Encroaching,49.73195102
+6/24/2021,12,Thin,High,Pine,25.73395869
+6/24/2021,12,Thin,High,Upland oak,24.53409029
+1/17/2022,1,Control,High,Encroaching,71.77165221
+1/17/2022,1,Control,High,Pine,22.78033386
+1/17/2022,1,Control,High,Upland oak,5.448013932
+1/17/2022,1,Thin,High,Encroaching,31.33194092
+1/17/2022,1,Thin,High,Pine,54.744297
+1/17/2022,1,Thin,High,Upland oak,13.92376209
+1/17/2022,2,Control,Medium,Encroaching,32.0697533
+1/17/2022,2,Control,Medium,Pine,51.4219062
+1/17/2022,2,Control,Medium,Upland oak,16.5083405
+1/17/2022,2,Thin,Medium,Encroaching,38.92113105
+1/17/2022,2,Thin,Medium,Pine,49.7879664
+1/17/2022,2,Thin,Medium,Upland oak,11.29090255
+1/17/2022,3,Control,High,Encroaching,41.80752577
+1/17/2022,3,Control,High,Pine,56.57438447
+1/17/2022,3,Control,High,Upland oak,1.618089765
+1/17/2022,3,Thin,High,Encroaching,48.27930754
+1/17/2022,3,Thin,High,Pine,46.37613282
+1/17/2022,3,Thin,High,Upland oak,5.344559641
+1/17/2022,4,Control,Low,Encroaching,19.71905731
+1/17/2022,4,Control,Low,Pine,28.39859928
+1/17/2022,4,Control,Low,Upland oak,51.88234341
+1/17/2022,4,Thin,Low,Encroaching,36.88918628
+1/17/2022,4,Thin,Low,Pine,40.89466959
+1/17/2022,4,Thin,Low,Upland oak,22.21614413
+1/17/2022,5,Control,Low,Encroaching,24.94249208
+1/17/2022,5,Control,Low,Pine,25.73454647
+1/17/2022,5,Control,Low,Upland oak,49.32296145
+1/17/2022,5,Thin,Low,Encroaching,13.63649412
+1/17/2022,5,Thin,Low,Pine,33.2237223
+1/17/2022,5,Thin,Low,Upland oak,53.13978358
+1/17/2022,6,Control,Low,Encroaching,19.5359476
+1/17/2022,6,Control,Low,Pine,33.75435022
+1/17/2022,6,Control,Low,Upland oak,46.70970218
+1/17/2022,6,Thin,Low,Encroaching,24.47400963
+1/17/2022,6,Thin,Low,Pine,61.21567483
+1/17/2022,6,Thin,Low,Upland oak,14.31031554
+1/17/2022,7,Control,Medium,Encroaching,51.36110433
+1/17/2022,7,Control,Medium,Pine,46.81328388
+1/17/2022,7,Control,Medium,Upland oak,1.825611786
+1/17/2022,7,Thin,Medium,Encroaching,23.74490075
+1/17/2022,7,Thin,Medium,Pine,75.71175729
+1/17/2022,7,Thin,Medium,Upland oak,0.543341962
+1/17/2022,8,Control,Medium,Encroaching,37.88724169
+1/17/2022,8,Control,Medium,Pine,49.02836005
+1/17/2022,8,Control,Medium,Upland oak,13.08439826
+1/17/2022,8,Thin,Medium,Encroaching,54.50956302
+1/17/2022,8,Thin,Medium,Pine,38.40658546
+1/17/2022,8,Thin,Medium,Upland oak,7.083851524
+1/17/2022,9,Control,High,Encroaching,39.2549399
+1/17/2022,9,Control,High,Pine,57.77958225
+1/17/2022,9,Control,High,Upland oak,2.965477855
+1/17/2022,9,Thin,High,Encroaching,30.79880129
+1/17/2022,9,Thin,High,Pine,67.0407175
+1/17/2022,9,Thin,High,Upland oak,2.160481213
+1/17/2022,10,Control,Medium,Encroaching,47.66713256
+1/17/2022,10,Control,Medium,Pine,51.71694958
+1/17/2022,10,Control,Medium,Upland oak,0.615917861
+1/17/2022,10,Thin,Medium,Encroaching,10.57133739
+1/17/2022,10,Thin,Medium,Pine,89.09720709
+1/17/2022,10,Thin,Medium,Upland oak,0.331455518
+1/17/2022,11,Control,Low,Encroaching,42.50065291
+1/17/2022,11,Control,Low,Pine,27.06610632
+1/17/2022,11,Control,Low,Upland oak,30.43324077
+1/17/2022,11,Thin,Low,Encroaching,16.75841206
+1/17/2022,11,Thin,Low,Pine,40.78270917
+1/17/2022,11,Thin,Low,Upland oak,42.45887877
+1/17/2022,12,Control,High,Encroaching,22.51342211
+1/17/2022,12,Control,High,Pine,28.62526215
+1/17/2022,12,Control,High,Upland oak,48.86131575
+1/17/2022,12,Thin,High,Encroaching,44.36400956
+1/17/2022,12,Thin,High,Pine,45.12157223
+1/17/2022,12,Thin,High,Upland oak,10.51441821
+4/12/2022,1,Control,High,Encroaching,60.32317325
+4/12/2022,1,Control,High,Pine,35.76595986
+4/12/2022,1,Control,High,Upland oak,3.910866889
+4/12/2022,1,Thin,High,Encroaching,26.64735611
+4/12/2022,1,Thin,High,Pine,70.11472013
+4/12/2022,1,Thin,High,Upland oak,3.237923761
+4/12/2022,2,Control,Medium,Encroaching,36.50789681
+4/12/2022,2,Control,Medium,Pine,40.54736974
+4/12/2022,2,Control,Medium,Upland oak,22.94473346
+4/12/2022,2,Thin,Medium,Encroaching,28.77859489
+4/12/2022,2,Thin,Medium,Pine,68.5344549
+4/12/2022,2,Thin,Medium,Upland oak,2.68695021
+4/12/2022,3,Control,High,Encroaching,39.27143528
+4/12/2022,3,Control,High,Pine,58.10623359
+4/12/2022,3,Control,High,Upland oak,2.622331124
+4/12/2022,3,Thin,High,Encroaching,62.18696219
+4/12/2022,3,Thin,High,Pine,28.88143559
+4/12/2022,3,Thin,High,Upland oak,8.931602216
+4/12/2022,4,Control,Low,Encroaching,30.00481693
+4/12/2022,4,Control,Low,Pine,15.80657051
+4/12/2022,4,Control,Low,Upland oak,54.18861256
+4/12/2022,4,Thin,Low,Encroaching,30.02769993
+4/12/2022,4,Thin,Low,Pine,39.66181769
+4/12/2022,4,Thin,Low,Upland oak,30.31048237
+4/12/2022,5,Control,Low,Encroaching,32.75144156
+4/12/2022,5,Control,Low,Pine,36.49828416
+4/12/2022,5,Control,Low,Upland oak,30.75027428
+4/12/2022,5,Thin,Low,Encroaching,18.27816897
+4/12/2022,5,Thin,Low,Pine,47.12228294
+4/12/2022,5,Thin,Low,Upland oak,34.59954809
+4/12/2022,6,Control,Low,Encroaching,17.85651983
+4/12/2022,6,Control,Low,Pine,37.50600906
+4/12/2022,6,Control,Low,Upland oak,44.63747112
+4/12/2022,6,Thin,Low,Encroaching,15.52737487
+4/12/2022,6,Thin,Low,Pine,67.36297896
+4/12/2022,6,Thin,Low,Upland oak,17.10964617
+4/12/2022,7,Control,Medium,Encroaching,38.2586322
+4/12/2022,7,Control,Medium,Pine,61.14746933
+4/12/2022,7,Control,Medium,Upland oak,0.593898475
+4/12/2022,7,Thin,Medium,Encroaching,10.81561938
+4/12/2022,7,Thin,Medium,Pine,88.39503802
+4/12/2022,7,Thin,Medium,Upland oak,0.789342602
+4/12/2022,8,Control,Medium,Encroaching,38.7126918
+4/12/2022,8,Control,Medium,Pine,48.99078278
+4/12/2022,8,Control,Medium,Upland oak,12.29652542
+4/12/2022,8,Thin,Medium,Encroaching,47.19743683
+4/12/2022,8,Thin,Medium,Pine,47.83336919
+4/12/2022,8,Thin,Medium,Upland oak,4.969193975
+4/12/2022,9,Control,High,Encroaching,26.12902664
+4/12/2022,9,Control,High,Pine,71.03566004
+4/12/2022,9,Control,High,Upland oak,2.835313317
+4/12/2022,9,Thin,High,Encroaching,21.04137558
+4/12/2022,9,Thin,High,Pine,78.70381056
+4/12/2022,9,Thin,High,Upland oak,0.254813863
+4/12/2022,10,Control,Medium,Encroaching,37.81332542
+4/12/2022,10,Control,Medium,Pine,59.18275087
+4/12/2022,10,Control,Medium,Upland oak,3.003923712
+4/12/2022,10,Thin,Medium,Encroaching,8.548779795
+4/12/2022,10,Thin,Medium,Pine,89.48112122
+4/12/2022,10,Thin,Medium,Upland oak,1.970098987
+4/12/2022,11,Control,Low,Encroaching,38.62466157
+4/12/2022,11,Control,Low,Pine,29.71159792
+4/12/2022,11,Control,Low,Upland oak,31.66374051
+4/12/2022,11,Thin,Low,Encroaching,8.434452127
+4/12/2022,11,Thin,Low,Pine,39.33253898
+4/12/2022,11,Thin,Low,Upland oak,52.2330089
+4/12/2022,12,Control,High,Encroaching,27.48425298
+4/12/2022,12,Control,High,Pine,34.78229927
+4/12/2022,12,Control,High,Upland oak,37.73344775
+4/12/2022,12,Thin,High,Encroaching,47.75007891
+4/12/2022,12,Thin,High,Pine,47.75424535
+4/12/2022,12,Thin,High,Upland oak,4.495675747
+6/24/2022,1,Control,High,Encroaching,48.08150838
+6/24/2022,1,Control,High,Pine,38.30799463
+6/24/2022,1,Control,High,Upland oak,13.610497
+6/24/2022,1,Thin,High,Encroaching,24.71327685
+6/24/2022,1,Thin,High,Pine,72.37402466
+6/24/2022,1,Thin,High,Upland oak,2.912698491
+6/24/2022,2,Control,Medium,Encroaching,28.46364919
+6/24/2022,2,Control,Medium,Pine,47.27213705
+6/24/2022,2,Control,Medium,Upland oak,24.26421375
+6/24/2022,2,Thin,Medium,Encroaching,30.59641394
+6/24/2022,2,Thin,Medium,Pine,64.82062025
+6/24/2022,2,Thin,Medium,Upland oak,4.582965815
+6/24/2022,3,Control,High,Encroaching,31.64138242
+6/24/2022,3,Control,High,Pine,63.05680266
+6/24/2022,3,Control,High,Upland oak,5.301814919
+6/24/2022,3,Thin,High,Encroaching,60.44562149
+6/24/2022,3,Thin,High,Pine,34.27196295
+6/24/2022,3,Thin,High,Upland oak,5.282415556
+6/24/2022,4,Control,Low,Encroaching,25.74868305
+6/24/2022,4,Control,Low,Pine,24.60744822
+6/24/2022,4,Control,Low,Upland oak,49.64386874
+6/24/2022,4,Thin,Low,Encroaching,16.1661426
+6/24/2022,4,Thin,Low,Pine,37.36437446
+6/24/2022,4,Thin,Low,Upland oak,46.46948295
+6/24/2022,5,Control,Low,Encroaching,34.3248284
+6/24/2022,5,Control,Low,Pine,30.72427738
+6/24/2022,5,Control,Low,Upland oak,34.95089422
+6/24/2022,5,Thin,Low,Encroaching,16.07203838
+6/24/2022,5,Thin,Low,Pine,48.26108557
+6/24/2022,5,Thin,Low,Upland oak,35.66687606
+6/24/2022,6,Control,Low,Encroaching,21.29247433
+6/24/2022,6,Control,Low,Pine,38.43128046
+6/24/2022,6,Control,Low,Upland oak,40.2762452
+6/24/2022,6,Thin,Low,Encroaching,16.93625026
+6/24/2022,6,Thin,Low,Pine,66.94307839
+6/24/2022,6,Thin,Low,Upland oak,16.12067135
+6/24/2022,7,Control,Medium,Encroaching,36.92109538
+6/24/2022,7,Control,Medium,Pine,59.12110965
+6/24/2022,7,Control,Medium,Upland oak,3.957794971
+6/24/2022,7,Thin,Medium,Encroaching,15.62059451
+6/24/2022,7,Thin,Medium,Pine,83.84943056
+6/24/2022,7,Thin,Medium,Upland oak,0.529974926
+6/24/2022,8,Control,Medium,Encroaching,33.70618949
+6/24/2022,8,Control,Medium,Pine,56.18865544
+6/24/2022,8,Control,Medium,Upland oak,10.10515506
+6/24/2022,8,Thin,Medium,Encroaching,42.91590479
+6/24/2022,8,Thin,Medium,Pine,50.56116037
+6/24/2022,8,Thin,Medium,Upland oak,6.522934837
+6/24/2022,9,Control,High,Encroaching,18.65284475
+6/24/2022,9,Control,High,Pine,66.93705881
+6/24/2022,9,Control,High,Upland oak,14.41009644
+6/24/2022,9,Thin,High,Encroaching,20.18666225
+6/24/2022,9,Thin,High,Pine,75.04126949
+6/24/2022,9,Thin,High,Upland oak,4.772068261
+6/24/2022,10,Control,Medium,Encroaching,29.37162624
+6/24/2022,10,Control,Medium,Pine,65.85763644
+6/24/2022,10,Control,Medium,Upland oak,4.77073732
+6/24/2022,10,Thin,Medium,Encroaching,8.226462742
+6/24/2022,10,Thin,Medium,Pine,90.80427258
+6/24/2022,10,Thin,Medium,Upland oak,0.969264683
+6/24/2022,11,Control,Low,Encroaching,43.75368413
+6/24/2022,11,Control,Low,Pine,35.03556373
+6/24/2022,11,Control,Low,Upland oak,21.21075214
+6/24/2022,11,Thin,Low,Encroaching,9.335072775
+6/24/2022,11,Thin,Low,Pine,38.2450132
+6/24/2022,11,Thin,Low,Upland oak,52.41991403
+6/24/2022,12,Control,High,Encroaching,23.09935736
+6/24/2022,12,Control,High,Pine,48.32857657
+6/24/2022,12,Control,High,Upland oak,28.57206606
+6/24/2022,12,Thin,High,Encroaching,36.04798268
+6/24/2022,12,Thin,High,Pine,55.40923712
+6/24/2022,12,Thin,High,Upland oak,8.542780202
