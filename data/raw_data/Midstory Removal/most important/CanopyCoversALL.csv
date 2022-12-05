@@ -1,4 +1,4 @@
-time,plot,treatment,open,one_minus,pct_cc,description
+time,plot,treatment,open,one_minus,Pct_CC,description
 4/4/2022,1,thin,64,32,33.28,canopy_off_post_thin
 4/4/2022,1,thin,72,24,24.96,canopy_off_post_thin
 4/4/2022,1,thin,76,20,20.8,canopy_off_post_thin

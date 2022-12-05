@@ -10,16 +10,19 @@ MasterPCA <- read_csv("data/processed_data/MixedStand_MasterPCA.csv")
 
 
 
+MasterPCA <- data.frame(scale(MasterPCA[,4:10]))
 
-myPr <- prcomp(MasterPCA[,4:22], center = T, scale = T)
+myPr <- princomp(MasterPCA)
 summary(myPr)
+myPr$loadings
+myPr$scores
+
 plot(myPr, type = "l")
-biplot(myPr, scale = 0
-)
+biplot(myPr, scale = 0)
 
 fit <- princomp(MasterPCA[,4:22], cor = T)
 fviz_pca_biplot(fit)
-
+myPr$loadings
 #extract pc scores
 
 str(myPr)

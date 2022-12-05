@@ -2,7 +2,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1,1,20210517,1,QUNI,32.8,C,Quercus nigra,water oak,mesophyte,3,low,late,NA
 2,1,20210517,1,JUVI,8.5,I,Juniperus virginiana,eastern red cedar,mesophyte,3,low,late,NA
 3,1,20210517,1,LIST,19.2,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
-4,1,20210517,1,NYSY,14.5,I,Nyssa sylvatica,black gum,mesophyte,3,low,late,CHECK THIS
+4,1,20210517,1,NYSY,14.5,I,Nyssa sylvatica,black gum,mesophyte,3,low,late,NA
 5,1,20210517,1,ACRU,14.5,I,Acer rubrum,red maple,mesophyte,3,low,late,NA
 6,1,20210517,1,QUNI,6.4,I,Quercus nigra,water oak,mesophyte,3,low,late,NA
 7,1,20210517,1,LIST,27.7,C,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
@@ -19,7 +19,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 19,1,20210517,1,QUNI,24.8,C,Quercus nigra,water oak,mesophyte,3,low,late,NA
 20,1,20210517,1,ACRU,10.8,I,Acer rubrum,red maple,mesophyte,3,low,late,NA
 21,1,20210517,1,ACRU,3.8,S,Acer rubrum,red maple,mesophyte,3,low,late,NA
-22,1,20210517,1,ULAL,24.4,C,Ulmus alata,winged elm,mesophyte,3,low,late,CHECK THIS
+22,1,20210517,1,ULAL,24.4,C,Ulmus alata,winged elm,mesophyte,3,low,late,NA
 23,1,20210517,1,ACRU,4.2,S,Acer rubrum,red maple,mesophyte,3,low,late,NA
 24,1,20210517,1,LIST,19.1,C,Liquidambar styraciflua,sweetgum,mesophyte,3,low,late,NA
 25,1,20210517,1,JUVI,11.1,I,Juniperus virginiana,eastern red cedar,mesophyte,3,low,late,NA
@@ -53,7 +53,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 53,1,20210517,2,JUVI,9,S,Juniperus virginiana,eastern red cedar,mesophyte,3,low,early,NA
 54,1,20210517,2,JUVI,18.4,I,Juniperus virginiana,eastern red cedar,mesophyte,3,low,early,NA
 55,1,20210517,2,VACCI,2,S,Vaccinium sp.,blueberry,mesophyte,3,low,early,NA
-56,1,20210517,2,NYSY,16,I,Nyssa sylvatica,black gum,mesophyte,3,low,early,CHECK THIS
+56,1,20210517,2,NYSY,16,I,Nyssa sylvatica,black gum,mesophyte,3,low,early,NA
 57,1,20210517,2,PITA,16.8,C,Pinus taeda,loblolly pine,pine,3,low,early,NA
 58,1,20210517,2,LIST,1.5,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
 59,1,20210517,2,LIST,1.6,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
@@ -1344,7 +1344,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 1350,7,5/19/2021,4,LIST,5.5,S,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
 1351,7,5/19/2021,4,LIST,13,I,Liquidambar styraciflua,sweetgum,mesophyte,3,low,early,NA
 1352,7,5/19/2021,E,PIEC,15.5,I,Pinus echinata,shortleaf pine,pine,3,low,NA,NA
-1353,7,5/19/2021,E,QUNI,24.8,I,Quercus nigra,water oak,mesophyte,3,low,NA,check was QUMO
+1353,7,5/19/2021,E,QUNI,24.8,I,Quercus nigra,water oak,mesophyte,3,low,NA,NA
 1354,7,5/19/2021,E,LIST,35.1,C,Liquidambar styraciflua,sweetgum,mesophyte,3,low,NA,NA
 1355,7,5/19/2021,4,LITU,10.5,I,Liquidambar styraciflua,tulip poplar,mesophyte,3,low,early,NA
 1356,7,5/19/2021,E,PITA,40.5,C,Pinus taeda,loblolly pine,pine,3,low,NA,NA
@@ -2163,7 +2163,7 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 2171,11,5/21/2021,E,FAGR,8.7,I,Fagus grandifolia,American beech,mesophyte,4,medium,NA,NA
 2172,11,5/21/2021,FB,ACRU,32.8,C,Acer rubrum,red maple,mesophyte,4,medium,NA,NA
 2173,11,5/21/2021,FB,PITA,26.1,C,Pinus taeda,loblolly pine,pine,4,medium,NA,NA
-2174,11,5/21/2021,FB,PIEC,31.2,C,Pinus echinata,shortleaf pine,pine,4,medium,TRUE,control
+2174,11,5/21/2021,FB,PIEC,31.2,C,Pinus echinata,shortleaf pine,pine,4,medium,TRUE,NA
 2175,12,###############################################################################################################################################################################################################################################################,1,PITA,51.5,D,Pinus taeda,loblolly pine,pine,1,control,NA,NA
 2176,12,###############################################################################################################################################################################################################################################################,1,CARYA,7.4,I,Carya sp.,hickory,mesophyte,1,control,NA,NA
 2177,12,###############################################################################################################################################################################################################################################################,1,LIST,23,C,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
@@ -2326,10 +2326,10 @@ stem_id,plot,date,location,species,dbh,canopy,genus_species,common_name,function
 2334,12,###############################################################################################################################################################################################################################################################,4,LIST,17.1,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2335,12,###############################################################################################################################################################################################################################################################,E,LIST,7.5,S,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2336,12,###############################################################################################################################################################################################################################################################,E,QUFA,34.2,C,Quercus falcata,southern red oak,hardwood pyro,1,control,NA,NA
-2337,12,###############################################################################################################################################################################################################################################################,E,FAGR,6.7,S,Fagus grandifolia,American beech,mesophyte,1,control,NA,MAYBE CHINKAPIN
+2337,12,###############################################################################################################################################################################################################################################################,E,FAGR,6.7,S,Fagus grandifolia,American beech,mesophyte,1,control,NA,NA
 2338,12,###############################################################################################################################################################################################################################################################,E,LIST,21,I,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2339,12,###############################################################################################################################################################################################################################################################,4,PRUNUS,7.9,S,Prunus sp.,cherry,mesophyte,1,control,NA,NA
-2340,12,###############################################################################################################################################################################################################################################################,4,QUAL,56.2,D,Quercus alba,white oak,hardwood pyro,1,control,NA,HUGE
+2340,12,###############################################################################################################################################################################################################################################################,4,QUAL,56.2,D,Quercus alba,white oak,hardwood pyro,1,control,NA,NA
 2341,12,###############################################################################################################################################################################################################################################################,4,LIST,4.6,S,Liquidambar styraciflua,sweetgum,mesophyte,1,control,NA,NA
 2342,12,###############################################################################################################################################################################################################################################################,E,FAGR,13.9,S,Fagus grandifolia,American beech,mesophyte,1,control,NA,NA
 2343,12,###############################################################################################################################################################################################################################################################,E,FAGR,9.3,S,Fagus grandifolia,American beech,mesophyte,1,control,NA,NA

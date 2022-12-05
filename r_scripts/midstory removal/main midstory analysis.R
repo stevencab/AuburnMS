@@ -90,23 +90,33 @@ ggplot(burn, aes(x = Burn_Szn)) +
   facet_wrap(~meso_os) +
   theme_bw() 
 
-#combining fire season with specific litter collection
+#combining fire season with specific litteN=r collection
 edlldl <- edlldl[-c(1)]
-burnxlitter <- left_join(edlldl,burn)
+burnxlitter <- left_join(burnlittercomp,burn)
 #write_csv(burnxlitter, "data/processed_data/midstory removal/litterxEDLD.csv")
 
 
 typeburn <- read_csv("data/processed_data/midstory removal/litterbytypexEDLD.csv")
 typeburn$canopy_trt <- factor(typeburn$canopy_trt, levels = c("low","med","high"))
 
-ggplot(typeburn, aes(x = percent, y = frs1_cms, color = litter_type)) +
+ggplot(burnxlitter, aes(x = meso, y = consump, color = canopy_trt)) +
   geom_smooth(method = "lm", se = F) +
   geom_point()+
-  facet_wrap(~Treatment+canopy_trt)
+  facet_wrap(~Treatment+Burn_Szn)
 
+summary(burnxlitter)
+
+lowconsump <- burnxlitter %>%
+  filter(consump < 15)
+summary(lowconsump)
 ggplot(typeburn, aes(x = Treatment, y = percent, color = litter_type)) +
   geom_boxplot() +
   facet_wrap(~canopy_trt+Burn_Szn)
+
+lowconsump_meanse <- lowconsump %>% 
+  ungroup(.) %>% 
+  summarise(meso_mean = mean(meso),
+            meso_se = std.error(meso))
 
 
 
@@ -135,7 +145,7 @@ summary(res1)
 #calc fli
 
 fli <- burn %>%
-  group_by(Plot, Treatment, Burn_Szn, meso_os) %>% 
+  group_by(Plot, Treatment, Burn_Szn, canopy_trt) %>% 
   summarise(fli = mean(258*(avg_fh/100)^2.17),
             frs1 = mean(frs1_cms),
             frs2 = mean(frs2_cms),
@@ -223,7 +233,7 @@ p5 <- cowplot::plot_grid(p1 + theme(axis.title.x = element_blank()) + scale_fill
 ,
                          p4 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
 ,
-                         ncol = 1,
+                         ncol = 2,
                          labels = "AUTO")
 
 p5 <- cowplot::plot_grid(p2 + theme(axis.title.x = element_blank()) +   scale_fill_manual(labels = c("ED", "LD", "GS"), 
@@ -326,6 +336,7 @@ fli
 burnlittercomp
 firecomp <- left_join(fli,burnlittercomp)
 firecomp$Burn_Szn <- factor(firecomp$Burn_Szn, levels = c("ED","LD","GS"))
+
 fc1 <- ggplot(firecomp, aes(x = pine, y = fli)) +
   geom_point(aes(color = Burn_Szn), size = 2) +
   geom_smooth(aes(color = Burn_Szn), method = "lm", se = F) +
@@ -334,7 +345,10 @@ fc1 <- ggplot(firecomp, aes(x = pine, y = fli)) +
   scale_color_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
                     values = c("#00AFBB","#E7B800","#FC4E07")) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  labs(y=expression(paste("Fireline Intensity  kW  ",  m^{-1})))
+  labs(y=expression(paste("Fireline Intensity  kW  ",  m^{-1}))) +
+  theme(axis.title=element_text(size=15),
+        axis.text.x = element_text(size=12),
+        axis.text.y = element_text(size=12)) 
 
 fc2 <- ggplot(firecomp, aes(x = pine, y = consump)) +
   geom_point(aes(color = Burn_Szn), size = 2) +
@@ -344,7 +358,10 @@ fc2 <- ggplot(firecomp, aes(x = pine, y = consump)) +
   scale_color_manual(labels = c("Early Dormant (ED)", "Late Dormant (LD)", "Growing Season (GS)"), 
                     values = c("#00AFBB","#E7B800","#FC4E07")) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
-  labs(y="Fuel Consumption (%)")
+  labs(y="Fuel Consumption (%)") +
+  theme(axis.title=element_text(size=15),
+        axis.text.x = element_text(size=12),
+        axis.text.y = element_text(size=12)) 
 
 fc3 <- ggplot(firecomp, aes(x = pine, y = frs1)) +
   geom_point(aes(color = Burn_Szn), size = 2) +
@@ -355,7 +372,10 @@ fc3 <- ggplot(firecomp, aes(x = pine, y = frs1)) +
                     values = c("#00AFBB","#E7B800","#FC4E07")) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
   labs(y=expression(paste("Fire Spread Rate  cm  ", s^{-1})),
-       x="Fuel bed pine litter (%) ")
+       x="Fuel bed pine litter (%) ") +
+  theme(axis.title=element_text(size=15),
+        axis.text.x = element_text(size=12),
+        axis.text.y = element_text(size=12)) 
 
 fc4 <- ggplot(firecomp, aes(x = pine, y = avg_max_temp)) +
   geom_point(aes(color = Burn_Szn), size = 2) +
@@ -364,12 +384,15 @@ fc4 <- ggplot(firecomp, aes(x = pine, y = avg_max_temp)) +
   facet_wrap(~Treatment) +
   theme(plot.title = element_text(hjust =0.5), legend.position = "none") +
   labs(y = "Maximum Temperature (°C)",
-       x="Fuel bed pine litter (%) ")
-
-
+       x="Fuel bed pine litter (%) ") +
+  theme(axis.title=element_text(size=15),
+        axis.text.x = element_text(size=12),
+        axis.text.y = element_text(size=12)) 
 
 legend2 <- get_legend(
-  fc1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  fc1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+              legend.title=element_text(size=16), 
+              legend.text=element_text(size=16)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
     labs(color = "Burn Season") +
     scale_color_grey(start = 0.2, end = .85))
@@ -391,12 +414,14 @@ fc5 <- cowplot::plot_grid(fc1 + theme(axis.title.x = element_blank()) + scale_co
                          fc2 + theme(axis.title.x = element_blank()) + scale_color_grey(start = 0.2, end = .85),
                          fc3 + scale_color_grey(start = 0.2, end = .85),
                          fc4 + scale_color_grey(start = 0.2, end = .85),
-                         ncol = 2, labels = "AUTO")
+                         ncol = 2, labels = "AUTO",
+                         align = "hv")
+                         
 
 
-fc6 <- plot_grid(fc5, ncol = 1, legend2,rel_heights = c(1, .1))
+fc6 <- plot_grid(fc5, ncol = 1, legend2,rel_heights = c(1, .1)) 
 
-fc7 <- plot_grid(title2,fc6,ncol=1,rel_heights = c(0.1,1))
+fc7 <- plot_grid(fc6,ncol=1,rel_heights = c(0.1,1))
 
 
 res8a <- lm(data=firecomp, avg_max_temp~pine+Burn_Szn)
@@ -595,3 +620,5 @@ legendg95 <- get_legend(
 
 
 g96 <- plot_grid(g95, legendg95, ncol = 1, rel_heights = c(1, .1))
+
+litter

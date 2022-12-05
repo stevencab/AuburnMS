@@ -79,6 +79,14 @@ join1 <- left_join(herbcalcsplot,litterduff)
 join2 <- left_join(join1,FWD)
 MasterFuelLoadsMgha_MSR <- left_join(join2,CWD)
 
+write_csv(MasterFuelLoadsMgha_MSR,"data/processed_data/midstory removal/FinalTotalLoads_kgha.csv")
+
+allloads2 <- MasterFuelLoadsMgha_MSR %>% 
+  group_by(Collection, Plot, Treatment) %>% 
+  summarise(total = sum(Biomass_Duff_kgm2,Biomass_Herb, Biomass_Shrub, Biomass_Litter_kgm2,
+                        FWD_Mgha, CWD_Mgha),
+            avg = mean(Biomass_Duff_kgm2,Biomass_Herb, Biomass_Shrub, Biomass_Litter_kgm2,
+                       FWD_Mgha, CWD_Mgha))
 #make figure for fuel loads
 #write_csv(MasterFuelLoadsMgha_MSR, "data/processed_data/midstory removal/TotalFuelLoads_Mgha.csv")
 
@@ -112,11 +120,16 @@ g1 <- ggplot(allloads, aes(x = Treatment, y = Total_load))+
        fill="Fuel load type") +
   scale_fill_grey(start = 0.35, end = 0.9) +
   theme(legend.position = "none") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   facet_wrap(~Collection)
 
 legendg1 <- get_legend(
   
-  g1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  g1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 g2 <- plot_grid(g1, legendg1, ncol = 1, rel_heights = c(1, .1))
@@ -324,19 +337,25 @@ trees_msrdist <- trees %>%
   group_by(stem_id, plot, thin_lvl, functional_group) %>% 
   summarise(QMD = dbh)
 sqrt((sum((dbh)^2))/n_distinct(stem_id))
+
 g3 <- ggplot(trees_msrdist, aes(x=QMD,fill = functional_group)) +
 geom_histogram(stat="bin", color = "black",binwidth = 4) +
   theme_bw() +
   labs(x= expression(paste("DBH (cm)")),
        y= "Number of individuals",
-       fill = "Species Group") +
+       fill = "Functional Group") +
   theme(legend.position = "none") + 
   scale_x_continuous(limits = c(0,70)) + 
-  scale_fill_grey(start = 0.35, end =0.9)
+  scale_fill_grey(start = 0.35, end =0.9) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
 
 legendg2 <- get_legend(
   
-  g3 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  g3 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 g5 <- plot_grid(g3,g4,
@@ -356,26 +375,37 @@ msrtpha <- trees %>%
   group_by(functional_group) %>% 
   summarise(TPHA = n_distinct(stem_id)/2.471)
 
-msrtpha$functional_group <- factor(msrtpha$functional_group, levels = c(
-  "Upland oak","Pine", "Encroaching"))
 
-g4 <- ggplot(msrtpha, aes(x = functional_group, y = TPHA,fill = functional_group)) +
+msrtpha$functional_group <- factor(msrtpha$functional_group, levels = c(
+  "Encroaching","Pine", "Upland oak"))
+
+g4 <- ggplot(msrtpha, aes(x = functional_group, y = TPHA, fill = functional_group)) +
   geom_bar(stat="identity", color = "black") +
   theme_bw() +
-  labs(x= expression(paste("Species group")),
-       y= "Density (trees per hectare)") +
+  labs(x= expression(paste("Functional Group")),
+       y= "Density (trees per hectare)",
+       color = "Functional Group",
+       fill = "Functional Group") +
   scale_fill_grey(start = 0.35, end =0.9) +
-  theme(legend.position = "none") 
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
+  theme(legend.position = "none", legend.title = element_blank()) 
   
-
 #litter change figs
+compchange <- read_csv("data/processed_data/midstory removal/littercompchangesplotALL.csv")
 
 compchangeplot
 compchangeplot$litter_type[compchangeplot$litter_type=="meso"] <- "Encroaching"
 compchangeplot$litter_type[compchangeplot$litter_type=="uo"] <- "Upland oak"
 compchangeplot$litter_type[compchangeplot$litter_type=="pine"] <- "Pine"
 
-change1 <- ggplot(compchangeplot2, aes(x = Treatment, y = litter_pct, fill = litter_type)) +
+
+compchangeplot <- compchangeplot %>% 
+  filter(collection!=c("4/12/2022")) %>%
+  filter(collection!=c("1/17/2022")) 
+
+change1 <- ggplot(compchangeplot, aes(x = Treatment, y = litter_pct, fill = litter_type)) +
   geom_boxplot() +
   facet_wrap(~collection) + 
   theme_bw() + 
@@ -384,7 +414,13 @@ change1 <- ggplot(compchangeplot2, aes(x = Treatment, y = litter_pct, fill = lit
   guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
   labs(y = "Leaf litter by mass (%)",
        x="Treatment",
-       fill = "Species Group")
+       fill = "Functional Group") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14),
+        legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12))
 
 #decomp angle
 compchange
@@ -445,22 +481,32 @@ ggplot(decomp, aes(x = collection, y = mean_pct, color = litter_type, group = li
   stat_summary(fun=mean, geom="line", size = 1) +
   stat_summary(fun=mean, geom="point", size = 5)
 
+decomp$collection <- factor(decomp$collection, levels = c(
+  "6/24/2021",
+  "1/17/2022",
+  "4/12/2022",
+  "6/24/2022"))
 #for pub
 g7 <- ggplot(decomp, aes(x = collection, y = mean_pct, color = litter_type, group = litter_type))+
   facet_wrap(~Treatment) +
   theme_bw() +
   geom_point(alpha = 0.35) +
-  stat_summary(fun=mean, geom="line", size = 1) +
+  stat_summary(fun=mean, geom="line", size = 2) +
   stat_summary(fun=mean, geom="point", size = 5) +
   labs(x = "\nLeaf litter harvest (m/dd/yyyy)",
        y = "\nLeaf litter by mass (%)",
-       color = "Species Group") +
-  scale_color_grey(start = 0.35, end =0.9) +
+       color = "Functional Group") +
+  scale_color_grey(start = 0.05, end =0.7) + 
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
   theme(legend.position = "none")
 
 legendg3 <- get_legend(
   
-  g7 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  g7 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 g8 <- plot_grid(g7, legendg3, ncol = 1, rel_heights = c(1, .1))

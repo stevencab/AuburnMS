@@ -127,9 +127,12 @@ f1 <- ggplot(Master_figs, aes(x = BA_m2ha, fill = Site)) +
   geom_histogram(stat="bin", color = "black",binwidth = 4) +
   theme_bw() +
   labs(x= expression(paste("Total stand basal area m"^2~ha^{~-1})),
-       y= "Number of stands") +
+       y= "Number of plots") +
   theme(legend.position = "none") + 
-  scale_fill_grey(start = 0.35, end =0.9)
+  scale_fill_grey(start = 0.35, end =0.9) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14, hjust = 1),
+        axis.text.y = element_text(size=14)) 
 
 f2 <- ggplot(Master, aes(x = Pine_pctBAft2a, fill = Site)) +
   geom_histogram(stat="bin", color = "black",binwidth = 4) +
@@ -137,18 +140,23 @@ f2 <- ggplot(Master, aes(x = Pine_pctBAft2a, fill = Site)) +
   geom_vline(xintercept = 30, linetype = "longdash", size = 1.5) +
   geom_vline(xintercept = 70, linetype = "longdash", size = 1.5) +
   xlab("Relative pine basal area (%)")+
-  ylab("Number of stands") +
-  annotate("text", x = 20, y = 8.5, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 4) +
-  annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
-  annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
+  ylab("Number of plots") +
+  annotate("text", x = 20, y = 8.5, label =  "Hardwood Stand\n n = 8", fontface = 2, size = 4) +
+  annotate("text", x = 50, y = 8.5, label =  "Mixed Stand\n n = 68" , fontface = 2, size = 4) +
+  annotate("text", x = 89, y = 8.5, label =  "Pine Stand\n n = 21" , fontface = 2, size = 4) +
   theme(legend.position = "none") +
-  scale_fill_grey(start = 0.35, end = 0.9)
+  scale_fill_grey(start = 0.35, end = 0.9) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14, hjust = 1),
+        axis.text.y = element_text(size=14)) 
 
 
 
 legend <- get_legend(
   
-  f1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  f1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f3 <- cowplot::plot_grid(f1,f2,
@@ -164,30 +172,38 @@ f5 <- ggplot(test3, aes(x = QMD, fill = tert)) +
   geom_histogram(stat="bin", color = "black",binwidth = 4) +
   theme_bw() +
   xlab("Stand quadratic mean diameter (cm)")+
-  ylab("Number of stands") +
-  labs(fill="Species Group") +
+  ylab("Number of plots") +
+  labs(fill="Functional Group") +
   #annotate("text", x = 20, y = 8.5, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 4) +
   #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
   #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
   theme(legend.position = "none") +
   scale_fill_grey(start = 0.35, end = 0.9) +
-  scale_x_continuous(limits=c(0,80))
+  scale_x_continuous(limits=c(0,80)) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14, hjust = 1),
+        axis.text.y = element_text(size=14)) 
 f6 <- ggplot(test3, aes(x = TPHA, fill = tert)) +
   geom_histogram(stat="bin", color = "black",binwidth = 50) +
   theme_bw() +
   xlab(expression(paste("Density (trees per hectare)")))+
-  ylab("Number of stands") +
-  labs(fill="Species Group") +
+  ylab("Number of plots") +
+  labs(fill="Functional Group") +
   #annotate("text", x = 20, y = 8.5, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 4) +
   #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
   #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
   theme(legend.position = "none") +
   scale_fill_grey(start = 0.35, end = 0.9) +
-  scale_x_continuous(limits=c(0,900))
+  scale_x_continuous(limits=c(0,900)) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14, hjust = 1),
+        axis.text.y = element_text(size=14)) 
 
 legend2 <- get_legend(
   
-  f5 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
+  f5 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f7 <- plot_grid(f5,f6,
@@ -252,9 +268,9 @@ f12 <- plot_grid(f11, legend3, ncol = 1, rel_heights = c(1, .1))
 #canopy cover
 
 Master
-Master$group[Master$group=="< 30% Pine"] <- "Hardwood Forest"
-Master$group[Master$group=="30 - 70% Pine"] <- "Mixed Forest"
-Master$group[Master$group==">70% Pine"] <- "Pine Forest"
+Master$group[Master$group=="< 30% Pine"] <- "Hardwood Stand"
+Master$group[Master$group=="30 - 70% Pine"] <- "Mixed Stand"
+Master$group[Master$group==">70% Pine"] <- "Pine Stand"
 Master$Site[Master$Site=="CR"] <- "CRAT"
 Master$Site[Master$Site=="MOT"] <- "MOTDF"
 Master$Site[Master$Site=="Talladega"] <- "TANF"
@@ -271,30 +287,40 @@ my_comparisons1 <- list( c("CRAT", "MOTDF"),
                          c("KNP","TUNF"),
                          c("KNP","CRAT"),
                          c("KNP","TANF"))
-my_comparisons2 <- list( c("Hardwood Forest", "Mixed Forest"),
-                        c("Pine Forest", "Hardwood Forest"),
-                        c("Mixed Forest", "Pine Forest") )
+my_comparisons2 <- list( c("Hardwood Stand", "Mixed Stand"),
+                        c("Pine Stand", "Hardwood Stand"),
+                        c("Mixed Stand", "Pine Stand") )
 
 f13 <- ggplot(Master, aes(x=Site,y=Avg_CC, fill = Site)) +
   geom_boxplot() +
   theme_bw() +
   labs(x="\nSite",
        y= "Mean canopy cover (%)") +
-  #stat_compare_means(comparisons = my_comparisons1) +
+  stat_compare_means(comparisons = my_comparisons1) +
   scale_fill_grey(start = 0.22, end = 0.9) +
   theme(legend.position = "none")
 
 f14 <- ggplot(Master, aes(x=group,y=Avg_CC, fill = group)) +
   geom_boxplot() +
   theme_bw() +
-  labs(x="\nForest Type",
+  labs(x="\nStand Type",
        y= "Mean canopy cover (%)") +
-  #stat_compare_means(comparisons = my_comparisons) +
+  #stat_compare_means(comparisons = my_comparisons2) +
   scale_fill_grey(start = 0.35, end = 0.9) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14))
   
-legend4 <- get_legend(f13 + theme(legend.position = "none"))
-
+legend4 <- get_legend(f14 + theme(legend.position = "none"),
+                      legend.title=element_text(size=12), 
+                      legend.text=element_text(size=12))
+legend4 <- get_legend(
+  
+  f14 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
+    guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 f15 <- plot_grid(f13,f14,
                  ncol = 2)  
 
@@ -359,7 +385,8 @@ littershort$Little_type <- factor(littershort$Little_type,
                              levels = c("Encroaching",
                                         "Pine",
                                         "Upland oak"))
-
+littershort$Little_type[littershort$Little_type=="Mesophyte"] <- "Encroaching"
+littershort$Little_type[littershort$Little_type=="Pinus"] <- "Pine"
 ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type))+
   geom_point(size = 1.5) +
   geom_smooth(method="lm", se=F)
@@ -381,31 +408,83 @@ summary(litres3)
 f21 <- ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type,
                    shape = Little_type))+
   geom_smooth(method="lm", se=F, size = 2) +
-  scale_color_grey(start = 0.2, end = 0.8) +
   theme_bw() +
   geom_vline(xintercept = 30, linetype = "dashed", size = 1) +
   geom_vline(xintercept = 70, linetype = "dashed", size = 1) +
-  annotate("text", x = 18, y = 75, label =  "Hardwood Forest\n", fontface = 2, size = 6) +
-  annotate("text", x = 50, y = 75, label =  "Mixed Forest\n" , fontface = 2, size = 6) +
-  annotate("text", x = 85.5, y = 75, label =  "Pine Forest\n" , fontface = 2, size = 6) +
+  annotate("text", x = 18, y = 75, label =  "Hardwood Stand\n", fontface = 2, size = 7) +
+  annotate("text", x = 50, y = 75, label =  "Mixed Stand\n" , fontface = 2, size = 7) +
+  annotate("text", x = 85.5, y = 75, label =  "Pine Stand\n" , fontface = 2, size = 7) +
   scale_x_continuous(breaks = c(0,10,20,30,40,50,60,70,80,90,100),
                                 limits=c(10,100)) +
   labs(x="Relative pine basal area (%)",
        y="Percent leaf litter by mass (%)",
-       color="Species Group",
-       shape="Species Group",
-       size="Species Group") +
-  geom_point(size = 4,stroke = 1.1, alpha = 0.4, position = "jitter") +
+       color="Functional Group",
+       shape="Functional Group",
+       size="Functional Group",
+       fill = "Functional Group") +
+  geom_point(aes(fill=Little_type), size = 3,stroke = 0.8, alpha = 0.6, position = "jitter") +
   scale_shape_manual(values=c(21,22,24)) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
+  scale_color_grey(start = 0.2, end = 0.9) +
+  scale_fill_grey(start = 0.2, end = 0.9) 
+  
+
+
 
 legend6 <- get_legend(
   
-  f21 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20)) +
-    guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+  f21 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+              legend.title=element_text(size=12), 
+              legend.text=element_text(size=12)) +
+    guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5),
+           fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5),
+           shape = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f22 <- plot_grid(f21, legend6, ncol = 1, rel_heights = c(1, .1))
 
+f5 <- ggplot(test3, aes(x = QMD, fill = tert)) +
+  geom_histogram(stat="bin", color = "black",binwidth = 4) +
+  theme_bw() +
+  xlab("Stand quadratic mean diameter (cm)")+
+  ylab("Number of plots") +
+  labs(fill="Species Group") +
+  #annotate("text", x = 20, y = 8.5, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 4) +
+  #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
+  #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
+  theme(legend.position = "none") +
+  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_x_continuous(limits=c(0,80)) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14, hjust = 1),
+        axis.text.y = element_text(size=14)) 
+f6 <- ggplot(test3, aes(x = TPHA, fill = tert)) +
+  geom_histogram(stat="bin", color = "black",binwidth = 50) +
+  theme_bw() +
+  xlab(expression(paste("Density (trees per hectare)")))+
+  ylab("Number of plots") +
+  labs(fill="Species Group") +
+  #annotate("text", x = 20, y = 8.5, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 4) +
+  #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
+  #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
+  theme(legend.position = "none") +
+  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_x_continuous(limits=c(0,900)) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14, hjust = 1),
+        axis.text.y = element_text(size=14)) 
+
+legend2 <- get_legend(
+  
+  f5 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
+             legend.title=element_text(size=12), 
+             legend.text=element_text(size=12)) +
+    guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+
+
+#stop
 #### figure for longleaf only vs other pines
 
 dbh_cm_in <- mixed_trees %>% 
@@ -526,13 +605,17 @@ f26 <- plot_grid(f25, legend7, ncol = 1, rel_heights = c(1, .1))
 #stand descriptions of basal area and canopy cover
 
 standchars <- Master %>% 
+  group_by(group) %>% 
   summarise(stand_ba = mean(BA_m2ha),
             ba_se = std.error(BA_m2ha),
             pine_ba = mean(Pine_m2ha),
             pine_se = std.error(Pine_m2ha),
             pine_pct = mean(Pine_pctBAft2a),
-            pine_pct = std.error(Pine_pctBAft2a))
+            pine_pctse = std.error(Pine_pctBAft2a))
 
+batest <- lm(data=Master,BA_m2ha~group)
+summary(batest)
+TukeyHSD(aov(batest))
 mean(Master_figs$BA_m2ha)
 Across all sites, mean stand basal area was 39.5 +/- 1.1.
 The pine basal area was 22.5 +/- 0.958, and 
@@ -555,12 +638,15 @@ mean tpha all stands was 263 tpha +/- 8.2
 HOWEVER broken up into species categories
 
 qmdandtpha2 <- test3 %>% 
-  group_by(tert) %>% 
+  group_by(group,tert) %>% 
   summarise(qmd_mean = mean(QMD),
             qmd_se = std.error(QMD),
             tpha_mean = mean(TPHA),
             tpha_se = std.error(TPHA)) 
 
+tphatest <- lm(data=test3, TPHA~tert)
+summary(tphatest)
+TukeyHSD(aov(tphatest))
 encroaching sp QMD 20.4 +/- 0.7
 encroaching sp tpha 364 +/- 25
 
@@ -578,9 +664,10 @@ f14
 
 Masterlogcc <- Master %>% 
   mutate(sqrtCC = sqrt(Avg_CC))
-
-cclm <- lm(data=Master,Avg_CC~group*Site)
-
+hist(Masterlogcc$sqrtCC)
+cclm2 <- lme(data=Master,Avg_CC~group, random = ~1|Site)
+cclm <- lm(data=Master,Avg_CC~group)
+anova(cclm2,cclm)
 summary(cclm)
 plot(cclm, 2)
 car::leveneTest(Avg_CC~Site*group, data = Master)
@@ -593,13 +680,12 @@ hist(iris$Sepal.Length)
 summary(cclm)
 TukeyHSD(aov(cclm))
 
-cclm2 <- lm(data=Masterlogcc,sqrtCC~group)
+cclm2 <- lme(data=Masterlogcc,sqrtCC~group, random = ~1|Site)
 anova(cclm2,cclm)
 summary(cclm2)
 TukeyHSD(aov(cclm2))
 
 ccmeans <- Master %>% 
-  group_by(group) %>% 
   summarise(cc_mean = mean(Avg_CC),
             cc_se = std.error(Avg_CC))
 
@@ -629,7 +715,8 @@ logloads <- usloads_short %>%
          logherbs = log(Herbs+1.01),
          logshrubs= log(Shrub+1.01),
          logduff = log(Duff+1.01),
-         loglitter = log(Litter+1.01))
+         loglitter = log(Litter+1.01),
+         logtotal = log(CWD+FWD+Herbs+Shrub+Duff+Litter))
 
 car::leveneTest(logherbs~Site*group, data = logloads)
 hist(logloads$loglitter)
@@ -637,12 +724,13 @@ aov_res <- residuals(object = cwdtest)
 shapiro.test(x = aov_res)
 
 
-cwdtest <- lm(data=logloads, logcwd~Site*group)
-fwdtest <- lm(data=logloads, logfwd~Site*group)
-herbtest <- lm(data=logloads, logherbs~Site*group)
-shrubtest <- lm(data=logloads, logshrubs~Site*group)
-dufftest <- lm(data=logloads, logduff~Site*group)
-littertest <- lm(data=logloads, loglitter~Site*group)
+cwdtest <- lm(data=logloads, logcwd~group)
+fwdtest <- lm(data=logloads, logfwd~group)
+herbtest <- lm(data=logloads, logherbs~group)
+shrubtest <- lm(data=logloads, logshrubs~group)
+dufftest <- lm(data=logloads, logduff~group)
+littertest <- lm(data=usloads_short, Litter~group)
+totaltest <- lm(data=logloads, logtotal~group)
 
 summary(cwdtest)
 summary(fwdtest)
@@ -650,6 +738,8 @@ summary(herbtest)
 summary(shrubtest)
 summary(dufftest)
 summary(littertest)
+summary(totaltest)
+
 
 TukeyHSD(aov(cwdtest))
 TukeyHSD(aov(fwdtest))
@@ -657,9 +747,11 @@ TukeyHSD(aov(herbtest))
 TukeyHSD(aov(shrubtest))
 TukeyHSD(aov(dufftest))
 TukeyHSD(aov(littertest))
+TukeyHSD(aov(totaltest))
+
 library(plotrix)
 loads_sum <- usloads_short %>%
-  group_by(group) %>% 
+  group_by(Plot) %>% 
   summarise(mean_cwd = mean(CWD*10),
             se_cwd = std.error(CWD*10),
             mean_fwd = mean(FWD*10),
@@ -672,6 +764,18 @@ loads_sum <- usloads_short %>%
             se_duff = std.error(Duff*10),
             mean_litter = mean(Litter*10),
             se_litter = std.error(Litter*10))
+            
+loads_sum2 <- usloads_short %>%
+  group_by(Site, Plot, group) %>% 
+  summarise(CWD = mean(CWD*10),
+            FWD = mean(FWD*10),
+            Herbs = mean(Herbs*10),
+            Shrub = mean(Shrub*10),
+            Duff = mean(Duff*10),
+            Litter = mean(Litter*10))
+
+write_csv(loads_sum2,"data/processed_data/MixedStand_FuelLoads_Mgha.csv")
+            
             
 total_loads <- usloads_short %>% 
   group_by(Plot) %>% 
