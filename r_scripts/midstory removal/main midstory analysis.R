@@ -15,7 +15,7 @@ library(factoextra)
 library(nlme)
 
 litter <- read_csv("C:/Users/smc0124/OneDrive - Auburn University/Desktop/AuburnMS/data/raw_data/Midstory Removal/most important/LitterSortingALL_MSR.csv")
-
+litter <- read_csv("data/raw_data/Midstory Removal/most important/LitterSortingALL_MSR.csv")
 litter$canopy_trt <- factor(litter$canopy_trt, levels = c("low","med","high"))
 litter$collection <- factor(litter$collection, levels = c("6/24/2021","1/17/2022","4/12/2022","6/24/2022"))
 litter$Treatment[litter$Treatment=="thin"] <- "Thin"
@@ -264,7 +264,7 @@ ggplot(fli_litterpct, aes(x = pine, y = fli, color = Treatment)) +
   facet_wrap(~canopy_trt) + 
   theme_bw()
 
-res2 <- lm(data=fli_litterpct, fli~pine+Treatment+pine:Treatment)
+res2 <- lm(data=fli_litterpct, avg_max_temp~pine)
 summary(res2)
 
 fli_litterpct$collection <- NULL
@@ -424,7 +424,7 @@ fc6 <- plot_grid(fc5, ncol = 1, legend2,rel_heights = c(1, .1))
 fc7 <- plot_grid(fc6,ncol=1,rel_heights = c(0.1,1))
 
 
-res8a <- lm(data=firecomp, avg_max_temp~pine+Burn_Szn)
+res8a <- lm(data=firecomp, avg_max_temp~pine)
 summary(res8a)
 TukeyHSD(aov(res8a))
 confint(res8a)

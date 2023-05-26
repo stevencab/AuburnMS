@@ -266,8 +266,23 @@ fli_litterpct$Burn_Szn <- relevel(fli$Burn_Szn, ref = "ED")
 #litter pct pine etc
 fli_litterpct
 
-fli_pine <- lm(data = fli_litterpct, consump~pine)
+fli_pine <- lm(data = fli_litterpct, fli~pine+Burn_Szn+Treatment)
+fli_pine <- lm(data = fli_litterpct, frs1~pine+Burn_Szn+Treatment)
+fli_pine <- lm(data = fli_litterpct, consump~pine+Burn_Szn+Treatment)
+fli_pine <- lm(data = fli_litterpct, avg_max_temp~pine+Burn_Szn+Treatment)
+
+fli_pine <- lm(data = fli_litterpct, fli~uo)
+fli_pine <- lm(data = fli_litterpct, frs1~uo)
+fli_pine <- lm(data = fli_litterpct, consump~uo)
+fli_pine <- lm(data = fli_litterpct, avg_max_temp~uo)
+
+fli_pine <- lm(data = fli_litterpct, fli~meso)
+fli_pine <- lm(data = fli_litterpct, frs1~meso)
+fli_pine <- lm(data = fli_litterpct, consump~meso)
+fli_pine <- lm(data = fli_litterpct, avg_max_temp~meso)
+
 summary(fli_pine)
+TukeyHSD(aov(fli_pine))
 intervals(fli_pine)
 
 plot(res_fli, 2)
@@ -353,15 +368,16 @@ geom_histogram(stat="bin", color = "black",binwidth = 4) +
 
 legendg2 <- get_legend(
   
-  g3 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
-             legend.title=element_text(size=12), 
-             legend.text=element_text(size=12)) +
+  g3 + theme(legend.position = "bottom", legend.box.margin = margin(-7,0,0,40),
+             legend.title=element_text(size=10), 
+             legend.text= element_text(size=10)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
-g5 <- plot_grid(g3,g4,
-                ncol = 2)  
+g5 <- plot_grid(g3,
+                ncol = 1)  
 
 g6 <- plot_grid(g5, legendg2, ncol = 1, rel_heights = c(1, .1))
+ggsave(plot = g6, "figures/midstory removal figs/newfig1pub.png", height = 4.2, width = 6)
 
 msrtpha <- trees %>% 
   filter(location!="edge") %>% 
@@ -375,6 +391,18 @@ msrtpha <- trees %>%
   group_by(functional_group) %>% 
   summarise(TPHA = n_distinct(stem_id)/2.471)
 
+randomeep <- ggplot(msrtpha, aes(x = functional_group, y = TPHA, fill = functional_group)) +
+  geom_bar(stat="identity", color = "black") +
+  theme_bw() +
+  labs(x= expression(paste("Functional Group")),
+       y= "Density (trees per hectare)",
+       color = "Functional Group",
+       fill = "Functional Group") +
+  scale_fill_grey(start = 0.35, end =0.9) +
+  theme(axis.title=element_text(size=16),
+        axis.text.x = element_text(size=14),
+        axis.text.y = element_text(size=14)) +
+  theme(legend.position = "none", legend.title = element_blank()) 
 
 msrtpha$functional_group <- factor(msrtpha$functional_group, levels = c(
   "Encroaching","Pine", "Upland oak"))
@@ -601,16 +629,21 @@ decompmod
 
 
 pinedecomp <- compchange %>% 
-  filter(litter_type=="pine") %>% 
-  filter(Treatment=="thin")
+  filter(litter_type=="Pine")
+  
+filter(Treatment=="Thin")
 uodecomp <- compchange %>% 
-  filter(litter_type=="uo") %>% 
-  filter(Treatment=="thin")
-mesodecomp <- compchange %>% 
-  filter(litter_type=="meso") %>% 
-  filter(Treatment=="thin")
+  filter(litter_type=="Upland oak")
 
-modpine <- lme(data=pinedecomp, litter_pct~canopy_trt+collection, random = ~1|Plot/canopy_trt/Treatment/Burn_Szn) 
+%>% 
+  filter(Treatment=="Thin")
+mesodecomp <- compchange %>% 
+  filter(litter_type=="Encroaching")
+
+%>% 
+  filter(Treatment=="Thin")
+
+modpine <- lme(data=pinedecomp, litter_pct~Treatment+canopy_trt+collection, random = ~1|Plot/canopy_trt/Treatment) 
 summary(modpine)
 emmeans(modpine, pairwise ~ canopy_trt)
 
@@ -618,7 +651,7 @@ moduo <- lme(data=uodecomp, litter_pct~canopy_trt+collection, random = ~1|Plot/c
 summary(moduo)
 emmeans(moduo, pairwise ~ canopy_trt)
 
-modmeso <- lme(data=mesodecomp, litter_pct~canopy_trt+collection, random = ~1|Plot/canopy_trt/Treatment) 
+modmeso <- lme(data=mesodecomp, litter_pct~canopy_trt+collection, random = ~1|Plot/Treatment) 
 summary(modmeso)
 emmeans(modmeso, pairwise ~ canopy_trt)
 
