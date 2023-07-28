@@ -412,15 +412,25 @@ litres3 <- lm(data=littershort,pine_load~Pine_ft2a)
 summary(litres3)
 
 f21 <- ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type,
-                   shape = Little_type))+
-  geom_smooth(method="lm", se=F, size = 2) +
+                   shape = Little_type, group = Little_type))+
+  geom_smooth(aes(group = Little_type), method = "lm", size = 1.5*1.5, color = "black", se = F) +
+  geom_smooth(aes(fill = Little_type), method="lm", se=F, size = 1.5, ) +
   theme_bw() +
   geom_vline(xintercept = 30, linetype = "dashed", size = 1) +
   geom_vline(xintercept = 70, linetype = "dashed", size = 1) +
-  annotate("text", x = 18, y = 75, label =  "Hardwood Stand\n", fontface = 2, size = 7) +
-  annotate("text", x = 50, y = 75, label =  "Mixed Stand\n" , fontface = 2, size = 7) +
-  annotate("text", x = 85.5, y = 75, label =  "Pine Stand\n" , fontface = 2, size = 7) +
-  scale_x_continuous(breaks = c(0,10,20,30,40,50,60,70,80,90,100),
+  annotate("text", x = 18, y = 80, label =  "Hardwood\n Stand\n", fontface = 2, size = 4.5) +
+  annotate("text", x = 50, y = 80, label =  "Mixedwood\n Stand\n" , fontface = 2, size = 4.5) +
+  annotate("text", x = 85.5, y = 80, label =  "Pine\n Stand\n" , fontface = 2, size = 4.5) +
+  annotate("text", x = 100, y = 81, label =  "p < 0.001", fontface = 1, size = 2) +
+  annotate("text", x = 100, y = 79, label = 
+             expression(paste("r"^2: 0.40)), fontface = 1, size = 2) +
+  annotate("text", x = 100, y = 24, label =  "p = 0.008", fontface = 1, size = 2) +
+  annotate("text", x = 100, y = 22, label = 
+             expression(paste("r"^2: 0.08)), fontface = 1, size = 2) +
+  annotate("text", x = 100, y = 2, label =  "p < 0.001", fontface = 1, size = 2) +
+  annotate("text", x = 100, y = 0, label = 
+             expression(paste("r"^2: 0.13)), fontface = 1, size = 2) +
+   scale_x_continuous(breaks = c(0,10,20,30,40,50,60,70,80,90,100),
                                 limits=c(10,100)) +
   labs(x="Relative pine basal area (%)",
        y="Percent leaf litter by mass (%)",
@@ -428,28 +438,30 @@ f21 <- ggplot(litter, aes(x=Pine_pctBAft2a,y=Pct_wt,color=Little_type,
        shape="Functional Group",
        size="Functional Group",
        fill = "Functional Group") +
-  geom_point(aes(fill=Little_type), size = 3,stroke = 0.8, alpha = 0.6, position = "jitter") +
+  geom_point(aes(fill=Little_type, color = Little_type), size = 2,stroke = 0.5, alpha = 1, position = "jitter") +
+  geom_point(aes(shape= Little_type, fill = Little_type), colour = "black") +
   scale_shape_manual(values=c(21,22,24)) +
   theme(legend.position = "none") +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14),
-        axis.text.y = element_text(size=14)) +
-  scale_color_grey(start = 0.2, end = 0.9) +
-  scale_fill_grey(start = 0.2, end = 0.9) 
-  
-
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=11),
+        axis.text.y = element_text(size=11)) +
+  scale_color_grey(start = 0.1, end = 0.9) +
+  scale_fill_grey(start = 0.1, end = 0.9) 
 
 
 legend6 <- get_legend(
   
   f21 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
-              legend.title=element_text(size=12), 
-              legend.text=element_text(size=12)) +
+              legend.title=element_text(size=11), 
+              legend.text=element_text(size=11)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5),
            fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5),
-           shape = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
+           shape = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5),
+           group = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f22 <- plot_grid(f21, legend6, ncol = 1, rel_heights = c(1, .1))
+
+ggsave(plot = f22, "figures/midstory removal figs/mixed for pub/Fig5.png", width = 6.5, height = 5)
 
 f5 <- ggplot(test3, aes(x = QMD, fill = tert)) +
   geom_histogram(stat="bin", color = "black",binwidth = 4) +

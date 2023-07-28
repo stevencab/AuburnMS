@@ -153,6 +153,7 @@ fli <- burn %>%
             consump = mean(consump),
             avg_max_temp = mean(avg_max_temp),
             fuel_moist = mean(fuel_moist))
+fli$Burn_Szn <- factor(fli$Burn_Szn, levels = c("ED","LD","GS"))
 
 p1 <- ggplot(fli, aes(x = Burn_Szn, y = fli, fill = Burn_Szn)) +
   geom_boxplot() +
@@ -162,9 +163,9 @@ p1 <- ggplot(fli, aes(x = Burn_Szn, y = fli, fill = Burn_Szn)) +
   labs(y=expression(paste("Fireline Intensity  kW  ",  m^{-1}))) +
   scale_fill_manual(labels = c("ED", "LD", "GS"), 
                     values = c("#00AFBB","#E7B800","#FC4E07")) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14),
-        axis.text.y = element_text(size=14))
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=10),
+        axis.text.y = element_text(size=10))
 p2 <- ggplot(fli, aes(x = Burn_Szn, y = consump, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
@@ -173,9 +174,9 @@ p2 <- ggplot(fli, aes(x = Burn_Szn, y = consump, fill = Burn_Szn)) +
   labs(y="Fuel Consumption (%)") +
   scale_fill_manual(labels = c("ED", "LD", "GS"), 
                     values = c("#00AFBB","#E7B800","#FC4E07")) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14),
-        axis.text.y = element_text(size=14))
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=10),
+        axis.text.y = element_text(size=10))
 p3 <- ggplot(fli, aes(x = Burn_Szn, y = frs1, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
@@ -184,9 +185,9 @@ p3 <- ggplot(fli, aes(x = Burn_Szn, y = frs1, fill = Burn_Szn)) +
   labs(y=expression(paste("Fire Spread Rate  cm  ", s^{-1}))) +
   scale_fill_manual(labels = c("ED", "LD", "GS"), 
                     values = c("#00AFBB","#E7B800","#FC4E07")) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14),
-        axis.text.y = element_text(size=14))
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=10),
+        axis.text.y = element_text(size=10))
 p4 <- ggplot(fli, aes(x = Burn_Szn, y = avg_max_temp, fill = Burn_Szn)) +
   geom_boxplot() +
   facet_wrap(~Treatment) +
@@ -195,14 +196,14 @@ p4 <- ggplot(fli, aes(x = Burn_Szn, y = avg_max_temp, fill = Burn_Szn)) +
   labs(y = "Maximum Temperature °C") +
   scale_fill_manual(labels = c("ED", "LD", "GS"), 
                     values = c("#00AFBB","#E7B800","#FC4E07")) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14),
-        axis.text.y = element_text(size=14))
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=10),
+        axis.text.y = element_text(size=10))
 
 legend <- get_legend(
   p3 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
-             legend.title=element_text(size=12), 
-             legend.text=element_text(size=12)) +
+             legend.title=element_text(size=10), 
+             legend.text=element_text(size=10)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)) +
     labs(fill = "Burn Season") 
   
@@ -225,13 +226,13 @@ title <- ggdraw() +
     plot.margin = margin(0,0,0,40)
   )
 
-p5 <- cowplot::plot_grid(p1 + theme(axis.title.x = element_blank()) + scale_fill_grey(start = 0.2, end = .85)
+p5 <- cowplot::plot_grid(p1 + theme(axis.title.x = element_blank()) + scale_fill_grey(start = 0.35, end = .9)
 ,
-                         p2 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
+                         p2 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.35, end = .9)
 ,
-                         p3 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
+                         p3 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.35, end = .9)
 ,
-                         p4 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.2, end = .85)
+                         p4 + theme(axis.title.x = element_blank())+ scale_fill_grey(start = 0.35, end = .9)
 ,
                          ncol = 2,
                          labels = "AUTO")
@@ -245,7 +246,7 @@ p5 <- cowplot::plot_grid(p2 + theme(axis.title.x = element_blank()) +   scale_fi
                          labels = "AUTO")
 
 p6 <- plot_grid(p5,legend, ncol = 1,rel_heights = c(1,.1))
-#ggsave(plot=p6,"figures/midstory removal figs/firebehaviorxtrtseason.png", height = 10, width = 10)
+ggsave(plot=p6,"figures/midstory removal figs/firebehaviorxtrtseason.png", height = 10, width = 10)
 #^final for four major fire metrics per control/thin
 res1 <- lm(data=fli, fli~Burn_Szn)
 summary(res1)
