@@ -129,40 +129,42 @@ f1 <- ggplot(Master_figs, aes(x = BA_m2ha, fill = Site)) +
   labs(x= expression(paste("Total stand basal area m"^2~ha^{~-1})),
        y= "Number of plots") +
   theme(legend.position = "none") + 
-  scale_fill_grey(start = 0.35, end =0.9) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14, hjust = 1),
-        axis.text.y = element_text(size=14)) 
+  scale_fill_grey(start = 0.2, end =0.9) +
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=11, hjust = 1),
+        axis.text.y = element_text(size=11)) 
 
 f2 <- ggplot(Master, aes(x = Pine_pctBAft2a, fill = Site)) +
   geom_histogram(stat="bin", color = "black",binwidth = 4) +
   theme_bw() +
-  geom_vline(xintercept = 30, linetype = "longdash", size = 1.5) +
-  geom_vline(xintercept = 70, linetype = "longdash", size = 1.5) +
+  geom_vline(xintercept = 30, linetype = "longdash", size = 1.3) +
+  geom_vline(xintercept = 70, linetype = "longdash", size = 1.3) +
   xlab("Relative pine basal area (%)")+
   ylab("Number of plots") +
-  annotate("text", x = 20, y = 8.5, label =  "Hardwood Stand\n n = 8", fontface = 2, size = 4) +
-  annotate("text", x = 50, y = 8.5, label =  "Mixed Stand\n n = 68" , fontface = 2, size = 4) +
-  annotate("text", x = 89, y = 8.5, label =  "Pine Stand\n n = 21" , fontface = 2, size = 4) +
+  annotate("text", x = 20, y = 9, label =  "Hardwood\n Stand\n n = 8", fontface = 2, size = 3) +
+  annotate("text", x = 50, y = 9, label =  "Mixedwood\n Stand\n n = 68" , fontface = 2, size = 3) +
+  annotate("text", x = 89, y = 9, label =  "Pine\n Stand\n n = 21" , fontface = 2, size = 3) +
   theme(legend.position = "none") +
-  scale_fill_grey(start = 0.35, end = 0.9) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14, hjust = 1),
-        axis.text.y = element_text(size=14)) 
+  scale_fill_grey(start = 0.2, end = 0.9) +
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=11, hjust = 1),
+        axis.text.y = element_text(size=11)) 
 
 
 
 legend <- get_legend(
   
   f1 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
-             legend.title=element_text(size=12), 
-             legend.text=element_text(size=12)) +
+             legend.title=element_text(size=11), 
+             legend.text=element_text(size=11)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f3 <- cowplot::plot_grid(f1,f2,
                    ncol = 2)  
 
 f4 <- plot_grid(f3, legend, ncol = 1, rel_heights = c(1, .1))
+
+ggsave(plot = f4, "figures/midstory removal figs/mixed for pub/Fig2.png", width = 7.5, height = 5)
 
 # QMD and TPHA figures
 
@@ -178,11 +180,11 @@ f5 <- ggplot(test3, aes(x = QMD, fill = tert)) +
   #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
   #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
   theme(legend.position = "none") +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_grey(start = 0.2, end = 0.9) +
   scale_x_continuous(limits=c(0,80)) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14, hjust = 1),
-        axis.text.y = element_text(size=14)) 
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=11, hjust = 1),
+        axis.text.y = element_text(size=11)) 
 f6 <- ggplot(test3, aes(x = TPHA, fill = tert)) +
   geom_histogram(stat="bin", color = "black",binwidth = 50) +
   theme_bw() +
@@ -193,23 +195,25 @@ f6 <- ggplot(test3, aes(x = TPHA, fill = tert)) +
   #annotate("text", x = 50, y = 8.5, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 4) +
   #annotate("text", x = 89, y = 8.5, label =  "Pine Forest\n n = 21" , fontface = 2, size = 4) +
   theme(legend.position = "none") +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_grey(start = 0.2, end = 0.9) +
   scale_x_continuous(limits=c(0,900)) +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14, hjust = 1),
-        axis.text.y = element_text(size=14)) 
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=11, hjust = 1),
+        axis.text.y = element_text(size=11)) 
 
 legend2 <- get_legend(
   
-  f5 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
-             legend.title=element_text(size=12), 
-             legend.text=element_text(size=12)) +
+  f5 + theme(legend.position = "bottom", legend.box.margin = margin(-3,0,0,20),
+             legend.title=element_text(size=11), 
+             legend.text=element_text(size=11)) +
     guides(fill = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 
 f7 <- plot_grid(f5,f6,
             ncol = 2)  
 
 f8 <- plot_grid(f7, legend2, ncol = 1, rel_heights = c(1, .1))
+
+ggsave(plot = f8, "figures/midstory removal figs/mixed for pub/Fig3.png", width = 6.5, height = 5)
 
 ## fuel loads 
 
@@ -269,7 +273,7 @@ f12 <- plot_grid(f11, legend3, ncol = 1, rel_heights = c(1, .1))
 
 Master
 Master$group[Master$group=="< 30% Pine"] <- "Hardwood Stand"
-Master$group[Master$group=="30 - 70% Pine"] <- "Mixed Stand"
+Master$group[Master$group=="30 - 70% Pine"] <- "Mixedwood Stand"
 Master$group[Master$group==">70% Pine"] <- "Pine Stand"
 Master$Site[Master$Site=="CR"] <- "CRAT"
 Master$Site[Master$Site=="MOT"] <- "MOTDF"
@@ -306,11 +310,11 @@ f14 <- ggplot(Master, aes(x=group,y=Avg_CC, fill = group)) +
   labs(x="\nStand Type",
        y= "Mean canopy cover (%)") +
   #stat_compare_means(comparisons = my_comparisons2) +
-  scale_fill_grey(start = 0.35, end = 0.9) +
+  scale_fill_grey(start = 0.32, end = 0.9) +
   theme(legend.position = "none") +
-  theme(axis.title=element_text(size=16),
-        axis.text.x = element_text(size=14),
-        axis.text.y = element_text(size=14))
+  theme(axis.title=element_text(size=12),
+        axis.text.x = element_text(size=11),
+        axis.text.y = element_text(size=11))
   
 legend4 <- get_legend(f14 + theme(legend.position = "none"),
                       legend.title=element_text(size=12), 
@@ -318,14 +322,16 @@ legend4 <- get_legend(f14 + theme(legend.position = "none"),
 legend4 <- get_legend(
   
   f14 + theme(legend.position = "bottom", legend.box.margin = margin(2,0,0,20),
-             legend.title=element_text(size=12), 
-             legend.text=element_text(size=12)) +
+             legend.title=element_text(size=11), 
+             legend.text=element_text(size=11)) +
     guides(color = guide_legend(nrow = 1, title.position = "top", title.hjust = 0.5)))
 f15 <- plot_grid(f13,f14,
                  ncol = 2)  
 
-f16 <- plot_grid(f15, legend4, ncol = 1, rel_heights = c(1, .1))
 
+f16 <- plot_grid(f14, legend4, ncol = 1, rel_heights = c(1, .1))
+
+ggsave(plot = f14, "figures/midstory removal figs/mixed for pub/Fig4.png", width = 6.5, height = 5)
 
 
 # litter across site and forest type

@@ -131,7 +131,7 @@ f1 <- ggplot(Master_figs, aes(x = BA_m2ha, fill = Site)) +
   labs(x= expression(paste("Total stand basal area m"^2~ha^{~-1})),
        y= "Number of stands") +
   theme(legend.position = "none") + 
-  scale_fill_grey(start = 0.35, end =0.9)
+  scale_fill_grey(start = 0.1, end =0.9)
 
 f2 <- ggplot(Master, aes(x = Pine_pctBAft2a, fill = Site)) +
   geom_histogram(stat="bin", color = "black",binwidth = 4) +
@@ -140,11 +140,11 @@ f2 <- ggplot(Master, aes(x = Pine_pctBAft2a, fill = Site)) +
   geom_vline(xintercept = 70, linetype = "longdash", size = 1.5) +
   xlab("Relative pine basal area (%)")+
   ylab("Number of stands") +
-  annotate("text", x = 20, y = 8.8, label =  "Hardwood Forest\n n = 8", fontface = 2, size = 8) +
-  annotate("text", x = 50, y = 8.8, label =  "Mixed Forest\n n = 68" , fontface = 2, size = 8) +
-  annotate("text", x = 89, y = 8.8, label =  "Pine Forest\n n = 21" , fontface = 2, size = 8) +
+  annotate("text", x = 20, y = 8.8, label =  "Hardwood Stand \n n = 8", fontface = 2, size = 8) +
+  annotate("text", x = 50, y = 8.8, label =  "Mixedwood Stand\n n = 68" , fontface = 2, size = 8) +
+  annotate("text", x = 89, y = 8.8, label =  "Pine Stand\n n = 21" , fontface = 2, size = 8) +
   theme(legend.position = "none") +
-  scale_fill_brewer(palette = "YlOrBr") +
+  scale_fill_grey(start = 0.1, end =0.9) +
   theme(axis.title=element_text(size=16),
         axis.text.x = element_text(size=14),
         axis.text.y = element_text(size=14)) 
